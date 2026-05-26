@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: .5px;
+      }
+
+      .cls-2 {
+        font-size: 6.01px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #ccc;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+      }
+
+      .cls-3 {
+        font-size: 4px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        font-size: 20.52px;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1.17" y1="46.83" x2="46.83" y2="1.17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1ee60f"/>
+      <stop offset="1" stop-color="#14640a"/>
+    </linearGradient>
+  </defs>
+  <g id="Background">
+    <rect class="cls-5" width="48" height="48" rx="4" ry="4"/>
+    <rect class="cls-1" x="1.5" y="1.5" width="45" height="45" rx="3" ry="3"/>
+  </g>
+  <text class="cls-4" transform="translate(17.31 26.02)"><tspan x="0" y="0">H</tspan></text>
+  <text class="cls-2" transform="translate(11.48 32.67)"><tspan x="0" y="0">Hydrogen</tspan></text>
+  <text class="cls-2" transform="translate(22.46 7.37)"><tspan x="0" y="0">1</tspan></text>
+  <text class="cls-3" transform="translate(19.48 37.73)"><tspan x="0" y="0">1.008</tspan></text>
+  <text class="cls-3" transform="translate(22.97 42.55)"><tspan x="0" y="0">1</tspan></text>
+</svg>

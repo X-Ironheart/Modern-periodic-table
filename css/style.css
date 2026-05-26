@@ -1,0 +1,13 @@
+.element {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-weight: 800;
+    color: aliceblue;
+    font-size: small;
+    background-color: green;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
