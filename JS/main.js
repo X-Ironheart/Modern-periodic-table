@@ -1,5 +1,14 @@
 async function getDataFromJson() {
   const result = await fetch("./data/elements.json").then((res) => res.json());
+  const sGroup = document.createElement("div");
+  sGroup.classList.add("sGroup");
+
+  const dGroup = document.createElement("div");
+  dGroup.classList.add("dGroup");
+
+  const fGroup = document.createElement("div");
+  fGroup.classList.add("fGroup");
+
   for (let i = 0; i <= result.elements.length; i++) {
     const elementDiv = document.createElement("div");
     elementDiv.classList.add(`element`);
@@ -18,10 +27,12 @@ async function getDataFromJson() {
     elementDiv.appendChild(atomicNumberDiv);
     elementDiv.appendChild(atomSymbolsDiv);
     elementDiv.appendChild(atomNameDiv);
-    document.body.appendChild(elementDiv);
+
+    document.body.appendChild(sGroup);
+    document.body.appendChild(dGroup);
+    document.body.appendChild(fGroup);
+    console.log(result);
   }
-  makeElemnts();
-  console.log(result);
 }
 
 getDataFromJson();
