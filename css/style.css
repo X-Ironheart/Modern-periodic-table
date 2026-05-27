@@ -1,13 +1,90 @@
+:root {
+  margin: 0;
+  background: #1b1f22;
+}
+
+body {
+  max-height: 1500px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(18, auto);
+  grid-template-rows: 7fr 2fr;
+  grid-template-areas: "s s d d d d d d d d d d p p p p p p" ". . f f f f f f f f f f f f f f f .";
+}
+
 .element {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    font-weight: 800;
-    color: aliceblue;
-    font-size: small;
-    background-color: green;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-weight: 800;
+  color: #eee;
+  font-size: small;
+  background-color: inherit;
+  margin: 3px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sGroup {
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(2, auto);
+  grid-template-areas: "H ." "Li Be" "Na Mg" "K Ca" "Rb Sr" "Cs Ba" "Fr Ra";
+  grid-area: s;
+}
+
+.dGroup {
+  display: grid;
+  align-content: end;
+  grid-template-columns: repeat(10, auto);
+  grid-template-areas: "Sc Ti V Cr Mn Fe Co Ni Cu Zn" "Y Zr Nb Mo Tc Ru Rh Pd Ag Cd" ". Hf Ta W Re Os Ir Pt Au Hg" ". Rf Db Sg Bh Hs Mt Ds Rg Cn";
+  grid-area: d;
+}
+
+.pGroup {
+  display: grid;
+  align-content: start;
+  grid-template-columns: repeat(6, auto);
+  grid-template-areas: ". . . . . He" "B C N O F Ne" "Al Si P S Cl Ar" "Ga Ge As Se Br Kr" "In Sn Sb Te I Xe" "Tl Pb Bi Po At Rn" "Nh Fl Mc Lv Ts Og";
+  grid-area: p;
+}
+
+.fGroup {
+  display: grid;
+  align-content: end;
+  grid-template-columns: repeat(14, auto);
+  grid-auto-flow: row;
+  grid-template-areas: "La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu" "Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr";
+  grid-area: f;
+}
+
+.sGroup > div {
+  border: 5px, #4c1b20, solid;
+}
+
+.pGroup > div {
+  border: 5px, #046304, solid;
+}
+
+.dGroup > div {
+  border: 5px, #04395e, solid;
+}
+
+.fGroup > div {
+  border: 5px, #a63e02, solid;
+}
+
+.atom-name {
+  font-size: 9px;
+}
+
+.atom-symbol {
+  font-size: 30px;
+}
+
+.atomic-number {
+  font-size: 13px;
 }
