@@ -1,35 +1,45 @@
 :root {
   margin: 0;
   background: #1b1f22;
+  --element-width: calc((1vw- (36 * 3px)) / 18);
+  --atomic-name: clamp(6px, 0.8vw, 15px);
+  --atomic-sym: clamp(8px, 2.5vw, 20px);
+  --atomic-number: clamp(5px, 0.8vw, 8px);
 }
 
 body {
-  max-height: 1500px;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-main {
+#main {
+  width: 98vw;
   display: grid;
-  grid-template-columns: repeat(18, auto);
-  grid-template-rows: 7fr 2fr;
-  grid-template-areas: "s s d d d d d d d d d d p p p p p p" ". . f f f f f f f f f f f f f f f .";
+  grid-template-columns: repeat(18, minmax(20px, 1fr));
+  gap: clamp(2px, 0.5vw, 5px);
+  width: 100vw;
+  padding: 5px;
 }
 
 .element {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: var(--element-width);
+  aspect-ratio: 1/1;
   font-weight: 800;
   color: #eee;
-  font-size: small;
-  background-color: inherit;
-  margin: 3px;
-  padding: 10px;
+  background-color: transparent;
+  padding: 2px;
   border-radius: 10px;
 }
 
 .sGroup {
   display: grid;
+  gap: inherit;
   align-content: start;
   grid-template-columns: repeat(2, auto);
   grid-template-areas: "H ." "Li Be" "Na Mg" "K Ca" "Rb Sr" "Cs Ba" "Fr Ra";
@@ -38,6 +48,7 @@ main {
 
 .dGroup {
   display: grid;
+  gap: inherit;
   align-content: end;
   grid-template-columns: repeat(10, auto);
   grid-template-areas: "Sc Ti V Cr Mn Fe Co Ni Cu Zn" "Y Zr Nb Mo Tc Ru Rh Pd Ag Cd" ". Hf Ta W Re Os Ir Pt Au Hg" ". Rf Db Sg Bh Hs Mt Ds Rg Cn";
@@ -46,6 +57,7 @@ main {
 
 .pGroup {
   display: grid;
+  gap: inherit;
   align-content: start;
   grid-template-columns: repeat(6, auto);
   grid-template-areas: ". . . . . He" "B C N O F Ne" "Al Si P S Cl Ar" "Ga Ge As Se Br Kr" "In Sn Sb Te I Xe" "Tl Pb Bi Po At Rn" "Nh Fl Mc Lv Ts Og";
@@ -54,6 +66,7 @@ main {
 
 .fGroup {
   display: grid;
+  gap: inherit;
   align-content: end;
   grid-template-columns: repeat(14, auto);
   grid-auto-flow: row;
@@ -61,30 +74,31 @@ main {
   grid-area: f;
 }
 
-.sGroup > div {
-  border: 5px, #4c1b20, solid;
+.s-group {
+  border: 3px, #4c1b20, solid;
 }
 
-.pGroup > div {
-  border: 5px, #046304, solid;
+.p-group {
+  border: 3px, #046304, solid;
 }
 
-.dGroup > div {
-  border: 5px, #04395e, solid;
+.d-group {
+  border: 3px, #04395e, solid;
 }
 
-.fGroup > div {
-  border: 5px, #a63e02, solid;
+.f-group {
+  border: 3px, #a63e02, solid;
 }
 
 .atom-name {
-  font-size: 9px;
+  font-size: var(--atomic-name);
 }
 
 .atom-symbol {
-  font-size: 30px;
+  font-size: var(--atomic-sym);
+  font-weight: bold;
 }
 
 .atomic-number {
-  font-size: 13px;
+  font-size: var(--atomic-number);
 }
