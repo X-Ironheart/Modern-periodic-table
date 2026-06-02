@@ -28,6 +28,7 @@ body {
   width: 98vw;
   display: grid;
   grid-template-columns: repeat(18, minmax(20px, 1fr));
+  grid-template-rows: repeat(7, 1fr);
   gap: clamp(2px, 0.5vw, 5px);
   width: 100vw;
   padding: 5px;

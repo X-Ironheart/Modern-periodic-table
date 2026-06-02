@@ -11,18 +11,19 @@
   --noble-gas: #9b59b6;
   --lanthanide: #ff9ff3;
   --actinide: #f368e0;
+  --unknown: #aaa;
   --explain-width: 15px;
   --explain-radius: 2px;
 }
 
 .explain {
   display: grid;
-  grid-row: 1 / 4;
+  grid-row: 1 / 5;
   grid-column: 4 / 12;
   color: #eee;
   font-family: monospace;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(11, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1.5fr repeat(4, 1fr);
   justify-content: center;
   align-content: center;
   background: rgba(255, 255, 255, 0.1);
@@ -34,14 +35,18 @@
 
 .explain > h2 {
   grid-row: 1;
-  grid-column: 1/3;
+  grid-column: 1/4;
   text-align: center;
 }
 
 .explain > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 1px 10px;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 main:has(.alkali-explain:hover) .alkali-metal {
@@ -51,7 +56,9 @@ main:has(.alkali-explain:hover) .element:not(.alkali-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.alkali-explain:hover { color: var(--alkali-metals); }
+.alkali-explain:hover {
+  color: var(--alkali-metals);
+}
 
 main:has(.alkaline-earth-explain:hover) .alkaline-earth-metal {
   background-color: var(--alkaline-earth);
@@ -60,7 +67,9 @@ main:has(.alkaline-earth-explain:hover) .element:not(.alkaline-earth-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.alkaline-earth-explain:hover { color: var(--alkaline-earth); }
+.alkaline-earth-explain:hover {
+  color: var(--alkaline-earth);
+}
 
 main:has(.transition-metal-explain:hover) .transition-metal {
   background-color: var(--transition-metals);
@@ -69,16 +78,21 @@ main:has(.transition-metal-explain:hover) .element:not(.transition-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.transition-metal-explain:hover { color: var(--transition-metals); }
+.transition-metal-explain:hover {
+  color: var(--transition-metals);
+}
 
 main:has(.post-transition-metal-explain:hover) .post-transition-metal {
   background-color: var(--post-transition-metals);
 }
-main:has(.post-transition-metal-explain:hover) .element:not(.post-transition-metal) {
+main:has(.post-transition-metal-explain:hover)
+  .element:not(.post-transition-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.post-transition-metal-explain:hover { color: var(--post-transition-metals); }
+.post-transition-metal-explain:hover {
+  color: var(--post-transition-metals);
+}
 
 main:has(.metalloid-explain:hover) .metalloid {
   background-color: var(--metalloid);
@@ -87,16 +101,21 @@ main:has(.metalloid-explain:hover) .element:not(.metalloid) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.metalloid-explain:hover { color: var(--metalloid); }
+.metalloid-explain:hover {
+  color: var(--metalloid);
+}
 
 main:has(.polyatomic-nonmetal-explain:hover) .polyatomic-nonmetal {
   background-color: var(--polyatomic-nonmetal);
 }
-main:has(.polyatomic-nonmetal-explain:hover) .element:not(.polyatomic-nonmetal) {
+main:has(.polyatomic-nonmetal-explain:hover)
+  .element:not(.polyatomic-nonmetal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.polyatomic-nonmetal-explain:hover { color: var(--polyatomic-nonmetal); }
+.polyatomic-nonmetal-explain:hover {
+  color: var(--polyatomic-nonmetal);
+}
 
 main:has(.diatomic-nonmetal-explain:hover) .diatomic-nonmetal {
   background-color: var(--diatomic-nonmetal);
@@ -105,7 +124,9 @@ main:has(.diatomic-nonmetal-explain:hover) .element:not(.diatomic-nonmetal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.diatomic-nonmetal-explain:hover { color: var(--diatomic-nonmetal); }
+.diatomic-nonmetal-explain:hover {
+  color: var(--diatomic-nonmetal);
+}
 
 main:has(.noble-gas-explain:hover) .noble-gas {
   background-color: var(--noble-gas);
@@ -114,7 +135,9 @@ main:has(.noble-gas-explain:hover) .element:not(.noble-gas) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.noble-gas-explain:hover { color: var(--noble-gas); }
+.noble-gas-explain:hover {
+  color: var(--noble-gas);
+}
 
 main:has(.lanthanide-explain:hover) .lanthanide-metal {
   background-color: var(--lanthanide);
@@ -123,7 +146,9 @@ main:has(.lanthanide-explain:hover) .element:not(.lanthanide-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.lanthanide-explain:hover { color: var(--lanthanide); }
+.lanthanide-explain:hover {
+  color: var(--lanthanide);
+}
 
 main:has(.actinide-explain:hover) .actinide-metal {
   background-color: var(--actinide);
@@ -132,7 +157,20 @@ main:has(.actinide-explain:hover) .element:not(.actinide-metal) {
   opacity: 0.2;
   filter: grayscale(1);
 }
-.actinide-explain:hover { color: var(--actinide); }
+.actinide-explain:hover {
+  color: var(--actinide);
+}
+
+main:has(.unknown-explain:hover) .unknown-element {
+  background-color: var(--unknown);
+}
+main:has(.unknown-explain:hover) .element:not(.unknown-element) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.unknown-explain:hover {
+  color: var(--unknown);
+}
 
 .color {
   width: var(--explain-width);
@@ -178,4 +216,7 @@ main:has(.actinide-explain:hover) .element:not(.actinide-metal) {
 
 .actinide-explain > .color {
   background-color: var(--actinide);
+}
+.unknown-explain > .color {
+  background: var(--unknown);
 }

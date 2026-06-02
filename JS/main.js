@@ -1,7 +1,38 @@
 async function getDataFromJson() {
   const result = await fetch("./data/elements.json")
     .then((res) => res.json())
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      main.style.display = "none";
+      document.body.style.display = "flex";
+      document.body.style.alignItems = "center";
+      document.body.style.justifyContent = "center";
+      document.body.style.width = `100vw`;
+      document.body.style.height = `100vh`;
+      const errCollection = document.createElement(`div`);
+      errCollection.style.display = "flex";
+      errCollection.style.flexDirection = "column";
+      errCollection.style.alignItems = "center";
+      errCollection.style.justifyContent = "center";
+
+      const errLog = document.createElement("div");
+      const errText = document.createTextNode(new Error(`No API Found`));
+      errLog.appendChild(errText);
+      errLog.style.color = "#eee";
+      errLog.style.fontSize = "30px";
+
+      const megToDev = document.createElement("div");
+      const tellToDev = document.createTextNode(
+        `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
+      );
+      megToDev.appendChild(tellToDev);
+      megToDev.style.color = "#eee";
+      megToDev.style.textAlign = errLog.style.textAlign = "center";
+
+      errCollection.appendChild(errLog);
+      errCollection.appendChild(megToDev);
+      document.body.appendChild(errCollection);
+    });
 
   for (let i = 0; i <= result.elements.length; i++) {
     const elementDiv = document.createElement("div");
@@ -23,7 +54,7 @@ async function getDataFromJson() {
     atomSymbolsDiv.textContent = elementsSymbol;
 
     elementDiv.style.gridColumn = result.elements[i].xpos;
-    elementDiv.style.gridRow = result.elements[i].ypos;
+    elementDiv.style.gridRow = result.elements[i].ypos + 2;
 
     elementDiv.appendChild(atomicNumberDiv);
     elementDiv.appendChild(atomSymbolsDiv);
@@ -62,6 +93,8 @@ async function getDataFromJson() {
       elementDiv.classList.add("lanthanide-metal");
     } else if (result.elements[i].category === "actinide") {
       elementDiv.classList.add("actinide-metal");
+    } else {
+      elementDiv.classList.add("unknown-element");
     }
 
     main.appendChild(elementDiv);
