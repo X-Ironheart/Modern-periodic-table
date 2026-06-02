@@ -328,5 +328,17 @@ document.body.addEventListener("click", () => {
   }
 });
 
+// Dynamic Navigation Pill switching interaction
+function setupNavigationPills() {
+  const pills = document.querySelectorAll(".nav-pill");
+  pills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      pills.forEach(p => p.classList.remove("active-pill"));
+      pill.classList.add("active-pill");
+    });
+  });
+}
+
 // Trigger dynamic initialization on script load
 getDataFromJson();
+setupNavigationPills();
