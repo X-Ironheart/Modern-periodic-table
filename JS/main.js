@@ -43,25 +43,25 @@ async function getDataFromJson() {
     }
 
     if (result.elements[i].category === "alkaline earth metal") {
-      elementDiv.classList.add("alkaline-earth");
-    } else if (result.elements[i].category === "lanthanide") {
-      elementDiv.classList.add("lanthanide");
-    } else if (result.elements[i].category === "actinide") {
-      elementDiv.classList.add("actinide");
-    } else if (result.elements[i].category === "noble gas") {
-      elementDiv.classList.add("noble-gas");
+      elementDiv.classList.add("alkaline-earth-metal");
     } else if (result.elements[i].category === "alkali metal") {
       elementDiv.classList.add("alkali-metal");
-    } else if (result.elements[i].category === "diatomic nonmetal") {
-      elementDiv.classList.add("diatomic-nonmetal");
     } else if (result.elements[i].category === "transition metal") {
       elementDiv.classList.add("transition-metal");
-    } else if (result.elements[i].category === "metalloid") {
-      elementDiv.classList.add("metalloid");
     } else if (result.elements[i].category === "post-transition metal") {
       elementDiv.classList.add("post-transition-metal");
+    } else if (result.elements[i].category === "metalloid") {
+      elementDiv.classList.add("metalloid");
+    } else if (result.elements[i].category === "diatomic nonmetal") {
+      elementDiv.classList.add("diatomic-nonmetal");
+    } else if (result.elements[i].category === "noble gas") {
+      elementDiv.classList.add("noble-gas");
     } else if (result.elements[i].category === "polyatomic nonmetal") {
       elementDiv.classList.add("polyatomic-nonmetal");
+    } else if (result.elements[i].category === "lanthanide") {
+      elementDiv.classList.add("lanthanide-metal");
+    } else if (result.elements[i].category === "actinide") {
+      elementDiv.classList.add("actinide-metal");
     }
 
     main.appendChild(elementDiv);

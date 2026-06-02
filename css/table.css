@@ -5,6 +5,16 @@
   --atomic-name: clamp(6px, 0.8vw, 15px);
   --atomic-sym: clamp(8px, 2.5vw, 20px);
   --atomic-number: clamp(5px, 0.8vw, 8px);
+  --alkali-metals: #ff4a4a;
+  --alkaline-earth: #ffa03a;
+  --transition-metals: #4b9fe3;
+  --post-transition-metals: #30c39e;
+  --metalloid: #f4d03f;
+  --polyatomic-nonmetal: #2ecc71;
+  --diatomic-nonmetal: #1abc9c;
+  --noble-gas: #9b59b6;
+  --lanthanide: #ff9ff3;
+  --actinide: #f368e0;
 }
 
 body {
