@@ -1,181 +1,73 @@
-:root {
-  margin: 0;
-  background: #1b1f22;
-  --alkali-metals: #ff4a4a;
-  --alkaline-earth: #ffa03a;
-  --transition-metals: #4b9fe3;
-  --post-transition-metals: #30c39e;
-  --metalloid: #f4d03f;
-  --polyatomic-nonmetal: #2ecc71;
-  --diatomic-nonmetal: #1abc9c;
-  --noble-gas: #9b59b6;
-  --lanthanide: #ff9ff3;
-  --actinide: #f368e0;
-  --explain-width: 15px;
-  --explain-radius: 2px;
-}
+/* Styling for the Categories Guide Pills inside the dashboard header */
 
-.explain {
-  display: grid;
-  grid-row: 1 / 4;
-  grid-column: 4 / 12;
-  color: #eee;
-  font-family: monospace;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(11, auto);
-  justify-content: center;
-  align-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-}
-
-.explain > h2 {
-  grid-row: 1;
-  grid-column: 1/3;
-  text-align: center;
-}
-
-.explain > div {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 1px 10px;
+.category-pill {
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-family: var(--font-space);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: none;
   cursor: pointer;
+  background: var(--slate-hover);
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
-main:has(.alkali-explain:hover) .alkali-metal {
-  background-color: var(--alkali-metals);
-}
-main:has(.alkali-explain:hover) .element:not(.alkali-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.alkali-explain:hover { color: var(--alkali-metals); }
-
-main:has(.alkaline-earth-explain:hover) .alkaline-earth-metal {
-  background-color: var(--alkaline-earth);
-}
-main:has(.alkaline-earth-explain:hover) .element:not(.alkaline-earth-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.alkaline-earth-explain:hover { color: var(--alkaline-earth); }
-
-main:has(.transition-metal-explain:hover) .transition-metal {
-  background-color: var(--transition-metals);
-}
-main:has(.transition-metal-explain:hover) .element:not(.transition-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.transition-metal-explain:hover { color: var(--transition-metals); }
-
-main:has(.post-transition-metal-explain:hover) .post-transition-metal {
-  background-color: var(--post-transition-metals);
-}
-main:has(.post-transition-metal-explain:hover) .element:not(.post-transition-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.post-transition-metal-explain:hover { color: var(--post-transition-metals); }
-
-main:has(.metalloid-explain:hover) .metalloid {
-  background-color: var(--metalloid);
-}
-main:has(.metalloid-explain:hover) .element:not(.metalloid) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.metalloid-explain:hover { color: var(--metalloid); }
-
-main:has(.polyatomic-nonmetal-explain:hover) .polyatomic-nonmetal {
-  background-color: var(--polyatomic-nonmetal);
-}
-main:has(.polyatomic-nonmetal-explain:hover) .element:not(.polyatomic-nonmetal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.polyatomic-nonmetal-explain:hover { color: var(--polyatomic-nonmetal); }
-
-main:has(.diatomic-nonmetal-explain:hover) .diatomic-nonmetal {
-  background-color: var(--diatomic-nonmetal);
-}
-main:has(.diatomic-nonmetal-explain:hover) .element:not(.diatomic-nonmetal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.diatomic-nonmetal-explain:hover { color: var(--diatomic-nonmetal); }
-
-main:has(.noble-gas-explain:hover) .noble-gas {
-  background-color: var(--noble-gas);
-}
-main:has(.noble-gas-explain:hover) .element:not(.noble-gas) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.noble-gas-explain:hover { color: var(--noble-gas); }
-
-main:has(.lanthanide-explain:hover) .lanthanide-metal {
-  background-color: var(--lanthanide);
-}
-main:has(.lanthanide-explain:hover) .element:not(.lanthanide-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.lanthanide-explain:hover { color: var(--lanthanide); }
-
-main:has(.actinide-explain:hover) .actinide-metal {
-  background-color: var(--actinide);
-}
-main:has(.actinide-explain:hover) .element:not(.actinide-metal) {
-  opacity: 0.2;
-  filter: grayscale(1);
-}
-.actinide-explain:hover { color: var(--actinide); }
-
-.color {
-  width: var(--explain-width);
-  aspect-ratio: 1/1;
-  border-radius: var(--explain-radius);
+.category-pill:hover, 
+.category-pill.active-category {
+  background: var(--yellow-highlight);
+  color: var(--slate-navy);
+  box-shadow: 0 4px 15px rgba(253, 224, 71, 0.35);
+  transform: translateY(-1.5px);
 }
 
-.alkali-explain > .color {
-  background-color: var(--alkali-metals);
+.category-pill:active {
+  transform: translateY(0);
 }
 
-.alkaline-earth-explain > .color {
-  background-color: var(--alkaline-earth);
+/* Category Accent Indicator Dots */
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: transform 0.25s;
 }
 
-.transition-metal-explain > .color {
-  background-color: var(--transition-metals);
+/* Highlight dot color classes mapped to category classes */
+.pill-dot.diatomic-nonmetal { background: var(--diatomic-nonmetal); }
+.pill-dot.alkali-metal { background: var(--alkali-metals); }
+.pill-dot.alkaline-earth-metal { background: var(--alkaline-earth); }
+.pill-dot.transition-metal { background: var(--transition-metals); }
+.pill-dot.post-transition-metal { background: var(--post-transition-metals); }
+.pill-dot.metalloid { background: var(--metalloid); }
+.pill-dot.polyatomic-nonmetal { background: var(--polyatomic-nonmetal); }
+.pill-dot.noble-gas { background: var(--noble-gas); }
+.pill-dot.lanthanide-metal { background: var(--lanthanide); }
+.pill-dot.actinide-metal { background: var(--actinide); }
+
+/* Subtext Arabic translation label inside active category pill */
+.pill-ar-label {
+  font-size: 0.72rem;
+  color: var(--slate-navy);
+  opacity: 0.8;
+  font-weight: 700;
+  border-left: 1px solid rgba(30, 41, 59, 0.3);
+  padding-left: 8px;
+  margin-left: 4px;
+  animation: fadeInLabel 0.2s ease-out forwards;
 }
 
-.post-transition-metal-explain > .color {
-  background-color: var(--post-transition-metals);
-}
-
-.metalloid-explain > .color {
-  background-color: var(--metalloid);
-}
-
-.polyatomic-nonmetal-explain > .color {
-  background-color: var(--polyatomic-nonmetal);
-}
-
-.diatomic-nonmetal-explain > .color {
-  background-color: var(--diatomic-nonmetal);
-}
-
-.noble-gas-explain > .color {
-  background-color: var(--noble-gas);
-}
-
-.lanthanide-explain > .color {
-  background-color: var(--lanthanide);
-}
-
-.actinide-explain > .color {
-  background-color: var(--actinide);
+@keyframes fadeInLabel {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateX(0);
+  }
 }
