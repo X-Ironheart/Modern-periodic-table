@@ -36,12 +36,14 @@
   grid-row: 1;
   grid-column: 1/3;
   text-align: center;
+  font-size: clamp(14px, 1.5vw, 24px);
 }
 
 .explain > div {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 1px 10px;
   cursor: pointer;
+  font-size: clamp(10px, 0.9vw, 14px);
 }
 
 main:has(.alkali-explain:hover) .alkali-metal {
@@ -179,3 +181,5 @@ main:has(.actinide-explain:hover) .element:not(.actinide-metal) {
 .actinide-explain > .color {
   background-color: var(--actinide);
 }
+
+/* Why this name for this file (-_-) */
