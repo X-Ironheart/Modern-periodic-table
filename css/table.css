@@ -1,15 +1,15 @@
 :root {
   /* Dynamic Custom Color Variables - easy to customize! */
-  --bg-color: #FAF9F6;
-  --slate-navy: #1E293B;
+  --bg-color: #faf9f6;
+  --slate-navy: #1e293b;
   --slate-hover: #334155;
   --slate-border: #475569;
-  --yellow-highlight: #FDE047;
+  --yellow-highlight: #fde047;
   --cream-text: #eee;
-  --card-bg: #FAF9F6;
+  --card-bg: #faf9f6;
   --orbital-line: rgba(226, 232, 240, 0.25);
-  --electron-color: #FDE047;
-  
+  --electron-color: #fde047;
+
   /* Category Colors */
   --alkali-metals: #ff4a4a;
   --alkaline-earth: #ffa03a;
@@ -32,11 +32,11 @@
   --atomic-name: 0.7em;
   --atomic-sym: 1.4em;
   --atomic-number: 0.7em;
-  
+
   /* Fonts */
-  --font-space: 'Space Grotesk', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-mono: 'Roboto Mono', monospace;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
 }
 
 body {
@@ -169,7 +169,7 @@ body {
 .lang-pill {
   background: transparent;
   border: 1px solid var(--slate-border);
-  color: #94A3B8;
+  color: #94a3b8;
   padding: 8px 16px;
   border-radius: 30px;
   font-family: var(--font-space);
@@ -188,7 +188,7 @@ body {
 .dashboard-container {
   width: 100%;
   max-width: 1400px;
-  padding: 0 1.5rem 1.5rem 1.5rem;
+  padding: 0 1.5rem 0 1.5rem;
   box-sizing: border-box;
   z-index: 40;
 }
@@ -246,7 +246,9 @@ body {
   /* Compact sizes for pixel-perfection */
   width: 215px;
   height: 270px;
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5), 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 10;
   box-sizing: border-box;
@@ -255,7 +257,9 @@ body {
 
 .active-element-card:hover {
   transform: translateY(-5px);
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.5), 0 25px 45px rgba(0, 0, 0, 0.35);
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 25px 45px rgba(0, 0, 0, 0.35);
 }
 
 .card-header {
@@ -274,7 +278,7 @@ body {
   font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #94A3B8;
+  color: #94a3b8;
   letter-spacing: 0.5px;
 }
 
@@ -304,8 +308,12 @@ body {
 }
 
 @keyframes spinOrbit {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .symbol-display {
@@ -336,7 +344,7 @@ body {
   font-size: 0.85rem;
   font-weight: 600;
   margin: 2px 0 0 0;
-  color: #64748B;
+  color: #64748b;
 }
 
 /* Right Side: Properties Console & Controls */
@@ -403,7 +411,7 @@ body {
 }
 
 .vital-label {
-  color: #94A3B8;
+  color: #94a3b8;
   font-size: 0.68rem;
   font-weight: 600;
   margin-bottom: 4px;
@@ -427,7 +435,7 @@ body {
 }
 
 .summary-title {
-  color: #94A3B8;
+  color: #94a3b8;
   font-size: 0.72rem;
   font-weight: 700;
   margin-bottom: 6px;
@@ -466,7 +474,7 @@ body {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 1rem 2rem 2.5rem 2rem;
+  padding: 0 2rem 2.5rem 2rem;
   display: flex;
   justify-content: flex-start;
   box-sizing: border-box;
@@ -566,16 +574,46 @@ body {
 }
 
 /* Color schemes for Category Highlighting using CSS variables */
-.element.alkali-metal { background-color: var(--alkali-metals); border-color: var(--alkali-metals); }
-.element.alkaline-earth-metal { background-color: var(--alkaline-earth); border-color: var(--alkaline-earth); }
-.element.transition-metal { background-color: var(--transition-metals); border-color: var(--transition-metals); }
-.element.post-transition-metal { background-color: var(--post-transition-metals); border-color: var(--post-transition-metals); }
-.element.metalloid { background-color: var(--metalloid); border-color: var(--metalloid); }
-.element.polyatomic-nonmetal { background-color: var(--polyatomic-nonmetal); border-color: var(--polyatomic-nonmetal); }
-.element.diatomic-nonmetal { background-color: var(--diatomic-nonmetal); border-color: var(--diatomic-nonmetal); }
-.element.noble-gas { background-color: var(--noble-gas); border-color: var(--noble-gas); }
-.element.lanthanide-metal { background-color: var(--lanthanide); border-color: var(--lanthanide); }
-.element.actinide-metal { background-color: var(--actinide); border-color: var(--actinide); }
+.element.alkali-metal {
+  background-color: var(--alkali-metals);
+  border-color: var(--alkali-metals);
+}
+.element.alkaline-earth-metal {
+  background-color: var(--alkaline-earth);
+  border-color: var(--alkaline-earth);
+}
+.element.transition-metal {
+  background-color: var(--transition-metals);
+  border-color: var(--transition-metals);
+}
+.element.post-transition-metal {
+  background-color: var(--post-transition-metals);
+  border-color: var(--post-transition-metals);
+}
+.element.metalloid {
+  background-color: var(--metalloid);
+  border-color: var(--metalloid);
+}
+.element.polyatomic-nonmetal {
+  background-color: var(--polyatomic-nonmetal);
+  border-color: var(--polyatomic-nonmetal);
+}
+.element.diatomic-nonmetal {
+  background-color: var(--diatomic-nonmetal);
+  border-color: var(--diatomic-nonmetal);
+}
+.element.noble-gas {
+  background-color: var(--noble-gas);
+  border-color: var(--noble-gas);
+}
+.element.lanthanide-metal {
+  background-color: var(--lanthanide);
+  border-color: var(--lanthanide);
+}
+.element.actinide-metal {
+  background-color: var(--actinide);
+  border-color: var(--actinide);
+}
 
 /* Elements Dynamic Dimming on Category Spotlight */
 #main.dim-elements .element:not(.highlighted-element) {
