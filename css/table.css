@@ -1,0 +1,80 @@
+:root {
+  margin: 0;
+  background: #1b1f22;
+  --element-width: calc((1vw- (36 * 3px)) / 18);
+  --atomic-name: clamp(6px, 0.8vw, 15px);
+  --atomic-sym: clamp(8px, 2.5vw, 20px);
+  --atomic-number: clamp(5px, 0.8vw, 8px);
+  --alkali-metals: #ff4a4a;
+  --alkaline-earth: #ffa03a;
+  --transition-metals: #4b9fe3;
+  --post-transition-metals: #30c39e;
+  --metalloid: #f4d03f;
+  --polyatomic-nonmetal: #2ecc71;
+  --diatomic-nonmetal: #1abc9c;
+  --noble-gas: #9b59b6;
+  --lanthanide: #ff9ff3;
+  --actinide: #f368e0;
+}
+
+body {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#main {
+  width: 98vw;
+  display: grid;
+  grid-template-columns: repeat(18, minmax(20px, 1fr));
+  gap: clamp(2px, 0.5vw, 5px);
+  width: 100vw;
+  padding: 5px;
+}
+
+.element {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: var(--element-width);
+  aspect-ratio: 1/1;
+  font-weight: 800;
+  color: #eee;
+  background-color: transparent;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.atom-name {
+  font-size: var(--atomic-name);
+}
+
+.atom-symbol {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: var(--atomic-sym);
+}
+
+.atomic-number {
+  font-size: var(--atomic-number);
+}
+
+.s-group {
+  border: 3px, #4c1b20, solid;
+}
+
+.p-group {
+  border: 3px, #046304, solid;
+}
+
+.d-group {
+  border: 3px, #04395e, solid;
+}
+
+.f-group {
+  border: 3px, #a63e02, solid;
+}

@@ -3,22 +3,6 @@ async function getDataFromJson() {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 
-  const sGroup = document.createElement("div");
-  sGroup.classList.add("sGroup");
-  main.appendChild(sGroup);
-  
-    const dGroup = document.createElement("div");
-    dGroup.classList.add("dGroup");
-   main.appendChild(dGroup);
-
-  const pGroup = document.createElement("div");
-  pGroup.classList.add("pGroup");
-  main.appendChild(pGroup);
-
-  const fGroup = document.createElement("div");
-  fGroup.classList.add("fGroup");
-  main.appendChild(fGroup);
-
   for (let i = 0; i <= result.elements.length; i++) {
     const elementDiv = document.createElement("div");
     elementDiv.classList.add(`element`);
@@ -32,27 +16,55 @@ async function getDataFromJson() {
     const atomSymbolsDiv = document.createElement("div");
     atomSymbolsDiv.classList.add("atom-symbol");
     const atomicNumberDiv = document.createElement("div");
-    atomicNumberDiv.classList.add("atomic-number")
+    atomicNumberDiv.classList.add("atomic-number");
 
     atomicNumberDiv.textContent = atomicNumber;
     atomNameDiv.textContent = elementsName;
     atomSymbolsDiv.textContent = elementsSymbol;
+
+    elementDiv.style.gridColumn = result.elements[i].xpos;
+    elementDiv.style.gridRow = result.elements[i].ypos;
+
     elementDiv.appendChild(atomicNumberDiv);
     elementDiv.appendChild(atomSymbolsDiv);
     elementDiv.appendChild(atomNameDiv);
-    elementDiv.style.gridArea = elementsSymbol
 
-    if (result.elements[i].expetion) {
-      pGroup.appendChild(elementDiv);
+    if (result.elements[i].exception) {
+      elementDiv.classList.add("exception");
+      elementDiv.classList.add("s-group");
     } else if (result.elements[i].block === "s") {
-      sGroup.appendChild(elementDiv);
+      elementDiv.classList.add("s-group");
     } else if (result.elements[i].block === "p") {
-      pGroup.appendChild(elementDiv);
+      elementDiv.classList.add("p-group");
     } else if (result.elements[i].block === "d") {
-      dGroup.appendChild(elementDiv);
+      elementDiv.classList.add("d-group");
     } else if (result.elements[i].block === "f") {
-      fGroup.appendChild(elementDiv);
+      elementDiv.classList.add("f-group");
     }
+
+    if (result.elements[i].category === "alkaline earth metal") {
+      elementDiv.classList.add("alkaline-earth-metal");
+    } else if (result.elements[i].category === "alkali metal") {
+      elementDiv.classList.add("alkali-metal");
+    } else if (result.elements[i].category === "transition metal") {
+      elementDiv.classList.add("transition-metal");
+    } else if (result.elements[i].category === "post-transition metal") {
+      elementDiv.classList.add("post-transition-metal");
+    } else if (result.elements[i].category === "metalloid") {
+      elementDiv.classList.add("metalloid");
+    } else if (result.elements[i].category === "diatomic nonmetal") {
+      elementDiv.classList.add("diatomic-nonmetal");
+    } else if (result.elements[i].category === "noble gas") {
+      elementDiv.classList.add("noble-gas");
+    } else if (result.elements[i].category === "polyatomic nonmetal") {
+      elementDiv.classList.add("polyatomic-nonmetal");
+    } else if (result.elements[i].category === "lanthanide") {
+      elementDiv.classList.add("lanthanide-metal");
+    } else if (result.elements[i].category === "actinide") {
+      elementDiv.classList.add("actinide-metal");
+    }
+
+    main.appendChild(elementDiv);
   }
 }
 
