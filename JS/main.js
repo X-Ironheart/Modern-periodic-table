@@ -182,6 +182,25 @@ async function getDataFromJson() {
       elementDiv.classList.add("actinide-metal");
     }
 
+    // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
+    elementDiv.addEventListener("mouseenter", () => {
+      updateActiveDashboard(element);
+    });
+
+    elementDiv.addEventListener("mouseleave", () => {
+      // Revert dashboard back to currently locked element
+      if (lockedElement) {
+        updateActiveDashboard(lockedElement);
+      }
+    });
+
+    elementDiv.addEventListener("click", (e) => {
+      e.stopPropagation();
+      lockedElement = element;
+      updateActiveDashboard(element);
+      highlightElementCell(elementDiv);
+    });
+
     main.appendChild(elementDiv);
   }
 
