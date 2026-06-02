@@ -1,10 +1,16 @@
 :root {
-  margin: 0;
-  background: #1b1f22;
-  --element-width: calc((1vw- (36 * 3px)) / 18);
-  --atomic-name: clamp(6px, 0.8vw, 15px);
-  --atomic-sym: clamp(8px, 2.5vw, 20px);
-  --atomic-number: clamp(5px, 0.8vw, 8px);
+  /* Dynamic Custom Color Variables - easy to customize! */
+  --bg-color: #faf9f6;
+  --slate-navy: #1e293b;
+  --slate-hover: #334155;
+  --slate-border: #475569;
+  --yellow-highlight: #fde047;
+  --cream-text: #eee;
+  --card-bg: #faf9f6;
+  --orbital-line: rgba(226, 232, 240, 0.25);
+  --electron-color: #fde047;
+
+  /* Category Colors */
   --alkali-metals: #ff4a4a;
   --alkaline-earth: #ffa03a;
   --transition-metals: #4b9fe3;
@@ -15,67 +21,599 @@
   --noble-gas: #9b59b6;
   --lanthanide: #ff9ff3;
   --actinide: #f368e0;
+
+  /* Block Border Colors */
+  --s-block-border: #ff4a4a;
+  --p-block-border: #30c39e;
+  --d-block-border: #4b9fe3;
+  --f-block-border: #ff9ff3;
+
+  /* Sizing Variables */
+  --atomic-name: 0.7em;
+  --atomic-sym: 1.4em;
+  --atomic-number: 0.7em;
+
+  /* Fonts */
+  --font-space: "Space Grotesk", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
 }
 
 body {
-  width: fit-content;
-  height: 100%;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  background: var(--bg-color);
+  font-family: var(--font-space);
+  color: var(--slate-navy);
+}
+
+/* Header & Logo Section */
+.flex-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.logo-area {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-family: var(--font-space);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  color: var(--slate-navy);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--yellow-highlight);
+  margin-bottom: 5px;
+  margin-left: 5px;
+  box-shadow: 0 0 10px var(--yellow-highlight);
+}
+
+/* Curved Capsule Navigation Bar */
+.nav-bar-container {
+  position: relative;
+}
+
+.premium-nav {
+  background: var(--slate-navy);
+  border-radius: 50px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 15px 35px rgba(30, 41, 59, 0.2);
+  position: relative;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .premium-nav {
+    border-radius: 0 20px 20px 0;
+    border-bottom-left-radius: 45px;
+    padding-left: 28px;
+  }
+}
+
+.concave-curve {
+  position: absolute;
+  top: 0;
+  left: -28px;
+  width: 28px;
+  height: 28px;
+  color: var(--slate-navy);
+  transform: rotate(0deg);
+}
+
+.hidden-md {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hidden-md {
+    display: block;
+  }
+}
+
+.nav-pill {
+  background: var(--slate-hover);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 30px;
+  font-family: var(--font-space);
+  font-size: 0.96rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.nav-pill:hover {
+  background: var(--slate-border);
+}
+
+.nav-pill.active-pill {
+  background: #fff;
+  color: var(--slate-navy);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.lang-pill {
+  background: transparent;
+  border: 1px solid var(--slate-border);
+  color: #94a3b8;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-family: var(--font-space);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-pill:hover {
+  color: var(--yellow-highlight);
+  border-color: var(--yellow-highlight);
+}
+
+/* Dynamic Interactive Dashboard Header */
+.dashboard-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 1.5rem 0 1.5rem;
+  box-sizing: border-box;
+  z-index: 40;
+}
+
+.dashboard-header {
+  background: var(--slate-navy);
+  border-radius: 40px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px rgba(30, 41, 59, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-header {
+    flex-direction: row;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+}
+
+.bg-blur-accent {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--slate-hover);
+  opacity: 0.15;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Compact Active Element Visualization Card - perfectly adjusted to be small in size */
+.active-element-card-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.active-element-card {
+  background: var(--card-bg);
+  color: var(--slate-navy);
+  border-radius: 30px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Compact sizes for pixel-perfection */
+  width: 215px;
+  height: 270px;
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active-element-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.stat-val {
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.orbital-viz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 110px;
+  width: 100%;
+}
+
+.orbital-svg {
+  position: absolute;
+  width: 115px;
+  height: 115px;
+  color: var(--orbital-line);
+  pointer-events: none;
+  animation: spinOrbit 8s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spinOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.symbol-display {
+  font-family: var(--font-montserrat);
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--slate-navy);
+  letter-spacing: -4px;
+  margin: 0;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-footer {
+  text-align: center;
+  width: 100%;
+}
+
+.name-en {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--slate-navy);
+  line-height: 1.1;
+}
+
+.name-ar {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 2px 0 0 0;
+  color: #64748b;
+}
+
+/* Right Side: Properties Console & Controls */
+.control-panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.category-pills-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.section-title-line {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--slate-border);
+  opacity: 0.5;
+}
+
+.category-pills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Vital Data Grid */
+.vital-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .vital-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.vital-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.vital-label {
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.vital-val {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.vital-val.text-yellow {
+  color: var(--yellow-highlight);
+  text-shadow: 0 0 8px rgba(253, 224, 71, 0.2);
+}
+
+/* Scientific Description Box */
+.summary-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-box {
+  background: var(--slate-hover);
+  border: 1px solid var(--slate-border);
+  color: #cbd5e1;
+  padding: 0.75rem 1.15rem;
+  border-radius: 16px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  max-height: 60px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.summary-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.summary-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.summary-box::-webkit-scrollbar-thumb {
+  background: var(--slate-border);
+  border-radius: 5px;
+}
+
+/* Scrollable Wrapper for Periodic Table */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 2rem 2.5rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  .table-wrapper {
+    justify-content: center;
+  }
 }
 
 #main {
-  width: 98vw;
   display: grid;
   grid-template-columns: repeat(18, minmax(20px, 1fr));
-  grid-template-rows: repeat(7, 1fr);
   gap: clamp(2px, 0.5vw, 5px);
   width: 100vw;
   padding: 5px;
 }
 
 .element {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 1.2vw, 13px);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: var(--element-width);
+  width: 100%;
   aspect-ratio: 1/1;
   font-weight: 800;
-  color: #eee;
-  background-color: transparent;
-  padding: 2px;
-  border-radius: 10px;
+  color: var(--cream-text);
+  background-color: rgba(30, 41, 59, 0.03);
+  padding: 4px;
+  border-radius: clamp(4px, 0.8vw, 10px);
+  box-sizing: border-box;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(30, 41, 59, 0.1);
+  cursor: pointer;
+}
+
+.element:hover {
+  transform: scale(1.22);
+  z-index: 30;
+  box-shadow: 0 12px 25px rgba(30, 41, 59, 0.25);
 }
 
 .atom-name {
   font-size: var(--atomic-name);
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .atom-symbol {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat);
   font-weight: 800;
   font-size: var(--atomic-sym);
+  letter-spacing: -0.5px;
 }
 
 .atomic-number {
   font-size: var(--atomic-number);
+  align-self: flex-start;
 }
 
+/* Chemical Block Group Border colors with CSS variables */
 .s-group {
-  border: 3px, #4c1b20, solid;
+  border: 2px var(--s-block-border) solid;
+  background-color: rgba(255, 74, 74, 0.05);
 }
 
 .p-group {
-  border: 3px, #046304, solid;
+  border: 2px var(--p-block-border) solid;
+  background-color: rgba(48, 195, 158, 0.05);
 }
 
 .d-group {
-  border: 3px, #04395e, solid;
+  border: 2px var(--d-block-border) solid;
+  background-color: rgba(75, 159, 227, 0.05);
 }
 
 .f-group {
-  border: 3px, #a63e02, solid;
+  border: 2px var(--f-block-border) solid;
+  background-color: rgba(255, 159, 243, 0.05);
+}
+
+/* Color schemes for Category Highlighting using CSS variables */
+.element.alkali-metal {
+  background-color: var(--alkali-metals);
+  border-color: var(--alkali-metals);
+}
+.element.alkaline-earth-metal {
+  background-color: var(--alkaline-earth);
+  border-color: var(--alkaline-earth);
+}
+.element.transition-metal {
+  background-color: var(--transition-metals);
+  border-color: var(--transition-metals);
+}
+.element.post-transition-metal {
+  background-color: var(--post-transition-metals);
+  border-color: var(--post-transition-metals);
+}
+.element.metalloid {
+  background-color: var(--metalloid);
+  border-color: var(--metalloid);
+}
+.element.polyatomic-nonmetal {
+  background-color: var(--polyatomic-nonmetal);
+  border-color: var(--polyatomic-nonmetal);
+}
+.element.diatomic-nonmetal {
+  background-color: var(--diatomic-nonmetal);
+  border-color: var(--diatomic-nonmetal);
+}
+.element.noble-gas {
+  background-color: var(--noble-gas);
+  border-color: var(--noble-gas);
+}
+.element.lanthanide-metal {
+  background-color: var(--lanthanide);
+  border-color: var(--lanthanide);
+}
+.element.actinide-metal {
+  background-color: var(--actinide);
+  border-color: var(--actinide);
+}
+
+/* Elements Dynamic Dimming on Category Spotlight */
+#main.dim-elements .element:not(.highlighted-element) {
+  opacity: 0.15;
+  filter: grayscale(0.7) blur(0.3px);
+  transform: scale(0.92);
+}
+
+#main.dim-elements .element.highlighted-element {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
 }

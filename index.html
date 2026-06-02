@@ -6,57 +6,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modern Periodic Table</title>
   <link rel="shortcut icon" href="./data/Modern Periodic Table LOGO.png" type="image/x-icon" />
+  <!-- Space Grotesk, Montserrat, Roboto Mono Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;600;800&family=Roboto+Mono:wght@500;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/table.css">
   <link rel="stylesheet" href="./css/explain.css">
 </head>
 
 <body>
-  <main id="main">
-    <div class="explain">
-      <h2>Categories Guide</h2>
-      <div class="alkali-explain">
-        <div class="color"></div>
-        <div>alkali metal</div>
+  <!-- Brand Header & Nav Bar Section -->
+  <div class="flex-header-container">
+    <div class="logo-area" id="logoArea">
+      <span class="logo-text">Hydrogen</span>
+      <div class="logo-dot"></div>
+    </div>
+    <div class="nav-bar-container">
+      <nav class="premium-nav">
+        <!-- SVG Concave Curve for fluid integration -->
+        <svg class="concave-curve hidden-md" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 0H0C13.25 0 24 10.75 24 24V0Z" />
+        </svg>
+        <button class="nav-pill active-pill">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          Explore | الاستكشاف
+        </button>
+        <button class="nav-pill">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+          Table | الجدول
+        </button>
+        <button class="nav-pill">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          Compounds | المركبات
+        </button>
+        <button class="lang-pill" id="langToggle">EN/AR</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Premium Interactive Dashboard Header Panel -->
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <!-- Background glow blur -->
+      <div class="bg-blur-accent"></div>
+
+      <!-- Left side: Compact Active Element Card -->
+      <div class="active-element-card-wrapper">
+        <div class="active-element-card" id="activeElementCard">
+          <div class="card-header">
+            <div class="stat-group">
+              <span class="stat-label">Atomic No.</span>
+              <span class="stat-val" id="activeNumber">1</span>
+            </div>
+            <div class="stat-group text-right">
+              <span class="stat-label">Mass</span>
+              <span class="stat-val" id="activeMass">1.008</span>
+            </div>
+          </div>
+          
+          <div class="orbital-viz-container">
+            <svg class="orbital-svg" viewBox="0 0 100 100">
+              <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(45 50 50)"/>
+              <circle cx="82" cy="82" r="3.5" fill="#FDE047" class="orbit-electron"/>
+            </svg>
+            <h1 class="symbol-display" id="activeSymbol">H</h1>
+          </div>
+
+          <div class="card-footer">
+            <h2 class="name-en" id="activeNameEn">Hydrogen</h2>
+            <h3 class="name-ar" id="activeNameAr">هيدروجين</h3>
+          </div>
+        </div>
       </div>
-      <div class="alkaline-earth-explain">
-        <div class="color"></div>
-        <div>alkaline earth metal</div>
-      </div>
-      <div class="metalloid-explain">
-        <div class="color"></div>
-        <div>metalloid</div>
-      </div>
-      <div class="noble-gas-explain">
-        <div class="color"></div>
-        <div>noble gas</div>
-      </div>
-      <div class="diatomic-nonmetal-explain">
-        <div class="color"></div>
-        <div>diatomic nonmetal</div>
-      </div>
-      <div class="transition-metal-explain">
-        <div class="color"></div>
-        <div>transition metal</div>
-      </div>
-      <div class="post-transition-metal-explain">
-        <div class="color"></div>
-        <div>post-transition metal</div>
-      </div>
-      <div class="polyatomic-nonmetal-explain">
-        <div class="color"></div>
-        <div>polyatomic nonmetal</div>
-      </div>
-      <div class="lanthanide-explain">
-        <div class="color"></div>
-        <div>lanthanide</div>
-      </div>
-      <div class="actinide-explain">
-        <div class="color"></div>
-        <div>actinide</div>
-      </div>
-      <div class="unknown-explain">
-        <div class="color"></div>
-        <div>unknown</div>
+
+      <!-- Right side: Real-time Properties Console -->
+      <div class="control-panel">
+        
+        <!-- Interactive Categories Guide Pills -->
+        <div class="category-pills-section">
+          <div class="section-title-container">
+            <h4 class="section-title">Categories Guide | دليل فئات العناصر</h4>
+            <div class="section-title-line"></div>
+          </div>
+          <div class="category-pills-wrapper" id="categoryPillsWrapper">
+            <!-- Categorization Pills generated dynamically by main.js -->
+          </div>
+        </div>
+
+        <!-- Vital Data Grid -->
+        <div class="vital-grid">
+          <div class="vital-item">
+            <span class="vital-label">Category | الفئة</span>
+            <span class="vital-val text-yellow" id="activeCategory">Diatomic Nonmetal</span>
+          </div>
+          <div class="vital-item">
+            <span class="vital-label">Electron Config | التوزيع</span>
+            <span class="vital-val" id="activeConfig">1s¹</span>
+          </div>
+          <div class="vital-item">
+            <span class="vital-label">Electronegativity | الكهروسلبية</span>
+            <span class="vital-val" id="activeElectronegativity">2.20 Pauling</span>
+          </div>
+          <div class="vital-item">
+            <span class="vital-label">Phase | الحالة</span>
+            <span class="vital-val text-white" id="activePhase">Gas</span>
+          </div>
+        </div>
+
+        <!-- Scientific Description Summary Console -->
+        <div class="summary-container">
+          <span class="summary-title">Summary & Properties | ملخص علمي عن العنصر</span>
+          <div class="summary-box" id="activeSummary">
+            Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.008 u, hydrogen is the lightest element on the periodic table.
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
