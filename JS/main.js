@@ -1,3 +1,4 @@
+
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
   const result = await fetch("./data/JSON/elements.json")
@@ -107,7 +108,18 @@ async function getDataFromJsonEn() {
     } else if (result.elements[i].category === "actinide") {
       elementDiv.classList.add("actinide-metal");
     }
-    main.appendChild(elementDiv);
+
+    // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
+    elementDiv.addEventListener("mouseenter", () => {
+      updateActiveDashboard(element);
+    });
+
+    elementDiv.addEventListener("mouseleave", () => {
+      // Revert dashboard back to currently locked element
+      if (lockedElement) {
+        updateActiveDashboard(lockedElement);
+      }
+    });
 
     elementDiv.addEventListener("click", (e) => {
       e.stopPropagation();
