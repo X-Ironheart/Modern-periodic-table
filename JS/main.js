@@ -66,8 +66,8 @@ function getNormalizedCategoryClass(category) {
   if (cat.includes("actinide")) return "actinide-metal";
   if (cat.includes("alkali metal")) return "alkali-metal";
   if (cat.includes("alkaline earth")) return "alkaline-earth-metal";
-  if (cat.includes("transition metal")) return "transition-metal";
   if (cat.includes("post-transition")) return "post-transition-metal";
+  if (cat.includes("transition metal")) return "transition-metal";
   if (cat.includes("noble gas")) return "noble-gas";
   if (cat.includes("diatomic nonmetal")) return "diatomic-nonmetal";
   if (cat.includes("polyatomic nonmetal")) return "polyatomic-nonmetal";
@@ -187,27 +187,6 @@ async function getDataFromJson() {
       elementDiv.classList.add("f-group");
     }
 
-    if (result.elements[i].category === "alkaline earth metal") {
-      elementDiv.classList.add("alkaline-earth-metal");
-    } else if (result.elements[i].category === "alkali metal") {
-      elementDiv.classList.add("alkali-metal");
-    } else if (result.elements[i].category === "transition metal") {
-      elementDiv.classList.add("transition-metal");
-    } else if (result.elements[i].category === "post-transition metal") {
-      elementDiv.classList.add("post-transition-metal");
-    } else if (result.elements[i].category === "metalloid") {
-      elementDiv.classList.add("metalloid");
-    } else if (result.elements[i].category === "diatomic nonmetal") {
-      elementDiv.classList.add("diatomic-nonmetal");
-    } else if (result.elements[i].category === "noble gas") {
-      elementDiv.classList.add("noble-gas");
-    } else if (result.elements[i].category === "polyatomic nonmetal") {
-      elementDiv.classList.add("polyatomic-nonmetal");
-    } else if (result.elements[i].category === "lanthanide") {
-      elementDiv.classList.add("lanthanide-metal");
-    } else if (result.elements[i].category === "actinide") {
-      elementDiv.classList.add("actinide-metal");
-    }
 
     // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
     elementDiv.addEventListener("mouseenter", () => {
