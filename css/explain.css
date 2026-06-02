@@ -25,7 +25,7 @@
   grid-template-rows: repeat(11, auto);
   justify-content: center;
   align-content: center;
-  background: rgba(255, 255, 255, 0.1); 
+  background: rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -39,9 +39,100 @@
 }
 
 .explain > div {
-    margin: 4px 10px ;
-    cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 1px 10px;
+  cursor: pointer;
 }
+
+main:has(.alkali-explain:hover) .alkali-metal {
+  background-color: var(--alkali-metals);
+}
+main:has(.alkali-explain:hover) .element:not(.alkali-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.alkali-explain:hover { color: var(--alkali-metals); }
+
+main:has(.alkaline-earth-explain:hover) .alkaline-earth-metal {
+  background-color: var(--alkaline-earth);
+}
+main:has(.alkaline-earth-explain:hover) .element:not(.alkaline-earth-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.alkaline-earth-explain:hover { color: var(--alkaline-earth); }
+
+main:has(.transition-metal-explain:hover) .transition-metal {
+  background-color: var(--transition-metals);
+}
+main:has(.transition-metal-explain:hover) .element:not(.transition-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.transition-metal-explain:hover { color: var(--transition-metals); }
+
+main:has(.post-transition-metal-explain:hover) .post-transition-metal {
+  background-color: var(--post-transition-metals);
+}
+main:has(.post-transition-metal-explain:hover) .element:not(.post-transition-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.post-transition-metal-explain:hover { color: var(--post-transition-metals); }
+
+main:has(.metalloid-explain:hover) .metalloid {
+  background-color: var(--metalloid);
+}
+main:has(.metalloid-explain:hover) .element:not(.metalloid) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.metalloid-explain:hover { color: var(--metalloid); }
+
+main:has(.polyatomic-nonmetal-explain:hover) .polyatomic-nonmetal {
+  background-color: var(--polyatomic-nonmetal);
+}
+main:has(.polyatomic-nonmetal-explain:hover) .element:not(.polyatomic-nonmetal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.polyatomic-nonmetal-explain:hover { color: var(--polyatomic-nonmetal); }
+
+main:has(.diatomic-nonmetal-explain:hover) .diatomic-nonmetal {
+  background-color: var(--diatomic-nonmetal);
+}
+main:has(.diatomic-nonmetal-explain:hover) .element:not(.diatomic-nonmetal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.diatomic-nonmetal-explain:hover { color: var(--diatomic-nonmetal); }
+
+main:has(.noble-gas-explain:hover) .noble-gas {
+  background-color: var(--noble-gas);
+}
+main:has(.noble-gas-explain:hover) .element:not(.noble-gas) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.noble-gas-explain:hover { color: var(--noble-gas); }
+
+main:has(.lanthanide-explain:hover) .lanthanide-metal {
+  background-color: var(--lanthanide);
+}
+main:has(.lanthanide-explain:hover) .element:not(.lanthanide-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.lanthanide-explain:hover { color: var(--lanthanide); }
+
+main:has(.actinide-explain:hover) .actinide-metal {
+  background-color: var(--actinide);
+}
+main:has(.actinide-explain:hover) .element:not(.actinide-metal) {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+.actinide-explain:hover { color: var(--actinide); }
 
 .color {
   width: var(--explain-width);

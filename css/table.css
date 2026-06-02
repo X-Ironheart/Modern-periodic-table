@@ -34,6 +34,8 @@ body {
 }
 
 .element {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -47,41 +49,18 @@ body {
   border-radius: 10px;
 }
 
-.sGroup {
-  display: grid;
-  gap: inherit;
-  align-content: start;
-  grid-template-columns: repeat(2, auto);
-  grid-template-areas: "H ." "Li Be" "Na Mg" "K Ca" "Rb Sr" "Cs Ba" "Fr Ra";
-  grid-area: s;
+.atom-name {
+  font-size: var(--atomic-name);
 }
 
-.dGroup {
-  display: grid;
-  gap: inherit;
-  align-content: end;
-  grid-template-columns: repeat(10, auto);
-  grid-template-areas: "Sc Ti V Cr Mn Fe Co Ni Cu Zn" "Y Zr Nb Mo Tc Ru Rh Pd Ag Cd" ". Hf Ta W Re Os Ir Pt Au Hg" ". Rf Db Sg Bh Hs Mt Ds Rg Cn";
-  grid-area: d;
+.atom-symbol {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: var(--atomic-sym);
 }
 
-.pGroup {
-  display: grid;
-  gap: inherit;
-  align-content: start;
-  grid-template-columns: repeat(6, auto);
-  grid-template-areas: ". . . . . He" "B C N O F Ne" "Al Si P S Cl Ar" "Ga Ge As Se Br Kr" "In Sn Sb Te I Xe" "Tl Pb Bi Po At Rn" "Nh Fl Mc Lv Ts Og";
-  grid-area: p;
-}
-
-.fGroup {
-  display: grid;
-  gap: inherit;
-  align-content: end;
-  grid-template-columns: repeat(14, auto);
-  grid-auto-flow: row;
-  grid-template-areas: "La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu" "Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr";
-  grid-area: f;
+.atomic-number {
+  font-size: var(--atomic-number);
 }
 
 .s-group {
@@ -98,17 +77,4 @@ body {
 
 .f-group {
   border: 3px, #a63e02, solid;
-}
-
-.atom-name {
-  font-size: var(--atomic-name);
-}
-
-.atom-symbol {
-  font-size: var(--atomic-sym);
-  font-weight: bold;
-}
-
-.atomic-number {
-  font-size: var(--atomic-number);
 }
