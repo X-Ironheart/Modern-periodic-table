@@ -1,3 +1,4 @@
+let lockedElement = null;
 
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
@@ -109,6 +110,7 @@ async function getDataFromJsonEn() {
       elementDiv.classList.add("actinide-metal");
     }
 
+    
     // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
     elementDiv.addEventListener("mouseenter", () => {
       updateActiveDashboard(element);
