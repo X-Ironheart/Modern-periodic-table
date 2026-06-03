@@ -1,4 +1,52 @@
 let lockedElement = null;
+let activeCategoryFilter = null; // Tracks active category spotlight filter
+
+// Bilingual category dictionary
+const arabicCategories = {
+  "diatomic nonmetal": "لا فلز ثنائي",
+  "alkali metal": "فلز قلوي",
+  "alkaline earth metal": "فلز ترابي",
+  "transition metal": "فلز انتقالي",
+  "post-transition metal": "فلز ضعيف",
+  "metalloid": "شبه فلز",
+  "polyatomic nonmetal": "لا فلز متعدد",
+  "noble gas": "غاز نبيل",
+  "lanthanide": "لانثانيد",
+  "actinide": "أكتينيد",
+};
+
+// Dynamic Categories to generate Pills
+const categoriesList = [
+  { en: "diatomic nonmetal", class: "diatomic-nonmetal" },
+  { en: "alkali metal", class: "alkali-metal" },
+  { en: "alkaline earth metal", class: "alkaline-earth-metal" },
+  { en: "transition metal", class: "transition-metal" },
+  { en: "post-transition metal", class: "post-transition-metal" },
+  { en: "metalloid", class: "metalloid" },
+  { en: "polyatomic nonmetal", class: "polyatomic-nonmetal" },
+  { en: "noble gas", class: "noble-gas" },
+  { en: "lanthanide", class: "lanthanide-metal" },
+  { en: "actinide", class: "actinide-metal" },
+];
+
+// Helper to normalize category name into a CSS class
+function getNormalizedCategoryClass(category) {
+  if (!category) return "";
+  let cat = category.toLowerCase().trim();
+
+  if (cat.includes("lanthanide")) return "lanthanide-metal";
+  if (cat.includes("actinide")) return "actinide-metal";
+  if (cat.includes("alkali metal")) return "alkali-metal";
+  if (cat.includes("alkaline earth")) return "alkaline-earth-metal";
+  if (cat.includes("post-transition")) return "post-transition-metal";
+  if (cat.includes("transition metal")) return "transition-metal";
+  if (cat.includes("noble gas")) return "noble-gas";
+  if (cat.includes("diatomic nonmetal")) return "diatomic-nonmetal";
+  if (cat.includes("polyatomic nonmetal")) return "polyatomic-nonmetal";
+  if (cat.includes("metalloid")) return "metalloid";
+
+  return cat.replace(/\s+/g, "-");
+}
 
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
@@ -38,6 +86,9 @@ async function getDataFromJsonEn() {
     });
 
   const main = document.getElementById("main");
+  
+  lockedElement = result.elements[0]; // Set default active element
+  renderCategoriesGuide(); // Generate categories pills dynamically
 
   for (let i = 0; i < result.elements.length; i++) {
     console.log(result.elements[i]);
@@ -88,25 +139,25 @@ async function getDataFromJsonEn() {
       elementDiv.classList.add("f-group");
     }
 
-    if (result.elements[i].category === "alkaline earth metal") {
+    if (result.elements[i].category.includes("alkaline earth")) {
       elementDiv.classList.add("alkaline-earth-metal");
-    } else if (result.elements[i].category === "alkali metal") {
+    } else if (result.elements[i].category.includes("alkali metal")) {
       elementDiv.classList.add("alkali-metal");
-    } else if (result.elements[i].category === "transition metal") {
-      elementDiv.classList.add("transition-metal");
-    } else if (result.elements[i].category === "post-transition metal") {
+    } else if (result.elements[i].category.includes("post-transition")) {
       elementDiv.classList.add("post-transition-metal");
-    } else if (result.elements[i].category === "metalloid") {
+    } else if (result.elements[i].category.includes("transition metal")) {
+      elementDiv.classList.add("transition-metal");
+    } else if (result.elements[i].category.includes("metalloid")) {
       elementDiv.classList.add("metalloid");
-    } else if (result.elements[i].category === "diatomic nonmetal") {
+    } else if (result.elements[i].category.includes("diatomic nonmetal")) {
       elementDiv.classList.add("diatomic-nonmetal");
-    } else if (result.elements[i].category === "noble gas") {
+    } else if (result.elements[i].category.includes("noble gas")) {
       elementDiv.classList.add("noble-gas");
-    } else if (result.elements[i].category === "polyatomic nonmetal") {
+    } else if (result.elements[i].category.includes("polyatomic nonmetal")) {
       elementDiv.classList.add("polyatomic-nonmetal");
-    } else if (result.elements[i].category === "lanthanide") {
+    } else if (result.elements[i].category.includes("lanthanide")) {
       elementDiv.classList.add("lanthanide-metal");
-    } else if (result.elements[i].category === "actinide") {
+    } else if (result.elements[i].category.includes("actinide")) {
       elementDiv.classList.add("actinide-metal");
     }
 
@@ -129,6 +180,8 @@ async function getDataFromJsonEn() {
       updateActiveDashboard(element);
       highlightElementCell(elementDiv);
     });
+
+    main.appendChild(elementDiv);
   }
 
   // Pre-load default active element dashboard state
@@ -172,6 +225,58 @@ function updateActiveDashboard(element) {
     element.summary ||
     "No scientific summary available for this element. Details will be populated on chemical updates.";
 }
+
+// Renders the Categories Guide Pill list inside the slate dashboard
+function renderCategoriesGuide() {
+  const container = document.getElementById("categoryPillsWrapper");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  categoriesList.forEach((cat) => {
+    const pillBtn = document.createElement("button");
+    pillBtn.classList.add("category-pill");
+
+    // Circle indicator
+    const dot = document.createElement("div");
+    dot.classList.add("pill-dot");
+    dot.classList.add(cat.class);
+
+    // English label
+    const labelSpan = document.createElement("span");
+    const formattedLabel = cat.en.charAt(0).toUpperCase() + cat.en.slice(1);
+    labelSpan.textContent = formattedLabel;
+
+    pillBtn.appendChild(dot);
+    pillBtn.appendChild(labelSpan);
+
+    // Interactive category click filtering controls
+    pillBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleCategorySpotlight(cat.en, pillBtn);
+    });
+
+    container.appendChild(pillBtn);
+  });
+}
+
+// Reset filter triggers when clicking on the page body
+document.body.addEventListener("click", () => {
+  if (activeCategoryFilter) {
+    const main = document.getElementById("main");
+    const allElements = document.querySelectorAll(".element");
+    const allPills = document.querySelectorAll(".category-pill");
+
+    activeCategoryFilter = null;
+    main.classList.remove("dim-elements");
+    allElements.forEach((el) => el.classList.remove("highlighted-element"));
+    allPills.forEach((p) => {
+      p.classList.remove("active-category");
+      const arLabel = p.querySelector(".pill-ar-label");
+      if (arLabel) arLabel.remove();
+    });
+  }
+});
 
 // Toggles element grid spotlights: Dims all elements in the periodic table except matching category
 function toggleCategorySpotlight(category, clickedPill) {
