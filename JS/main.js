@@ -171,7 +171,6 @@ async function getDataFromJsonEn() {
 
 // Low latency updater to refresh the premium Dynamic Dashboard header box
 function updateActiveDashboard(element, arElement) {
-  if (!element || !arElement) return;
 
   // Left Panel card properties
   document.getElementById("activeNumber").textContent = element.number;
@@ -187,30 +186,29 @@ function updateActiveDashboard(element, arElement) {
   // Right Panel Console metrics
   const displayCat =
     element.category.charAt(0).toUpperCase() + element.category.slice(1);
-  const arCat = arElement.arabic_category || "";
   document.getElementById("activeCategory").textContent =
-    `${displayCat} | ${arCat}`;
+    `${displayCat}`;
 
   document.getElementById("activeConfig").textContent =
-    element.electron_configuration || "N/A";
+    element.electron_configuration;
 
   const electroneg = element.electronegativity_pauling;
   document.getElementById("activeElectronegativity").textContent = electroneg
     ? `${electroneg} Pauling`
-    : "N/A | لا يوجد";
+    : "Unknown";
 
-  document.getElementById("activePhase").textContent = arElement.phase || "Solid";
+  document.getElementById("activePhase").textContent = element.phase;
 
   // Dynamic scientific summary description
   document.getElementById("activeSummary").textContent =
-    arElement.summary ||
+    element.summary ||
     "No scientific summary available for this element. Details will be populated on chemical updates.";
 }
 
 // Renders the Categories Guide Pill list inside the slate dashboard
 function renderCategoriesGuide() {
   const container = document.getElementById("categoryPillsWrapper");
-  if (!container) return;
+
 
   container.innerHTML = "";
 
@@ -225,7 +223,7 @@ function renderCategoriesGuide() {
 
     // English label
     const labelSpan = document.createElement("span");
-    const formattedLabel = cat.en.charAt(0).toUpperCase() + cat.en.slice(1);
+    const formattedLabel = cat.en.charAt(0).toUpperCase() + cat.en.slice(1); // Convert To Css Code
     labelSpan.textContent = formattedLabel;
 
     pillBtn.appendChild(dot);
@@ -287,7 +285,6 @@ function toggleCategorySpotlight(category, clickedPill) {
   allPills.forEach((p) => {
     p.classList.remove("active-category");
     const arLabel = p.querySelector(".pill-ar-label");
-    if (arLabel) arLabel.remove();
   });
 
   clickedPill.classList.add("active-category");
@@ -315,7 +312,6 @@ function toggleCategorySpotlight(category, clickedPill) {
 
 // Interactive cell dynamic lock animations
 function highlightElementCell(elementDiv) {
-  elementDiv.style.transform = "scale(1.3)";
   setTimeout(() => {
     elementDiv.style.transform = "";
   }, 200);
