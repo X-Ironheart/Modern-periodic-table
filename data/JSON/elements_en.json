@@ -41,8 +41,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Hydrogenglow.jpg",
         "attribution": "User:Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/hydrogen.php"
       },
-      "block": "s",
-      "arabic_name": "هيدروجين"
+      "block": "s"
     },
     {
       "name": "Helium",
@@ -87,8 +86,7 @@
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/helium.php"
       },
       "block": "s",
-      "exception": true,
-      "arabic_name": "هيليوم"
+      "exception": true
     },
     {
       "name": "Lithium",
@@ -134,8 +132,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/0.5_grams_lithium_under_argon.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/lithium.php"
       },
-      "block": "s",
-      "arabic_name": "ليثيوم"
+      "block": "s"
     },
     {
       "name": "Beryllium",
@@ -182,8 +179,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Beryllium_%28Be%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/beryllium.php"
       },
-      "block": "s",
-      "arabic_name": "بيريليوم"
+      "block": "s"
     },
     {
       "name": "Boron",
@@ -231,8 +227,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Boron.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/boron.php"
       },
-      "block": "p",
-      "arabic_name": "بورون"
+      "block": "p"
     },
     {
       "name": "Carbon",
@@ -281,8 +276,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Pure_Carbon.png",
         "attribution": "Texas Lane, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "كربون"
+      "block": "p"
     },
     {
       "name": "Nitrogen",
@@ -332,8 +326,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Nitrogen-glow.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/nitrogen.php"
       },
-      "block": "p",
-      "arabic_name": "نيتروجين"
+      "block": "p"
     },
     {
       "name": "Oxygen",
@@ -384,8 +377,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Liquid_oxygen_in_a_beaker_%28cropped_and_retouched%29.jpg",
         "attribution": "Staff Sgt. Nika Glover, U.S. Air Force, Public domain, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "أكسجين"
+      "block": "p"
     },
     {
       "name": "Fluorine",
@@ -437,8 +429,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Fluoro_liquido_a_-196%C2%B0C_1.jpg",
         "attribution": "Fulvio314, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "فلور"
+      "block": "p"
     },
     {
       "name": "Neon",
@@ -491,8 +482,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Neon-glow.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/neon.php"
       },
-      "block": "p",
-      "arabic_name": "نيون"
+      "block": "p"
     },
     {
       "name": "Sodium",
@@ -547,8 +537,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Na_%28Sodium%29.jpg",
         "attribution": "The original uploader was Dnn87 at English Wikipedia., CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "صوديوم"
+      "block": "s"
     },
     {
       "name": "Magnesium",
@@ -604,8 +593,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Magnesium_crystals.jpg",
         "attribution": "Warut Roonguthai, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "ماغنيسيوم"
+      "block": "s"
     },
     {
       "name": "Aluminium",
@@ -662,8 +650,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Aluminium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/aluminium.php "
       },
-      "block": "p",
-      "arabic_name": "ألومنيوم"
+      "block": "p"
     },
     {
       "name": "Silicon",
@@ -721,8 +708,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Silicon.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/silicon.php"
       },
-      "block": "p",
-      "arabic_name": "سيليكون"
+      "block": "p"
     },
     {
       "name": "Phosphorus",
@@ -781,8 +767,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Phosphorus-purple.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/phosphorus.php"
       },
-      "block": "p",
-      "arabic_name": "فسفور"
+      "block": "p"
     },
     {
       "name": "Sulfur",
@@ -842,8 +827,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Native_sulfur_%28Vodinskoe_Deposit%3B_quarry_near_Samara%2C_Russia%29_9.jpg",
         "attribution": "James St. John, CC BY 2.0 <https://creativecommons.org/licenses/by/2.0>, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "كبريت"
+      "block": "p"
     },
     {
       "name": "Chlorine",
@@ -904,8 +888,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Chlorine-sample-flip.jpg",
         "attribution": "Benjah-bmm27, Public domain, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "كلور"
+      "block": "p"
     },
     {
       "name": "Argon",
@@ -967,8 +950,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Argon-glow.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/argon.php"
       },
-      "block": "p",
-      "arabic_name": "أرغون"
+      "block": "p"
     },
     {
       "name": "Potassium",
@@ -1032,8 +1014,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Potassium.JPG",
         "attribution": "Dnn87, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "بوتاسيوم"
+      "block": "s"
     },
     {
       "name": "Calcium",
@@ -1098,8 +1079,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Calcium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/calcium.php"
       },
-      "block": "s",
-      "arabic_name": "كالسيوم"
+      "block": "s"
     },
     {
       "name": "Scandium",
@@ -1165,8 +1145,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Scandium%2C_Sc.jpg",
         "attribution": "JanDerChemiker, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "سكانديوم"
+      "block": "d"
     },
     {
       "name": "Titanium",
@@ -1233,8 +1212,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Titanium.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/titanium.php"
       },
-      "block": "d",
-      "arabic_name": "تيتانيوم"
+      "block": "d"
     },
     {
       "name": "Vanadium",
@@ -1302,8 +1280,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Vanadium-pieces.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/vanadium.php"
       },
-      "block": "d",
-      "arabic_name": "فاناديوم"
+      "block": "d"
     },
     {
       "name": "Chromium",
@@ -1372,8 +1349,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Chromium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/chromium.php"
       },
-      "block": "d",
-      "arabic_name": "كروم"
+      "block": "d"
     },
     {
       "name": "Manganese",
@@ -1443,8 +1419,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Manganese_element.jpg",
         "attribution": "W. Oelen, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "منغنيز"
+      "block": "d"
     },
     {
       "name": "Iron",
@@ -1515,8 +1490,7 @@
         "url": "https://images-of-elements.com/iron-2.jpg",
         "attribution": "Chemical ELements A Virtual Museum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0> source: https://images-of-elements.com/iron.php"
       },
-      "block": "d",
-      "arabic_name": "حديد"
+      "block": "d"
     },
     {
       "name": "Cobalt",
@@ -1588,8 +1562,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/Cobalt_ore_2.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/cobalt.php"
       },
-      "block": "d",
-      "arabic_name": "كوبالت"
+      "block": "d"
     },
     {
       "name": "Nickel",
@@ -1662,8 +1635,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Nickel_chunk.jpg",
         "attribution": "Materialscientist at English Wikipedia, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "نيكل"
+      "block": "d"
     },
     {
       "name": "Copper",
@@ -1737,8 +1709,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/NatCopper.jpg",
         "attribution": "Native_Copper_Macro_Digon3.jpg: 'Jonathan Zander (Digon3)' derivative work: Materialscientist, CC BY-SA 2.5 <https://creativecommons.org/licenses/by-sa/2.5>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "نحاس"
+      "block": "d"
     },
     {
       "name": "Zinc",
@@ -1804,8 +1775,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Zinc_%2830_Zn%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/zinc.php"
       },
-      "block": "d",
-      "arabic_name": "زنك"
+      "block": "d"
     },
     {
       "name": "Gallium",
@@ -1854,8 +1824,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Solid_gallium_%28Ga%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/gallium.php"
       },
-      "block": "p",
-      "arabic_name": "غاليوم"
+      "block": "p"
     },
     {
       "name": "Germanium",
@@ -1905,8 +1874,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Polycrystalline-germanium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/germanium.php"
       },
-      "block": "p",
-      "arabic_name": "جرمانيوم"
+      "block": "p"
     },
     {
       "name": "Arsenic",
@@ -1957,8 +1925,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Arsenic_%2833_As%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/arsenic.php"
       },
-      "block": "p",
-      "arabic_name": "زرنيخ"
+      "block": "p"
     },
     {
       "name": "Selenium",
@@ -2010,8 +1977,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Selenium.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/selenium.php"
       },
-      "block": "p",
-      "arabic_name": "سيلينيوم"
+      "block": "p"
     },
     {
       "name": "Bromine",
@@ -2064,8 +2030,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Bromine-ampoule.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/bromine.php"
       },
-      "block": "p",
-      "arabic_name": "بروم"
+      "block": "p"
     },
     {
       "name": "Krypton",
@@ -2140,8 +2105,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Krypton-glow.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/krypton.php"
       },
-      "block": "p",
-      "arabic_name": "كريبتون"
+      "block": "p"
     },
     {
       "name": "Rubidium",
@@ -2197,8 +2161,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Rb5.JPG",
         "attribution": "Dnn87, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "روبيديوم"
+      "block": "s"
     },
     {
       "name": "Strontium",
@@ -2255,8 +2218,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Strontium-1.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/strontium.php"
       },
-      "block": "s",
-      "arabic_name": "سترونشيوم"
+      "block": "s"
     },
     {
       "name": "Yttrium",
@@ -2314,8 +2276,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Piece_of_Yttrium.jpg",
         "attribution": "Jan Anskeit, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "إتريوم"
+      "block": "d"
     },
     {
       "name": "Zirconium",
@@ -2367,8 +2328,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Zirconium-pieces.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/zirconium.php"
       },
-      "block": "d",
-      "arabic_name": "زركونيوم"
+      "block": "d"
     },
     {
       "name": "Niobium",
@@ -2421,8 +2381,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Niobium_strips.JPG",
         "attribution": "Mauro Cateb, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "نيوبيوم"
+      "block": "d"
     },
     {
       "name": "Molybdenum",
@@ -2498,8 +2457,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Molybdenum.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/molybdenum.php"
       },
-      "block": "d",
-      "arabic_name": "موليبدينوم"
+      "block": "d"
     },
     {
       "name": "Technetium",
@@ -2548,8 +2506,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Technetium-sample-cropped.jpg",
         "attribution": "GFDL, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "تكنيشيوم"
+      "block": "d"
     },
     {
       "name": "Ruthenium",
@@ -2598,8 +2555,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Ruthenium_crystal.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/ruthenium.php"
       },
-      "block": "d",
-      "arabic_name": "روثينيوم"
+      "block": "d"
     },
     {
       "name": "Rhodium",
@@ -2648,8 +2604,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Rhodium_%28Rh%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/rhodium.php"
       },
-      "block": "d",
-      "arabic_name": "روديوم"
+      "block": "d"
     },
     {
       "name": "Palladium",
@@ -2697,8 +2652,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Palladium_%2846_Pd%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/palladium.php"
       },
-      "block": "d",
-      "arabic_name": "بالاديوم"
+      "block": "d"
     },
     {
       "name": "Silver",
@@ -2747,8 +2701,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Silver-nugget.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: http://images-of-elements.com/silver.php"
       },
-      "block": "d",
-      "arabic_name": "فضة"
+      "block": "d"
     },
     {
       "name": "Cadmium",
@@ -2797,8 +2750,7 @@
         "url": "https://images-of-elements.com/cadmium-4.jpg",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/cadmium.php"
       },
-      "block": "d",
-      "arabic_name": "كادميوم"
+      "block": "d"
     },
     {
       "name": "Indium",
@@ -2848,8 +2800,7 @@
         "url": "https://images-of-elements.com/indium-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: http://images-of-elements.com/indium.php"
       },
-      "block": "p",
-      "arabic_name": "إنديوم"
+      "block": "p"
     },
     {
       "name": "Tin",
@@ -2900,8 +2851,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Tin-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: http://images-of-elements.com/tin.php"
       },
-      "block": "p",
-      "arabic_name": "قصدير"
+      "block": "p"
     },
     {
       "name": "Antimony",
@@ -2953,8 +2903,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Antimony-4.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/antimony.php"
       },
-      "block": "p",
-      "arabic_name": "أنتيمون"
+      "block": "p"
     },
     {
       "name": "Tellurium",
@@ -3007,8 +2956,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Tellurium2.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/tellurium.php"
       },
-      "block": "p",
-      "arabic_name": "تيلوريوم"
+      "block": "p"
     },
     {
       "name": "Iodine",
@@ -3057,8 +3005,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Iodine-sample.jpg",
         "attribution": "Benjah-bmm27, Public domain, via Wikimedia Commons"
       },
-      "block": "p",
-      "arabic_name": "يود"
+      "block": "p"
     },
     {
       "name": "Xenon",
@@ -3107,8 +3054,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Xenon-glow.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/xenon.php"
       },
-      "block": "p",
-      "arabic_name": "زينون"
+      "block": "p"
     },
     {
       "name": "Cesium",
@@ -3158,8 +3104,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Cesium.jpg",
         "attribution": "Dnn87 Contact email: Dnn87yahoo.dk, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "سيزيوم"
+      "block": "s"
     },
     {
       "name": "Barium",
@@ -3209,8 +3154,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Barium_%2856_Ba%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/barium.php"
       },
-      "block": "s",
-      "arabic_name": "باريوم"
+      "block": "s"
     },
     {
       "name": "Lanthanum",
@@ -3262,8 +3206,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Lanthanum.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/lanthanum.php"
       },
-      "block": "f",
-      "arabic_name": "لانثانوم"
+      "block": "f"
     },
     {
       "name": "Cerium",
@@ -3316,8 +3259,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Cerium2.jpg",
         "attribution": "Jurii, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/cerium.php"
       },
-      "block": "f",
-      "arabic_name": "سيريوم"
+      "block": "f"
     },
     {
       "name": "Praseodymium",
@@ -3369,8 +3311,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Praseodymium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/praseodymium.php"
       },
-      "block": "f",
-      "arabic_name": "براسوديميوم"
+      "block": "f"
     },
     {
       "name": "Neodymium",
@@ -3421,8 +3362,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Neodymium_%2860_Nd%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/neodymium.php"
       },
-      "block": "f",
-      "arabic_name": "نيوديميوم"
+      "block": "f"
     },
     {
       "name": "Promethium",
@@ -3473,8 +3413,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Promethium.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/promethium.php"
       },
-      "block": "f",
-      "arabic_name": "بروميثيوم"
+      "block": "f"
     },
     {
       "name": "Samarium",
@@ -3525,8 +3464,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Samarium-2.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/samarium.php"
       },
-      "block": "f",
-      "arabic_name": "ساماريوم"
+      "block": "f"
     },
     {
       "name": "Europium",
@@ -3577,8 +3515,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Europium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/europium.php"
       },
-      "block": "f",
-      "arabic_name": "يوروبيوم"
+      "block": "f"
     },
     {
       "name": "Gadolinium",
@@ -3629,8 +3566,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Gadolinium-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/gadolinium.php"
       },
-      "block": "f",
-      "arabic_name": "غادولينيوم"
+      "block": "f"
     },
     {
       "name": "Terbium",
@@ -3681,8 +3617,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Terbium-2.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/terbium.php"
       },
-      "block": "f",
-      "arabic_name": "تيربيوم"
+      "block": "f"
     },
     {
       "name": "Dysprosium",
@@ -3733,8 +3668,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Dysprosium-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/dysprosium.php"
       },
-      "block": "f",
-      "arabic_name": "ديسبروسيوم"
+      "block": "f"
     },
     {
       "name": "Holmium",
@@ -3785,8 +3719,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Holmium2.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/holmium.php"
       },
-      "block": "f",
-      "arabic_name": "هولميوم"
+      "block": "f"
     },
     {
       "name": "Erbium",
@@ -3837,8 +3770,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Erbium-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/erbium.php"
       },
-      "block": "f",
-      "arabic_name": "إربيوم"
+      "block": "f"
     },
     {
       "name": "Thulium",
@@ -3889,8 +3821,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Thulium-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/thulium.php"
       },
-      "block": "f",
-      "arabic_name": "ثوليوم"
+      "block": "f"
     },
     {
       "name": "Ytterbium",
@@ -3941,8 +3872,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Ytterbium-3.jpg",
         "attribution": "Jurii, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/ytterbium.php"
       },
-      "block": "f",
-      "arabic_name": "إيتربيوم"
+      "block": "f"
     },
     {
       "name": "Lutetium",
@@ -3994,8 +3924,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Lutetium.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/lutetium.php"
       },
-      "block": "f",
-      "arabic_name": "لوتيتيوم"
+      "block": "f"
     },
     {
       "name": "Hafnium",
@@ -4046,8 +3975,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Hafnium_%2872_Hf%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/hafnium.php"
       },
-      "block": "d",
-      "arabic_name": "هافنيوم"
+      "block": "d"
     },
     {
       "name": "Tantalum",
@@ -4096,8 +4024,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Tantalum.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/tantalum.php"
       },
-      "block": "d",
-      "arabic_name": "تانتالوم"
+      "block": "d"
     },
     {
       "name": "Tungsten",
@@ -4146,8 +4073,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Tungsten_rod_with_oxidised_surface.jpg",
         "attribution": "Jurii, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/tungsten.php"
       },
-      "block": "d",
-      "arabic_name": "تنجستن"
+      "block": "d"
     },
     {
       "name": "Rhenium",
@@ -4198,8 +4124,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Pure_rhenium_bead%2C_arc_melted%2C_21_grams._Original_size_in_cm_-_1.5_x_1.7.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/rhenium.php"
       },
-      "block": "d",
-      "arabic_name": "رينيوم"
+      "block": "d"
     },
     {
       "name": "Osmium",
@@ -4248,8 +4173,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Osmium-bead.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/osmium.php"
       },
-      "block": "d",
-      "arabic_name": "أوزميوم"
+      "block": "d"
     },
     {
       "name": "Iridium",
@@ -4298,8 +4222,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Iridium-2.jpg",
         "attribution": "Unknown authorUnknown author, CC BY 1.0 <https://creativecommons.org/licenses/by/1.0>, via Wikimedia Commons, source: https://images-of-elements.com/iridium.php"
       },
-      "block": "d",
-      "arabic_name": "إريديوم"
+      "block": "d"
     },
     {
       "name": "Platinum",
@@ -4348,8 +4271,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Platinum_crystals.jpg",
         "attribution": "Periodictableru, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons"
       },
-      "block": "d",
-      "arabic_name": "بلاتين"
+      "block": "d"
     },
     {
       "name": "Gold",
@@ -4398,8 +4320,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Gold_%2879_Au%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/gold.php"
       },
-      "block": "d",
-      "arabic_name": "ذهب"
+      "block": "d"
     },
     {
       "name": "Mercury",
@@ -4449,8 +4370,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Hydrargyrum_%2880_Hg%29.jpg",
         "attribution": "Hi-Res Images of Chemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/mercury.php"
       },
-      "block": "d",
-      "arabic_name": "زئبق"
+      "block": "d"
     },
     {
       "name": "Thallium",
@@ -4500,8 +4420,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Thallium_%2881_Tl%29.jpg",
         "attribution": "Hi-Res Images ofChemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/thallium.php"
       },
-      "block": "p",
-      "arabic_name": "ثاليوم"
+      "block": "p"
     },
     {
       "name": "Lead",
@@ -4553,8 +4472,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Lead-2.jpg",
         "attribution": "Chemical Elements, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/lead.php"
       },
-      "block": "p",
-      "arabic_name": "رصاص"
+      "block": "p"
     },
     {
       "name": "Bismuth",
@@ -4607,8 +4525,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Bismuth-2.jpg",
         "attribution": "Jurii, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons, source: https://images-of-elements.com/bismuth.php"
       },
-      "block": "p",
-      "arabic_name": "بزموت"
+      "block": "p"
     },
     {
       "name": "Polonium",
@@ -4656,8 +4573,7 @@
         "url": "https://images-of-elements.com/polonium.jpg",
         "attribution": "Chemical ELements A Virtual Museum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0> source: https://images-of-elements.com/polonium.php"
       },
-      "block": "p",
-      "arabic_name": "بولونيوم"
+      "block": "p"
     },
     {
       "name": "Astatine",
@@ -4705,8 +4621,7 @@
         "url": "https://images-of-elements.com/astatine.jpg",
         "attribution": "Chemical ELements A Virtual Museum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0> source: https://images-of-elements.com/astatine.php"
       },
-      "block": "p",
-      "arabic_name": "أستاتين"
+      "block": "p"
     },
     {
       "name": "Radon",
@@ -4754,8 +4669,7 @@
         "url": "https://images-of-elements.com/radon.jpg",
         "attribution": "Chemical ELements A Virtual Museum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0> source: https://images-of-elements.com/radon.php"
       },
-      "block": "p",
-      "arabic_name": "رادون"
+      "block": "p"
     },
     {
       "name": "Francium",
@@ -4804,8 +4718,7 @@
         "url": "https://images-of-elements.com/francium.jpg",
         "attribution": "Chemical ELements A Virtual Museum, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0> source: https://images-of-elements.com/francium.jpg"
       },
-      "block": "s",
-      "arabic_name": "فرنسيوم"
+      "block": "s"
     },
     {
       "name": "Radium",
@@ -4855,8 +4768,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Radium226.jpg",
         "attribution": "grenadier, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons"
       },
-      "block": "s",
-      "arabic_name": "راديوم"
+      "block": "s"
     },
     {
       "name": "Actinium",
@@ -4906,8 +4818,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Actinium_sample_%2831481701837%29.png",
         "attribution": "Oak Ridge National Laboratory, CC BY 2.0 <https://creativecommons.org/licenses/by/2.0>, via Wikimedia Commons, source: https://www.flickr.com/photos/oakridgelab/31481701837/"
       },
-      "block": "f",
-      "arabic_name": "أكتينيوم"
+      "block": "f"
     },
     {
       "name": "Thorium",
@@ -4959,8 +4870,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Thorium-1.jpg",
         "attribution": "W. Oelen, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "ثوريوم"
+      "block": "f"
     },
     {
       "name": "Protactinium",
@@ -5009,8 +4919,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Protactinium-233.jpg",
         "attribution": "ENERGY.GOV, Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "بروتكتينيوم"
+      "block": "f"
     },
     {
       "name": "Uranium",
@@ -5060,8 +4969,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Ames_Process_uranium_biscuit.jpg",
         "attribution": "Unknown authorUnknown author, Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "يورانيوم"
+      "block": "f"
     },
     {
       "name": "Neptunium",
@@ -5110,8 +5018,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Neptunium2.jpg",
         "attribution": "Los Alamos National Laboratory,, Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "نبتونيوم"
+      "block": "f"
     },
     {
       "name": "Plutonium",
@@ -5160,8 +5067,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Plutonium_ring.jpg",
         "attribution": "Los Alamos National Laboratory, Attribution, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "بلوتونيوم"
+      "block": "f"
     },
     {
       "name": "Americium",
@@ -5210,8 +5116,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Americium_microscope.jpg",
         "attribution": "Bionerd, CC BY 3.0 <https://creativecommons.org/licenses/by/3.0>, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "أمريسيوم"
+      "block": "f"
     },
     {
       "name": "Curium",
@@ -5260,8 +5165,7 @@
         "url": "https://images-of-elements.com/s/curium-glow.jpg",
         "attribution": "European Union, The Actinide Group, Institute for Transuranium Elements (JRC-ITU), source: https://images-of-elements.com/curium.php"
       },
-      "block": "f",
-      "arabic_name": "كوريوم"
+      "block": "f"
     },
     {
       "name": "Berkelium",
@@ -5310,8 +5214,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Berkelium.jpg",
         "attribution": "ORNL, Department of Energy, Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "بيركيليوم"
+      "block": "f"
     },
     {
       "name": "Californium",
@@ -5360,8 +5263,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Californium.jpg",
         "attribution": "United States Department of Energy (see File:Einsteinium.jpg), Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "كاليفورنيوم"
+      "block": "f"
     },
     {
       "name": "Einsteinium",
@@ -5410,8 +5312,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Einsteinium.jpg",
         "attribution": "Haire, R. G., US Department of Energy.Touched up by Materialscientist at en.wikipedia., Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "أينشتاينيوم"
+      "block": "f"
     },
     {
       "name": "Fermium",
@@ -5460,8 +5361,7 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Ivy_Mike_-_mushroom_cloud.jpg",
         "attribution": "U.S. Department of Energy, Public domain, via Wikimedia Commons"
       },
-      "block": "f",
-      "arabic_name": "فيرميوم"
+      "block": "f"
     },
     {
       "name": "Mendelevium",
@@ -5510,8 +5410,7 @@
         "url": "https://images-of-elements.com/s/mendelevium.jpg",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/mendelevium.php"
       },
-      "block": "f",
-      "arabic_name": "مندليفيوم"
+      "block": "f"
     },
     {
       "name": "Nobelium",
@@ -5560,8 +5459,7 @@
         "url": "https://images-of-elements.com/nobelium.jpg",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/nobelium.php"
       },
-      "block": "f",
-      "arabic_name": "نوبليوم"
+      "block": "f"
     },
     {
       "name": "Lawrencium",
@@ -5610,8 +5508,7 @@
         "url": "https://images-of-elements.com/lawrencium.jpg",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/lawrencium.php"
       },
-      "block": "f",
-      "arabic_name": "لورنسيوم"
+      "block": "f"
     },
     {
       "name": "Rutherfordium",
@@ -5660,8 +5557,7 @@
         "url": "https://images-of-elements.com/s/rutherfordium.jpg",
         "attribution": "Image © CERN, Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/rutherfordium.php"
       },
-      "block": "d",
-      "arabic_name": "رذرفورديوم"
+      "block": "d"
     },
     {
       "name": "Dubnium",
@@ -5708,8 +5604,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/dubnium.php"
       },
-      "block": "d",
-      "arabic_name": "دوبنيوم"
+      "block": "d"
     },
     {
       "name": "Seaborgium",
@@ -5756,8 +5651,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/seaborgium.php"
       },
-      "block": "d",
-      "arabic_name": "سيبورغيوم"
+      "block": "d"
     },
     {
       "name": "Bohrium",
@@ -5804,8 +5698,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/bohrium.php"
       },
-      "block": "d",
-      "arabic_name": "بوريوم"
+      "block": "d"
     },
     {
       "name": "Hassium",
@@ -5852,8 +5745,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/hassium.php"
       },
-      "block": "d",
-      "arabic_name": "هاسيوم"
+      "block": "d"
     },
     {
       "name": "Meitnerium",
@@ -5900,8 +5792,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/meitnerium.php"
       },
-      "block": "d",
-      "arabic_name": "مايتنريوم"
+      "block": "d"
     },
     {
       "name": "Darmstadtium",
@@ -5948,8 +5839,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/darmstadtium.php"
       },
-      "block": "d",
-      "arabic_name": "دارمشتاتيوم"
+      "block": "d"
     },
     {
       "name": "Roentgenium",
@@ -5996,8 +5886,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/roentgenium.php"
       },
-      "block": "d",
-      "arabic_name": "رونتجينيوم"
+      "block": "d"
     },
     {
       "name": "Copernicium",
@@ -6044,8 +5933,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/copernicium.php"
       },
-      "block": "d",
-      "arabic_name": "كوبرنيسيوم"
+      "block": "d"
     },
     {
       "name": "Nihonium",
@@ -6092,8 +5980,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/nihonium.php"
       },
-      "block": "p",
-      "arabic_name": "نيهونيوم"
+      "block": "p"
     },
     {
       "name": "Flerovium",
@@ -6140,8 +6027,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/flerovium.php"
       },
-      "block": "p",
-      "arabic_name": "فليروفيوم"
+      "block": "p"
     },
     {
       "name": "Moscovium",
@@ -6188,8 +6074,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/moscovium.php"
       },
-      "block": "p",
-      "arabic_name": "موسكوفيوم"
+      "block": "p"
     },
     {
       "name": "Livermorium",
@@ -6236,8 +6121,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/livermorium.php"
       },
-      "block": "p",
-      "arabic_name": "ليفرموريوم"
+      "block": "p"
     },
     {
       "name": "Tennessine",
@@ -6284,8 +6168,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/tenessine.php"
       },
-      "block": "p",
-      "arabic_name": "تينيسين"
+      "block": "p"
     },
     {
       "name": "Oganesson",
@@ -6332,8 +6215,7 @@
         "url": "https://images-of-elements.com/s/transactinoid.png",
         "attribution": "Chemical Elements A Virtual Museum under a Creative Commons Attribution 3.0 Unported License, source: https://images-of-elements.com/oganesson.php"
       },
-      "block": "p",
-      "arabic_name": "أوغانيسون"
+      "block": "p"
     }
   ]
 }

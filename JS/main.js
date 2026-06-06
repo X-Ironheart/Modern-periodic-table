@@ -1,33 +1,13 @@
 let lockedElement = null;
+let lockedElementAr = null;
+let elementsDataEn = [];
+let elementsDataAr = [];
 let activeCategoryFilter = null; // Tracks active category spotlight filter
 
-// Bilingual category dictionary
-const arabicCategories = {
-  "diatomic nonmetal": "لا فلز ثنائي",
-  "alkali metal": "فلز قلوي",
-  "alkaline earth metal": "فلز ترابي",
-  "transition metal": "فلز انتقالي",
-  "post-transition metal": "فلز ضعيف",
-  "metalloid": "شبه فلز",
-  "polyatomic nonmetal": "لا فلز متعدد",
-  "noble gas": "غاز نبيل",
-  "lanthanide": "لانثانيد",
-  "actinide": "أكتينيد",
-};
 
-// Dynamic Categories to generate Pills
-const categoriesList = [
-  { en: "diatomic nonmetal", class: "diatomic-nonmetal" },
-  { en: "alkali metal", class: "alkali-metal" },
-  { en: "alkaline earth metal", class: "alkaline-earth-metal" },
-  { en: "transition metal", class: "transition-metal" },
-  { en: "post-transition metal", class: "post-transition-metal" },
-  { en: "metalloid", class: "metalloid" },
-  { en: "polyatomic nonmetal", class: "polyatomic-nonmetal" },
-  { en: "noble gas", class: "noble-gas" },
-  { en: "lanthanide", class: "lanthanide-metal" },
-  { en: "actinide", class: "actinide-metal" },
-];
+
+// Dynamic Categories to generate Pills (extracted dynamically from JSON)
+let categoriesList = [];
 
 // Helper to normalize category name into a CSS class
 function getNormalizedCategoryClass(category) {
@@ -50,56 +30,78 @@ function getNormalizedCategoryClass(category) {
 
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
-  const result = await fetch("./data/JSON/elements.json")
-    .then((res) => res.json())
-    .catch((err) => {
-      console.log(err);
-      main.style.display = "none";
-      document.body.style.display = "flex";
-      document.body.style.alignItems = "center";
-      document.body.style.justifyContent = "center";
-      document.body.style.width = `100vw`;
-      document.body.style.height = `100vh`;
-      const errCollection = document.createElement(`div`);
-      errCollection.style.display = "flex";
-      errCollection.style.flexDirection = "column";
-      errCollection.style.alignItems = "center";
-      errCollection.style.justifyContent = "center";
+  const [engData, arData] = await Promise.all([
+    fetch("./data/JSON/elements_en.json").then((res) => res.json()),
+    fetch("./data/JSON/elements_ar.json").then((res) => res.json())
+  ]).catch((err) => {
+    console.log(err);
+    main.style.display = "none";
+    document.body.style.display = "flex";
+    document.body.style.alignItems = "center";
+    document.body.style.justifyContent = "center";
+    document.body.style.width = `100vw`;
+    document.body.style.height = `100vh`;
+    const errCollection = document.createElement(`div`);
+    errCollection.style.display = "flex";
+    errCollection.style.flexDirection = "column";
+    errCollection.style.alignItems = "center";
+    errCollection.style.justifyContent = "center";
 
-      const errLog = document.createElement("div");
-      const errText = document.createTextNode(new Error(`No API Found`));
-      errLog.appendChild(errText);
-      errLog.style.color = "#eee";
-      errLog.style.fontSize = "30px";
+    const errLog = document.createElement("div");
+    const errText = document.createTextNode(new Error(`No API Found`));
+    errLog.appendChild(errText);
+    errLog.style.color = "#eee";
+    errLog.style.fontSize = "30px";
 
-      const megToDev = document.createElement("div");
-      const tellToDev = document.createTextNode(
-        `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
-      );
-      megToDev.appendChild(tellToDev);
-      megToDev.style.color = "#eee";
-      megToDev.style.textAlign = errLog.style.textAlign = "center";
+    const megToDev = document.createElement("div");
+    const tellToDev = document.createTextNode(
+      `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
+    );
+    megToDev.appendChild(tellToDev);
+    megToDev.style.color = "#eee";
+    megToDev.style.textAlign = errLog.style.textAlign = "center";
 
-      errCollection.appendChild(errLog);
-      errCollection.appendChild(megToDev);
-      document.body.appendChild(errCollection);
-    });
+    errCollection.appendChild(errLog);
+    errCollection.appendChild(megToDev);
+    document.body.appendChild(errCollection);
+  });
+
+  elementsDataEn = engData.elements;
+  elementsDataAr = arData.elements;
 
   const main = document.getElementById("main");
   
-  lockedElement = result.elements[0]; // Set default active element
+  lockedElement = elementsDataEn[0]; // Set default active element
+  lockedElementAr = elementsDataAr[0];
+  
+  // Extract unique categories dynamically from loaded elements database (excluding unknown categories for a cleaner UI)
+  const uniqueCategories = [...new Set(elementsDataEn.map(el => el.category))]
+    .filter(cat => cat && !cat.toLowerCase().includes("unknown"));
+  categoriesList = uniqueCategories.map(cat => {
+    const matchingElIndex = elementsDataEn.findIndex(el => el.category === cat);
+    const matchingArEl = matchingElIndex !== -1 ? elementsDataAr[matchingElIndex] : null;
+    return {
+      en: cat,
+      ar: matchingArEl ? matchingArEl.arabic_category : cat,
+      class: getNormalizedCategoryClass(cat)
+    };
+  });
+
   renderCategoriesGuide(); // Generate categories pills dynamically
 
-  for (let i = 0; i < result.elements.length; i++) {
-    console.log(result.elements[i]);
-    const element = result.elements[i];
+  for (let i = 0; i < elementsDataEn.length; i++) {
+    const element = elementsDataEn[i];
+    const arElement = elementsDataAr[i];
 
     const elementDiv = document.createElement("div");
     elementDiv.classList.add("element");
     elementDiv.classList.add(element.name); // Handle space names
 
-    // Add exact category representation class for CSS highlighting
-    elementDiv.classList.add(element.category.replace(/\s+/g, "-"));
+    // Add exact category representation class for CSS highlighting and spotlight filtering
+    const normalizedClass = getNormalizedCategoryClass(element.category);
+    if (normalizedClass) {
+      elementDiv.classList.add(normalizedClass);
+    }
 
     const elementsName = element.name;
     const elementsSymbol = element.symbol;
@@ -118,8 +120,8 @@ async function getDataFromJsonEn() {
     atomNameDiv.textContent = elementsName;
     atomSymbolsDiv.textContent = elementsSymbol;
 
-    elementDiv.style.gridColumn = result.elements[i].xpos;
-    elementDiv.style.gridRow = result.elements[i].ypos;
+    elementDiv.style.gridColumn = elementsDataEn[i].xpos;
+    elementDiv.style.gridRow = elementsDataEn[i].ypos;
 
     elementDiv.appendChild(atomicNumberDiv);
     elementDiv.appendChild(atomSymbolsDiv);
@@ -139,45 +141,24 @@ async function getDataFromJsonEn() {
       elementDiv.classList.add("f-group");
     }
 
-    if (result.elements[i].category.includes("alkaline earth")) {
-      elementDiv.classList.add("alkaline-earth-metal");
-    } else if (result.elements[i].category.includes("alkali metal")) {
-      elementDiv.classList.add("alkali-metal");
-    } else if (result.elements[i].category.includes("post-transition")) {
-      elementDiv.classList.add("post-transition-metal");
-    } else if (result.elements[i].category.includes("transition metal")) {
-      elementDiv.classList.add("transition-metal");
-    } else if (result.elements[i].category.includes("metalloid")) {
-      elementDiv.classList.add("metalloid");
-    } else if (result.elements[i].category.includes("diatomic nonmetal")) {
-      elementDiv.classList.add("diatomic-nonmetal");
-    } else if (result.elements[i].category.includes("noble gas")) {
-      elementDiv.classList.add("noble-gas");
-    } else if (result.elements[i].category.includes("polyatomic nonmetal")) {
-      elementDiv.classList.add("polyatomic-nonmetal");
-    } else if (result.elements[i].category.includes("lanthanide")) {
-      elementDiv.classList.add("lanthanide-metal");
-    } else if (result.elements[i].category.includes("actinide")) {
-      elementDiv.classList.add("actinide-metal");
-    }
-
     
     // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
     elementDiv.addEventListener("mouseenter", () => {
-      updateActiveDashboard(element);
+      updateActiveDashboard(element, arElement);
     });
 
     elementDiv.addEventListener("mouseleave", () => {
       // Revert dashboard back to currently locked element
-      if (lockedElement) {
-        updateActiveDashboard(lockedElement);
+      if (lockedElement && lockedElementAr) {
+        updateActiveDashboard(lockedElement, lockedElementAr);
       }
     });
 
     elementDiv.addEventListener("click", (e) => {
       e.stopPropagation();
       lockedElement = element;
-      updateActiveDashboard(element);
+      lockedElementAr = arElement;
+      updateActiveDashboard(element, arElement);
       highlightElementCell(elementDiv);
     });
 
@@ -185,12 +166,12 @@ async function getDataFromJsonEn() {
   }
 
   // Pre-load default active element dashboard state
-  updateActiveDashboard(lockedElement);
+  updateActiveDashboard(lockedElement, lockedElementAr);
 }
 
 // Low latency updater to refresh the premium Dynamic Dashboard header box
-function updateActiveDashboard(element) {
-  if (!element) return;
+function updateActiveDashboard(element, arElement) {
+  if (!element || !arElement) return;
 
   // Left Panel card properties
   document.getElementById("activeNumber").textContent = element.number;
@@ -200,13 +181,13 @@ function updateActiveDashboard(element) {
   document.getElementById("activeSymbol").textContent = element.symbol;
   document.getElementById("activeNameEn").textContent = element.name;
 
-  const arName = element.arabic_name || "";
+  const arName = arElement.name || "";
   document.getElementById("activeNameAr").textContent = arName;
 
   // Right Panel Console metrics
   const displayCat =
     element.category.charAt(0).toUpperCase() + element.category.slice(1);
-  const arCat = arabicCategories[element.category] || "";
+  const arCat = arElement.arabic_category || "";
   document.getElementById("activeCategory").textContent =
     `${displayCat} | ${arCat}`;
 
@@ -218,11 +199,11 @@ function updateActiveDashboard(element) {
     ? `${electroneg} Pauling`
     : "N/A | لا يوجد";
 
-  document.getElementById("activePhase").textContent = element.phase || "Solid";
+  document.getElementById("activePhase").textContent = arElement.phase || "Solid";
 
   // Dynamic scientific summary description
   document.getElementById("activeSummary").textContent =
-    element.summary ||
+    arElement.summary ||
     "No scientific summary available for this element. Details will be populated on chemical updates.";
 }
 
@@ -310,6 +291,16 @@ function toggleCategorySpotlight(category, clickedPill) {
   });
 
   clickedPill.classList.add("active-category");
+
+  // Add Arabic dynamic label inside active pill for premium bilingual feedback
+  const catObj = categoriesList.find(c => c.en === category);
+  const arCatName = catObj ? catObj.ar : "";
+  if (arCatName) {
+    const arLabelSpan = document.createElement("span");
+    arLabelSpan.classList.add("pill-ar-label");
+    arLabelSpan.textContent = arCatName;
+    clickedPill.appendChild(arLabelSpan);
+  }
 
   // Spotlight matching grid elements
   const cssClass = getNormalizedCategoryClass(category);
