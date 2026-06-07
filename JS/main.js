@@ -2,8 +2,6 @@ let lockedElement = null;
 let elementsDataEn = [];
 let activeCategoryFilter = null; // Tracks active category spotlight filter
 
-
-
 // Dynamic Categories to generate Pills (extracted dynamically from JSON)
 let categoriesList = [];
 
@@ -63,6 +61,7 @@ async function getDataFromJsonEn() {
       document.body.appendChild(errCollection);
     });
 
+  if (!engData) return;
   elementsDataEn = engData.elements;
 
   const main = document.getElementById("main");
@@ -193,8 +192,6 @@ function updateActiveDashboard(element) {
 // Renders the Categories Guide Pill list inside the slate dashboard
 function renderCategoriesGuide() {
   const container = document.getElementById("categoryPillsWrapper");
-
-
   container.innerHTML = "";
 
   categoriesList.forEach((cat) => {
@@ -236,8 +233,6 @@ document.body.addEventListener("click", () => {
     allElements.forEach((el) => el.classList.remove("highlighted-element"));
     allPills.forEach((p) => {
       p.classList.remove("active-category");
-      const arLabel = p.querySelector(".pill-ar-label");
-      if (arLabel) arLabel.remove();
     });
   }
 });
@@ -255,9 +250,6 @@ function toggleCategorySpotlight(category, clickedPill) {
     allElements.forEach((el) => el.classList.remove("highlighted-element"));
     allPills.forEach((p) => {
       p.classList.remove("active-category");
-      // Remove Arabic dynamic label inside pill on deactivate
-      const arLabel = p.querySelector(".pill-ar-label");
-      if (arLabel) arLabel.remove();
     });
     return;
   }
@@ -269,12 +261,9 @@ function toggleCategorySpotlight(category, clickedPill) {
   // Toggle active styling states on pills
   allPills.forEach((p) => {
     p.classList.remove("active-category");
-    const arLabel = p.querySelector(".pill-ar-label");
   });
 
   clickedPill.classList.add("active-category");
-
-
 
   // Spotlight matching grid elements
   const cssClass = getNormalizedCategoryClass(category);

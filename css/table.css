@@ -166,24 +166,6 @@ body {
   height: 20px;
 }
 
-.lang-pill {
-  background: transparent;
-  border: 1px solid var(--slate-border);
-  color: #94a3b8;
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-family: var(--font-space);
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.lang-pill:hover {
-  color: var(--yellow-highlight);
-  border-color: var(--yellow-highlight);
-}
-
 /* Dynamic Interactive Dashboard Header */
 .dashboard-container {
   width: 100%;
