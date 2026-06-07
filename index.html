@@ -209,39 +209,189 @@
 
   <!-- TAB 3: AI Assistant Page -->
   <section class="tab-content-page" id="view-ai">
+    <!-- Ambient blurred background elements to mirror the visual mockup -->
+    <div class="ai-glow-bg-left"></div>
+    <div class="ai-glow-bg-right"></div>
+
     <div class="ai-page-container">
-      <div class="ai-sidebar">
-        <h3>Hydrogen Assistant</h3>
-        <p>Ask anything about elements, compounds, or chemical reactions. Our assistant accesses the local elements database to give instant properties answers.</p>
-        <div class="settings-card">
-          <h4>Gemini API Settings</h4>
-          <p class="settings-desc">Optionally add a Google Gemini API Key to enable general-purpose generative chemical answers.</p>
-          <input type="password" id="gemini-api-key" placeholder="Paste Gemini API Key..." />
-          <button id="save-api-key" class="save-settings-btn">Save Key</button>
-          <span class="settings-status" id="key-status-msg">Using local database engine</span>
-        </div>
-        <div class="sample-queries">
-          <h4>Sample Questions</h4>
-          <ul>
-            <li>"Compare the properties of Gold and Copper"</li>
-            <li>"What are the main industrial uses of Titanium?"</li>
-            <li>"Give me a summary of Oxygen"</li>
-          </ul>
-        </div>
+      
+      <!-- Landing View: Dynamic Greeting & Title Headers -->
+      <div class="ai-landing-view" id="ai-landing-view">
+        <h1 class="ai-greeting-title" id="ai-greeting-title">Good afternoon</h1>
+        <h2 class="ai-greeting-subtitle">What can I help you with today?</h2>
       </div>
-      <div class="ai-chat-window">
+
+      <!-- Chat History Box: Hidden initially, shown during conversation view -->
+      <div class="ai-chat-messages-wrapper" id="ai-chat-messages-wrapper">
         <div class="chat-messages" id="chat-messages-box">
           <div class="chat-bubble assistant-bubble">
             <strong>Hydrogen:</strong> Welcome! I am Hydrogen, your chemistry assistant. Feel free to ask me questions like: <em>"What is the melting point of Iron?"</em> or <em>"Tell me about Helium."</em>
           </div>
         </div>
-        <div class="chat-input-bar">
-          <input type="text" id="chat-user-input" placeholder="Type your chemistry question here..." />
-          <button id="chat-send-btn" class="chat-send-btn">
-            <svg viewBox="0 0 24 24" class="send-icon" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-          </button>
+      </div>
+
+      <!-- Central Input Control Panel: Capsule Input Bar & Model Selector Dropdown -->
+      <div class="ai-input-wrapper">
+        <div class="ai-input-capsule">
+          <div class="ai-input-row">
+            <input type="text" id="chat-user-input" placeholder="Ask anything about elements, compounds, or reactions..." autocomplete="off" />
+          </div>
+          
+          <div class="ai-controls-row">
+            <!-- Left Side: Custom Dropdown for Model Engine Selection & Gemini Keys -->
+            <div class="ai-model-selector-container">
+              <button class="ai-model-btn" id="model-select-btn">
+                <span class="ai-model-icon">🤖</span>
+                <span class="ai-model-name" id="model-name-display">Smart (Hydrogen)</span>
+                <span class="ai-dropdown-arrow">▼</span>
+              </button>
+              
+              <!-- Hidden Engine Selector Dropdown Overlay -->
+              <div class="ai-model-dropdown" id="model-dropdown-menu">
+                <div class="ai-dropdown-item active-engine" id="engine-local-btn">
+                  <span class="engine-check">✓</span>
+                  <div class="engine-details">
+                    <strong>Hydrogen Local DB</strong>
+                    <span>Offline indexing for elements and comparisons</span>
+                  </div>
+                </div>
+                <div class="ai-dropdown-item" id="engine-gemini-btn">
+                  <span class="engine-check"></span>
+                  <div class="engine-details">
+                    <strong>Gemini Generative Brain</strong>
+                    <span>Advanced general chemistry queries (needs Key)</span>
+                  </div>
+                </div>
+                <div class="ai-key-config-divider"></div>
+                <div class="ai-key-config-section">
+                  <label for="gemini-api-key">Gemini API Key</label>
+                  <div class="key-input-row">
+                    <input type="password" id="gemini-api-key" placeholder="Paste Gemini Key..." />
+                    <button id="save-api-key" class="save-key-btn">Save</button>
+                  </div>
+                  <span id="key-status-msg" class="key-status-text">Using local database engine</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Side: Action Shortcuts (New Chat, Speech recognition Mic, Send button) -->
+            <div class="ai-action-shortcuts">
+              <button id="chat-reset-btn" class="ai-action-btn" title="New Topic">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </button>
+              <button id="chat-mic-btn" class="ai-action-btn" title="Voice Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+              </button>
+              <button id="chat-send-btn" class="ai-action-btn send-btn-active" title="Send Question">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggestion Action Pills directly below input capsule -->
+        <div class="ai-suggestions-container" id="ai-suggestions-container">
+          <button class="ai-suggest-pill" data-query="Compare Gold and Copper">Compare Gold & Copper</button>
+          <button class="ai-suggest-pill" data-query="List Uranium Isotopes">List Uranium Isotopes</button>
+          <button class="ai-suggest-pill" data-query="Give me a summary of Oxygen">Oxygen Summary</button>
+          <button class="ai-suggest-pill" data-query="Tell me about Helium">Tell me about Helium</button>
+          <button class="ai-suggest-pill" data-query="Show me transition metals">Transition Metals</button>
         </div>
       </div>
+
+      <!-- Bottom Dashboard Grid Deck (3-Column Layout) -->
+      <div class="ai-cards-deck" id="ai-cards-deck">
+        <!-- Card 1: Recent elements interacted with -->
+        <div class="ai-deck-card" id="card-recent-elements">
+          <div class="ai-card-title-row">
+            <span class="ai-card-icon">📎</span>
+            <span class="ai-card-title">Jump back in to your files</span>
+            <span class="ai-card-info" title="Elements recently clicked on the periodic table">ⓘ</span>
+          </div>
+          <div class="ai-card-content" id="recent-elements-list">
+            <!-- Populated dynamically by ai.js -->
+            <div class="recent-el-item" data-symbol="Au">
+              <span class="recent-el-badge transition-metal">Au</span>
+              <div class="recent-el-details">
+                <strong>Gold</strong>
+                <span>Recently Viewed</span>
+              </div>
+              <span class="recent-el-more">...</span>
+            </div>
+            <div class="recent-el-item" data-symbol="He">
+              <span class="recent-el-badge noble-gas">He</span>
+              <div class="recent-el-details">
+                <strong>Helium</strong>
+                <span>Recently Viewed</span>
+              </div>
+              <span class="recent-el-more">...</span>
+            </div>
+            <div class="recent-el-item" data-symbol="U">
+              <span class="recent-el-badge actinide-metal">U</span>
+              <div class="recent-el-details">
+                <strong>Uranium</strong>
+                <span>Recently Viewed</span>
+              </div>
+              <span class="recent-el-more">...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Interactive Chemistry Shortcuts -->
+        <div class="ai-deck-card" id="card-shortcuts">
+          <div class="ai-card-title-row">
+            <span class="ai-card-icon">👓</span>
+            <span class="ai-card-title">Get guided help with your apps</span>
+            <span class="ai-card-info" title="Quick navigation shortcuts to simulators and maps">ⓘ</span>
+          </div>
+          <div class="ai-card-content ai-shortcuts-grid">
+            <div class="shortcut-item" data-target-tab="simulators" data-sim-sub="thermo">
+              <span class="shortcut-icon">🌡️</span>
+              <span class="shortcut-name">States Sim</span>
+            </div>
+            <div class="shortcut-item" data-target-tab="simulators" data-sim-sub="magnetism">
+              <span class="shortcut-icon">🧲</span>
+              <span class="shortcut-name">Magnetic Sim</span>
+            </div>
+            <div class="shortcut-item" data-target-tab="trends">
+              <span class="shortcut-icon">📊</span>
+              <span class="shortcut-name">Heatmaps</span>
+            </div>
+            <div class="shortcut-item" data-target-tab="showcase">
+              <span class="shortcut-icon">⚛️</span>
+              <span class="shortcut-name">3D Orbitals</span>
+            </div>
+            <div class="shortcut-item" data-target-tab="compare">
+              <span class="shortcut-icon">⚖️</span>
+              <span class="shortcut-name">Compare</span>
+            </div>
+            <div class="shortcut-item" data-target-tab="reference" data-ref-sub="isotopes">
+              <span class="shortcut-icon">🧬</span>
+              <span class="shortcut-name">Isotopes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Keep learning logs -->
+        <div class="ai-deck-card" id="card-logs">
+          <div class="ai-card-title-row">
+            <span class="ai-card-icon">💬</span>
+            <span class="ai-card-title">Keep talking to Copilot</span>
+            <span class="ai-card-info" title="Recent questions asked during this session">ⓘ</span>
+          </div>
+          <div class="ai-card-content" id="session-logs-list">
+            <!-- Dynamically populated session conversation logs -->
+            <div class="log-el-item placeholder-log">
+              <span class="log-bubble-icon">💬</span>
+              <div class="log-details">
+                <strong>How can Hydrogen help me?</strong>
+                <span>Explore elements instantly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

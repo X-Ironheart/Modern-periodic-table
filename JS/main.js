@@ -169,6 +169,17 @@ async function getDataFromJsonEn() {
       lockedElement = element;
       updateActiveDashboard(element);
       highlightElementCell(elementDiv);
+      
+      // Track recently viewed elements for the AI Assistant's landing page
+      try {
+        let recent = JSON.parse(localStorage.getItem("recent_elements") || "[]");
+        recent = recent.filter(s => s !== element.symbol);
+        recent.unshift(element.symbol);
+        recent = recent.slice(0, 3);
+        localStorage.setItem("recent_elements", JSON.stringify(recent));
+      } catch (err) {
+        console.error("Error saving recent element:", err);
+      }
     });
 
     main.appendChild(elementDiv);
