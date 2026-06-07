@@ -1,12 +1,23 @@
-let lockedElement = null;
-let elementsDataEn = [];
+import { initTabs } from "./tabs.js";
+import { initTrends } from "./trends.js";
+import { initAI } from "./ai.js";
+import { initCompare } from "./compare.js";
+import { initShowcase } from "./showcase3d.js";
+import { initSimulators } from "./simulators.js";
+import { initReference } from "./reference.js";
+
+export let lockedElement = null;
+export let elementsDataEn = [];
+export let atomicRadii = {};
+export let magneticProperties = {};
+export let isotopesDatabase = {};
 let activeCategoryFilter = null; // Tracks active category spotlight filter
 
 // Dynamic Categories to generate Pills (extracted dynamically from JSON)
 let categoriesList = [];
 
 // Helper to normalize category name into a CSS class
-function getNormalizedCategoryClass(category) {
+export function getNormalizedCategoryClass(category) {
   if (!category) return "";
   let cat = category.toLowerCase().trim();
 
@@ -26,43 +37,54 @@ function getNormalizedCategoryClass(category) {
 
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
-  const engData = await fetch("./data/JSON/elements_en.json")
-    .then((res) => res.json())
-    .catch((err) => {
-      console.log(err);
-      main.style.display = "none";
-      document.body.style.display = "flex";
-      document.body.style.alignItems = "center";
-      document.body.style.justifyContent = "center";
-      document.body.style.width = `100vw`;
-      document.body.style.height = `100vh`;
-      const errCollection = document.createElement(`div`);
-      errCollection.style.display = "flex";
-      errCollection.style.flexDirection = "column";
-      errCollection.style.alignItems = "center";
-      errCollection.style.justifyContent = "center";
+  let fetchedData = null;
+  try {
+    const [engData, radiiData, magnetismData, isotopesData] = await Promise.all([
+      fetch("./data/JSON/elements_en.json").then((res) => res.json()),
+      fetch("./data/JSON/atomic_radii.json").then((res) => res.json()),
+      fetch("./data/JSON/magnetic_properties.json").then((res) => res.json()),
+      fetch("./data/JSON/isotopes.json").then((res) => res.json())
+    ]);
+    fetchedData = { engData, radiiData, magnetismData, isotopesData };
+  } catch (err) {
+    console.log(err);
+    const main = document.getElementById("main");
+    if (main) main.style.display = "none";
+    document.body.style.display = "flex";
+    document.body.style.alignItems = "center";
+    document.body.style.justifyContent = "center";
+    document.body.style.width = `100vw`;
+    document.body.style.height = `100vh`;
+    const errCollection = document.createElement(`div`);
+    errCollection.style.display = "flex";
+    errCollection.style.flexDirection = "column";
+    errCollection.style.alignItems = "center";
+    errCollection.style.justifyContent = "center";
 
-      const errLog = document.createElement("div");
-      const errText = document.createTextNode(new Error(`No API Found`));
-      errLog.appendChild(errText);
-      errLog.style.color = "#eee";
-      errLog.style.fontSize = "30px";
+    const errLog = document.createElement("div");
+    const errText = document.createTextNode(new Error(`No API Found`));
+    errLog.appendChild(errText);
+    errLog.style.color = "#eee";
+    errLog.style.fontSize = "30px";
 
-      const megToDev = document.createElement("div");
-      const tellToDev = document.createTextNode(
-        `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
-      );
-      megToDev.appendChild(tellToDev);
-      megToDev.style.color = "#eee";
-      megToDev.style.textAlign = errLog.style.textAlign = "center";
+    const megToDev = document.createElement("div");
+    const tellToDev = document.createTextNode(
+      `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
+    );
+    megToDev.appendChild(tellToDev);
+    megToDev.style.color = "#eee";
+    megToDev.style.textAlign = errLog.style.textAlign = "center";
 
-      errCollection.appendChild(errLog);
-      errCollection.appendChild(megToDev);
-      document.body.appendChild(errCollection);
-    });
+    errCollection.appendChild(errLog);
+    errCollection.appendChild(megToDev);
+    document.body.appendChild(errCollection);
+  }
 
-  if (!engData) return;
-  elementsDataEn = engData.elements;
+  if (!fetchedData) return;
+  elementsDataEn.push(...fetchedData.engData.elements);
+  Object.assign(atomicRadii, fetchedData.radiiData);
+  Object.assign(magneticProperties, fetchedData.magnetismData);
+  Object.assign(isotopesDatabase, fetchedData.isotopesData);
 
   const main = document.getElementById("main");
   
@@ -154,6 +176,31 @@ async function getDataFromJsonEn() {
 
   // Pre-load default active element dashboard state
   updateActiveDashboard(lockedElement);
+
+  // Initialize modular routing tabs navigator
+  initTabs({
+    table: () => {
+      resetGridColoring();
+    },
+    trends: () => {
+      initTrends();
+    },
+    ai: () => {
+      initAI();
+    },
+    compare: () => {
+      initCompare();
+    },
+    showcase: () => {
+      initShowcase();
+    },
+    simulators: () => {
+      initSimulators();
+    },
+    reference: () => {
+      initReference();
+    }
+  });
 }
 
 // Low latency updater to refresh the premium Dynamic Dashboard header box
@@ -283,17 +330,29 @@ function highlightElementCell(elementDiv) {
   }, 200);
 }
 
-// Dynamic Navigation Pill switching interaction
-function setupNavigationPills() {
-  const pills = document.querySelectorAll(".nav-pill");
-  pills.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      pills.forEach((p) => p.classList.remove("active-pill"));
-      pill.classList.add("active-pill");
-    });
+export function resetGridColoring() {
+  const elements = document.querySelectorAll(".element");
+  elements.forEach((el, idx) => {
+    const data = elementsDataEn[idx];
+    if (!data) return;
+    
+    el.style.backgroundColor = "";
+    el.style.borderColor = "";
+    el.style.opacity = "";
+    el.style.transform = "";
+    
+    const normalizedClass = getNormalizedCategoryClass(data.category);
+    el.className = `element ${data.name} ${normalizedClass}`;
+    if (data.exception) {
+      el.classList.add("exception", "s-group");
+    } else if (data.block) {
+      el.classList.add(`${data.block}-group`);
+    }
   });
+  
+  const main = document.getElementById("main");
+  main.classList.remove("dim-elements");
 }
 
 // Trigger dynamic initialization on script load
 getDataFromJsonEn();
-setupNavigationPills();
