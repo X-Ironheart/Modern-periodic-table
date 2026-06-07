@@ -340,12 +340,7 @@ body {
   line-height: 1.1;
 }
 
-.name-ar {
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin: 2px 0 0 0;
-  color: #64748b;
-}
+
 
 /* Right Side: Properties Console & Controls */
 .control-panel {

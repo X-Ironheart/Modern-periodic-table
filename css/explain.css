@@ -49,25 +49,4 @@
 .pill-dot.lanthanide-metal { background: var(--lanthanide); }
 .pill-dot.actinide-metal { background: var(--actinide); }
 
-/* Subtext Arabic translation label inside active category pill */
-.pill-ar-label {
-  font-size: 0.72rem;
-  color: var(--slate-navy);
-  opacity: 0.8;
-  font-weight: 700;
-  border-left: 1px solid rgba(30, 41, 59, 0.3);
-  padding-left: 8px;
-  margin-left: 4px;
-  animation: fadeInLabel 0.2s ease-out forwards;
-}
 
-@keyframes fadeInLabel {
-  from {
-    opacity: 0;
-    transform: translateX(-5px);
-  }
-  to {
-    opacity: 0.8;
-    transform: translateX(0);
-  }
-}

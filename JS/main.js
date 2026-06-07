@@ -1,7 +1,5 @@
 let lockedElement = null;
-let lockedElementAr = null;
 let elementsDataEn = [];
-let elementsDataAr = [];
 let activeCategoryFilter = null; // Tracks active category spotlight filter
 
 
@@ -30,68 +28,59 @@ function getNormalizedCategoryClass(category) {
 
 // Asynchronously load Periodic Elements database from JSON
 async function getDataFromJsonEn() {
-  const [engData, arData] = await Promise.all([
-    fetch("./data/JSON/elements_en.json").then((res) => res.json()),
-    fetch("./data/JSON/elements_ar.json").then((res) => res.json())
-  ]).catch((err) => {
-    console.log(err);
-    main.style.display = "none";
-    document.body.style.display = "flex";
-    document.body.style.alignItems = "center";
-    document.body.style.justifyContent = "center";
-    document.body.style.width = `100vw`;
-    document.body.style.height = `100vh`;
-    const errCollection = document.createElement(`div`);
-    errCollection.style.display = "flex";
-    errCollection.style.flexDirection = "column";
-    errCollection.style.alignItems = "center";
-    errCollection.style.justifyContent = "center";
+  const engData = await fetch("./data/JSON/elements_en.json")
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+      main.style.display = "none";
+      document.body.style.display = "flex";
+      document.body.style.alignItems = "center";
+      document.body.style.justifyContent = "center";
+      document.body.style.width = `100vw`;
+      document.body.style.height = `100vh`;
+      const errCollection = document.createElement(`div`);
+      errCollection.style.display = "flex";
+      errCollection.style.flexDirection = "column";
+      errCollection.style.alignItems = "center";
+      errCollection.style.justifyContent = "center";
 
-    const errLog = document.createElement("div");
-    const errText = document.createTextNode(new Error(`No API Found`));
-    errLog.appendChild(errText);
-    errLog.style.color = "#eee";
-    errLog.style.fontSize = "30px";
+      const errLog = document.createElement("div");
+      const errText = document.createTextNode(new Error(`No API Found`));
+      errLog.appendChild(errText);
+      errLog.style.color = "#eee";
+      errLog.style.fontSize = "30px";
 
-    const megToDev = document.createElement("div");
-    const tellToDev = document.createTextNode(
-      `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
-    );
-    megToDev.appendChild(tellToDev);
-    megToDev.style.color = "#eee";
-    megToDev.style.textAlign = errLog.style.textAlign = "center";
+      const megToDev = document.createElement("div");
+      const tellToDev = document.createTextNode(
+        `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
+      );
+      megToDev.appendChild(tellToDev);
+      megToDev.style.color = "#eee";
+      megToDev.style.textAlign = errLog.style.textAlign = "center";
 
-    errCollection.appendChild(errLog);
-    errCollection.appendChild(megToDev);
-    document.body.appendChild(errCollection);
-  });
+      errCollection.appendChild(errLog);
+      errCollection.appendChild(megToDev);
+      document.body.appendChild(errCollection);
+    });
 
   elementsDataEn = engData.elements;
-  elementsDataAr = arData.elements;
 
   const main = document.getElementById("main");
   
   lockedElement = elementsDataEn[0]; // Set default active element
-  lockedElementAr = elementsDataAr[0];
   
   // Extract unique categories dynamically from loaded elements database (excluding unknown categories for a cleaner UI)
   const uniqueCategories = [...new Set(elementsDataEn.map(el => el.category))]
     .filter(cat => cat && !cat.toLowerCase().includes("unknown"));
-  categoriesList = uniqueCategories.map(cat => {
-    const matchingElIndex = elementsDataEn.findIndex(el => el.category === cat);
-    const matchingArEl = matchingElIndex !== -1 ? elementsDataAr[matchingElIndex] : null;
-    return {
-      en: cat,
-      ar: matchingArEl ? matchingArEl.arabic_category : cat,
-      class: getNormalizedCategoryClass(cat)
-    };
-  });
+  categoriesList = uniqueCategories.map(cat => ({
+    en: cat,
+    class: getNormalizedCategoryClass(cat)
+  }));
 
   renderCategoriesGuide(); // Generate categories pills dynamically
 
   for (let i = 0; i < elementsDataEn.length; i++) {
     const element = elementsDataEn[i];
-    const arElement = elementsDataAr[i];
 
     const elementDiv = document.createElement("div");
     elementDiv.classList.add("element");
@@ -144,21 +133,20 @@ async function getDataFromJsonEn() {
     
     // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
     elementDiv.addEventListener("mouseenter", () => {
-      updateActiveDashboard(element, arElement);
+      updateActiveDashboard(element);
     });
 
     elementDiv.addEventListener("mouseleave", () => {
       // Revert dashboard back to currently locked element
-      if (lockedElement && lockedElementAr) {
-        updateActiveDashboard(lockedElement, lockedElementAr);
+      if (lockedElement) {
+        updateActiveDashboard(lockedElement);
       }
     });
 
     elementDiv.addEventListener("click", (e) => {
       e.stopPropagation();
       lockedElement = element;
-      lockedElementAr = arElement;
-      updateActiveDashboard(element, arElement);
+      updateActiveDashboard(element);
       highlightElementCell(elementDiv);
     });
 
@@ -166,11 +154,12 @@ async function getDataFromJsonEn() {
   }
 
   // Pre-load default active element dashboard state
-  updateActiveDashboard(lockedElement, lockedElementAr);
+  updateActiveDashboard(lockedElement);
 }
 
 // Low latency updater to refresh the premium Dynamic Dashboard header box
-function updateActiveDashboard(element, arElement) {
+function updateActiveDashboard(element) {
+  if (!element) return;
 
   // Left Panel card properties
   document.getElementById("activeNumber").textContent = element.number;
@@ -180,14 +169,10 @@ function updateActiveDashboard(element, arElement) {
   document.getElementById("activeSymbol").textContent = element.symbol;
   document.getElementById("activeNameEn").textContent = element.name;
 
-  const arName = arElement.name || "";
-  document.getElementById("activeNameAr").textContent = arName;
-
   // Right Panel Console metrics
   const displayCat =
     element.category.charAt(0).toUpperCase() + element.category.slice(1);
-  document.getElementById("activeCategory").textContent =
-    `${displayCat}`;
+  document.getElementById("activeCategory").textContent = displayCat;
 
   document.getElementById("activeConfig").textContent =
     element.electron_configuration;
@@ -289,15 +274,7 @@ function toggleCategorySpotlight(category, clickedPill) {
 
   clickedPill.classList.add("active-category");
 
-  // Add Arabic dynamic label inside active pill for premium bilingual feedback
-  const catObj = categoriesList.find(c => c.en === category);
-  const arCatName = catObj ? catObj.ar : "";
-  if (arCatName) {
-    const arLabelSpan = document.createElement("span");
-    arLabelSpan.classList.add("pill-ar-label");
-    arLabelSpan.textContent = arCatName;
-    clickedPill.appendChild(arLabelSpan);
-  }
+
 
   // Spotlight matching grid elements
   const cssClass = getNormalizedCategoryClass(category);
