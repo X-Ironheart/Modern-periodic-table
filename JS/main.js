@@ -41,7 +41,7 @@ async function getDataFromJsonEn() {
   try {
     const [engData, radiiData, magnetismData, isotopesData] = await Promise.all([
       fetch("./data/JSON/elements_en.json").then((res) => res.json()),
-      fetch("./data/JSON/atomic_radii.json").then((res) => res.json()),
+      fetch("./data/JSON/elements_en.json").then((res) => res.json()),
       fetch("./data/JSON/magnetic_properties.json").then((res) => res.json()),
       fetch("./data/JSON/isotopes.json").then((res) => res.json())
     ]);
