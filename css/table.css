@@ -32,6 +32,7 @@
   --atomic-name: 0.7em;
   --atomic-sym: 1.4em;
   --atomic-number: 0.7em;
+  --electron-config: 1.1rem;
 
   /* Fonts */
   --font-space: "Space Grotesk", sans-serif;
@@ -322,8 +323,6 @@ body {
   line-height: 1.1;
 }
 
-
-
 /* Right Side: Properties Console & Controls */
 .control-panel {
   flex-grow: 1;
@@ -396,8 +395,9 @@ body {
 
 .vital-val {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: var(--electron-config);
   font-weight: 700;
+  height: calc(2 * var(--electron-config));
 }
 
 .vital-val.text-yellow {
@@ -590,7 +590,19 @@ body {
 }
 
 #main.dim-elements .element.highlighted-element {
-  transform: scale(1.08);
+  transform: scale(1.03);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   z-index: 20;
+}
+
+#main.update-category .element.highlighted-element {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  transform: scale(1.02);
+}
+
+#main.update-category .element:not(.highlighted-element) {
+  opacity: 0.15;
+  filter: grayscale(0.7) blur(0.3px);
+  transform: scale(0.92);
 }

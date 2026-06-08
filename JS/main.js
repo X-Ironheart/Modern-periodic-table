@@ -304,7 +304,7 @@ function toggleCategorySpotlight(category, clickedPill) {
   // If clicked pill was already active, turn off spotlight filtering completely
   if (activeCategoryFilter === category) {
     activeCategoryFilter = null;
-    main.classList.remove("dim-elements");
+    main.classList.remove("update-category");
     allElements.forEach((el) => el.classList.remove("highlighted-element"));
     allPills.forEach((p) => {
       p.classList.remove("active-category");
@@ -314,7 +314,7 @@ function toggleCategorySpotlight(category, clickedPill) {
 
   // Set clicked category as active filter
   activeCategoryFilter = category;
-  main.classList.add("dim-elements");
+  main.classList.add("update-category");
 
   // Toggle active styling states on pills
   allPills.forEach((p) => {
