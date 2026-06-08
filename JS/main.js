@@ -153,9 +153,11 @@ async function getDataFromJsonEn() {
 
     
     // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
-    elementDiv.addEventListener("mouseenter", () => {
-      updateActiveDashboard(element);
-    });
+    // elementDiv.addEventListener("mouseenter", () => {
+    //   updateActiveDashboard(element);
+    // });
+
+    //I make it as a comment for testing 
 
     elementDiv.addEventListener("mouseleave", () => {
       // Revert dashboard back to currently locked element

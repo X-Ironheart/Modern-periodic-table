@@ -219,7 +219,9 @@ async function handleSend() {
 
   // Set chat tab layout state as active to shift landing layout
   const viewAi = document.getElementById("view-ai");
-  if (viewAi) viewAi.classList.add("chat-active");
+  if (viewAi) {
+    viewAi.classList.add("chat-active");
+  };
 
   // Append user bubble
   appendMessage("User", query, true);

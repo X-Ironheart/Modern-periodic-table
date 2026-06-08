@@ -116,7 +116,15 @@ body.hide-grid #periodic-table-wrapper {
   flex-grow: 1;
   height: 12px;
   border-radius: 6px;
-  background: linear-gradient(to right, #1e293b, #475569, #3b82f6, #10b981, #f59e0b, #ef4444);
+  background: linear-gradient(
+    to right,
+    #1e293b,
+    #475569,
+    #3b82f6,
+    #10b981,
+    #f59e0b,
+    #ef4444
+  );
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -261,7 +269,8 @@ body.hide-grid #periodic-table-wrapper {
   height: 16px;
 }
 
-.thermo-legend, .magnetism-legend {
+.thermo-legend,
+.magnetism-legend {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -284,16 +293,40 @@ body.hide-grid #periodic-table-wrapper {
 }
 
 /* Thermo Colors */
-.solid-color { background: #3b82f6; border: 1px solid rgba(255,255,255,0.2); }
-.liquid-color { background: #10b981; border: 1px solid rgba(255,255,255,0.2); }
-.gas-color { background: #f59e0b; border: 1px solid rgba(255,255,255,0.2); }
-.unknown-color { background: #475569; border: 1px solid rgba(255,255,255,0.2); }
+.solid-color {
+  background: #3b82f6;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.liquid-color {
+  background: #10b981;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.gas-color {
+  background: #f59e0b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.unknown-color {
+  background: #475569;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 /* Magnetism Colors */
-.ferro-color { background: #ef4444; border: 1px solid rgba(255,255,255,0.2); }
-.antiferro-color { background: #ec4899; border: 1px solid rgba(255,255,255,0.2); }
-.para-color { background: #a855f7; border: 1px solid rgba(255,255,255,0.2); }
-.dia-color { background: #64748b; border: 1px solid rgba(255,255,255,0.2); }
+.ferro-color {
+  background: #ef4444;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.antiferro-color {
+  background: #ec4899;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.para-color {
+  background: #a855f7;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dia-color {
+  background: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 .sim-info-text {
   margin: 0.75rem 0 0 0;
@@ -307,7 +340,11 @@ body.hide-grid #periodic-table-wrapper {
    ========================================================================== */
 #view-ai {
   position: relative;
-  background: radial-gradient(circle at 50% 30%, rgba(30, 41, 59, 0.97) 0%, rgba(15, 23, 42, 0.99) 100%);
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(30, 41, 59, 0.97) 0%,
+    rgba(15, 23, 42, 0.99) 100%
+  );
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 2.5rem;
@@ -334,6 +371,7 @@ body.hide-grid #periodic-table-wrapper {
   flex: 1 1 0;
   min-height: 0;
 }
+
 
 /* Landing View: Dynamic Greeting & Title Headers */
 .ai-landing-view {
@@ -367,7 +405,11 @@ body.hide-grid #periodic-table-wrapper {
   left: -10%;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(14, 116, 144, 0.3) 0%, rgba(14, 116, 144, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(14, 116, 144, 0.3) 0%,
+    rgba(14, 116, 144, 0) 70%
+  );
   filter: blur(60px);
   pointer-events: none;
   z-index: 1;
@@ -379,7 +421,11 @@ body.hide-grid #periodic-table-wrapper {
   right: -10%;
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(234, 88, 12, 0.15) 0%, rgba(234, 88, 12, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(234, 88, 12, 0.15) 0%,
+    rgba(234, 88, 12, 0) 70%
+  );
   filter: blur(60px);
   pointer-events: none;
   z-index: 1;
@@ -463,17 +509,23 @@ body.hide-grid #periodic-table-wrapper {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
 }
 
 .ai-input-capsule:focus-within {
   border-color: var(--yellow-highlight);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(253, 224, 71, 0.15);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 15px rgba(253, 224, 71, 0.15);
 }
 
 .ai-input-row {
@@ -552,7 +604,9 @@ body.hide-grid #periodic-table-wrapper {
   flex-direction: column;
   gap: 6px;
   opacity: 0;
-  transition: transform 0.25s, opacity 0.25s;
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
 }
 
 .ai-model-dropdown.show {
@@ -799,7 +853,8 @@ body.hide-grid #periodic-table-wrapper {
 }
 
 /* Items lists details inside card decks */
-.recent-el-item, .log-el-item {
+.recent-el-item,
+.log-el-item {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -811,7 +866,8 @@ body.hide-grid #periodic-table-wrapper {
   transition: all 0.2s;
 }
 
-.recent-el-item:hover, .log-el-item:hover {
+.recent-el-item:hover,
+.log-el-item:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.1);
 }
@@ -833,19 +889,22 @@ body.hide-grid #periodic-table-wrapper {
   opacity: 0.6;
 }
 
-.recent-el-details, .log-details {
+.recent-el-details,
+.log-details {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.recent-el-details strong, .log-details strong {
+.recent-el-details strong,
+.log-details strong {
   font-size: 0.8rem;
   color: #fff;
   font-weight: 600;
 }
 
-.recent-el-details span, .log-details span {
+.recent-el-details span,
+.log-details span {
   font-size: 0.68rem;
   color: #94a3b8;
 }
@@ -946,7 +1005,7 @@ body.hide-grid #periodic-table-wrapper {
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .selector-box {
@@ -963,7 +1022,9 @@ body.hide-grid #periodic-table-wrapper {
   text-transform: uppercase;
 }
 
-.compare-dropdown, .showcase-dropdown, .ref-dropdown {
+.compare-dropdown,
+.showcase-dropdown,
+.ref-dropdown {
   background: var(--slate-hover);
   border: 1px solid var(--slate-border);
   border-radius: 12px;
@@ -1006,8 +1067,8 @@ body.hide-grid #periodic-table-wrapper {
   background: var(--slate-navy);
   border-radius: 30px;
   padding: 2rem;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .comp-card-header {
@@ -1052,7 +1113,7 @@ body.hide-grid #periodic-table-wrapper {
   justify-content: space-between;
   font-size: 0.88rem;
   padding: 6px 0;
-  border-bottom: 1px dashed rgba(255,255,255,0.05);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
 }
 
 .comp-stat-row:last-child {
@@ -1073,8 +1134,8 @@ body.hide-grid #periodic-table-wrapper {
   background: var(--slate-navy);
   border-radius: 30px;
   padding: 2rem;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -1108,7 +1169,8 @@ body.hide-grid #periodic-table-wrapper {
   position: relative;
 }
 
-.bar-left, .bar-right {
+.bar-left,
+.bar-right {
   width: 50%;
   height: 100%;
   position: relative;
@@ -1159,8 +1221,8 @@ body.hide-grid #periodic-table-wrapper {
   background: var(--slate-navy);
   border-radius: 30px;
   padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -1198,7 +1260,7 @@ body.hide-grid #periodic-table-wrapper {
 .showcase-tab-btn.active-showcase-tab {
   background: var(--slate-navy);
   color: var(--yellow-highlight);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .showcase-control-panel {
@@ -1255,8 +1317,10 @@ body.hide-grid #periodic-table-wrapper {
 .showcase-canvas-container {
   background: #0f172a;
   border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), 0 15px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow:
+    inset 0 2px 10px rgba(0, 0, 0, 0.5),
+    0 15px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   height: 500px;
   position: relative;
@@ -1277,7 +1341,7 @@ body.hide-grid #periodic-table-wrapper {
   padding: 10px 20px;
   display: flex;
   gap: 15px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .ref-tab-btn {
@@ -1344,7 +1408,7 @@ body.hide-grid #periodic-table-wrapper {
 .ref-table-wrapper {
   background: var(--slate-navy);
   border-radius: 30px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: auto;
   max-height: 500px;
 }
@@ -1376,13 +1440,13 @@ body.hide-grid #periodic-table-wrapper {
 
 .ref-elements-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   color: #cbd5e1;
   font-family: var(--font-mono);
 }
 
 .ref-elements-table tr:hover td {
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   color: #fff;
 }
 
@@ -1395,7 +1459,7 @@ body.hide-grid #periodic-table-wrapper {
   background: var(--slate-navy);
   border-radius: 30px;
   padding: 1.25rem 2rem;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1426,11 +1490,11 @@ body.hide-grid #periodic-table-wrapper {
   background: var(--slate-navy);
   border-radius: 20px;
   padding: 1.25rem;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
 
@@ -1443,7 +1507,7 @@ body.hide-grid #periodic-table-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding-bottom: 0.5rem;
   margin-bottom: 0.25rem;
 }

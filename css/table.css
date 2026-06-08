@@ -2,8 +2,6 @@
   /* Dynamic Custom Color Variables - easy to customize! */
   --bg-color: #faf9f6;
   --slate-navy: #1e293b;
-  --slate-hover: #334155;
-  --slate-border: #475569;
   --yellow-highlight: #fde047;
   --cream-text: #eee;
   --card-bg: #faf9f6;
@@ -421,20 +419,14 @@ body {
 }
 
 .summary-box {
-  background: var(--slate-hover);
-  border: 1px solid var(--slate-border);
+  background: inherit;
   color: #cbd5e1;
   padding: 0.75rem 1.15rem;
   border-radius: 16px;
   font-size: 0.82rem;
   line-height: 1.45;
   max-height: 60px;
-  overflow-y: auto;
   box-sizing: border-box;
-}
-
-.summary-box::-webkit-scrollbar {
-  width: 5px;
 }
 
 .summary-box::-webkit-scrollbar-track {
@@ -606,3 +598,5 @@ body {
   filter: grayscale(0.7) blur(0.3px);
   transform: scale(0.92);
 }
+
+

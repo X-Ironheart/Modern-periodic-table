@@ -71,7 +71,7 @@ function getPropertyVal(el, type) {
     case "electronegativity":
       return el.electronegativity_pauling;
     case "radius":
-      return atomicRadii[el.number] || null;
+      return atomicRadii || null;
     case "ionization":
       return (el.ionization_energies && el.ionization_energies.length > 0) 
         ? el.ionization_energies[0] 
