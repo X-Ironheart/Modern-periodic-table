@@ -371,7 +371,6 @@ body.hide-grid #periodic-table-wrapper {
   min-height: 0;
 }
 
-
 /* Landing View: Dynamic Greeting & Title Headers */
 .ai-landing-view {
   text-align: center;
@@ -433,7 +432,6 @@ body.hide-grid #periodic-table-wrapper {
 /* Chat display messaging */
 .ai-chat-messages-wrapper {
   display: none;
-  /* Grow to fill all remaining space between greeting/input */
   flex: 1 1 0;
   min-height: 0;
   background: rgba(15, 23, 42, 0.4);
@@ -555,7 +553,7 @@ body.hide-grid #periodic-table-wrapper {
   margin-top: 4px;
 }
 
-/* Model Selector dropdown container inside input capsule */
+/* Model Selector dropdown container */
 .ai-model-selector-container {
   position: relative;
 }
@@ -586,7 +584,7 @@ body.hide-grid #periodic-table-wrapper {
   opacity: 0.6;
 }
 
-/* Custom overlay popover model dropdown selector */
+/* Custom overlay popover model dropdown */
 .ai-model-dropdown {
   position: absolute;
   bottom: calc(100% + 12px);
@@ -913,7 +911,7 @@ body.hide-grid #periodic-table-wrapper {
   color: rgba(255, 255, 255, 0.2);
 }
 
-/* App shortcuts grid content card 2 */
+/* App shortcuts grid */
 .ai-shortcuts-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr);
@@ -1456,7 +1454,7 @@ body.hide-grid #periodic-table-wrapper {
   border-bottom: none;
 }
 
-/* Isotopes section styling */
+/* Isotopes section */
 .isotopes-selection-row {
   background: var(--slate-navy);
   border-radius: 30px;

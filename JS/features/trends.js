@@ -1,4 +1,4 @@
-import { elementsDataEn, atomicRadii } from "./main.js";
+import { elementsDataEn } from "../main.js";
 
 export function initTrends() {
   const trendButtons = document.querySelectorAll(".trend-btn");
@@ -21,8 +21,6 @@ export function initTrends() {
 }
 
 function applyHeatmap(type) {
-  const elementCells = document.querySelectorAll(".element");
-  
   // 1. Gather values and find bounds
   let values = [];
   elementsDataEn.forEach((el) => {
@@ -35,10 +33,10 @@ function applyHeatmap(type) {
   const min = Math.min(...values);
   const max = Math.max(...values);
 
-  // 2. Map colors onto grid cells
-  elementCells.forEach((cell, idx) => {
-    const el = elementsDataEn[idx];
-    if (!el) return;
+  // 2. Map colors onto cached grid cells
+  elementsDataEn.forEach((el) => {
+    const cell = el.cellElement;
+    if (!cell) return;
 
     let val = getPropertyVal(el, type);
     
@@ -59,9 +57,6 @@ function applyHeatmap(type) {
       cell.style.backgroundColor = `hsl(${hue}, 80%, 40%)`;
       cell.style.borderColor = `hsl(${hue}, 90%, 65%)`;
       cell.style.color = "#fff";
-      
-      // We can temporarily display the value or let active dashboard show it
-      // For now, let's keep symbols clean and dashboard updated
     }
   });
 }
@@ -71,7 +66,7 @@ function getPropertyVal(el, type) {
     case "electronegativity":
       return el.electronegativity_pauling;
     case "radius":
-      return atomicRadii || null;
+      return el.atomic_radius || null;
     case "ionization":
       return (el.ionization_energies && el.ionization_energies.length > 0) 
         ? el.ionization_energies[0] 

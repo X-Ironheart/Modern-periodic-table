@@ -1,4 +1,4 @@
-import { elementsDataEn, getNormalizedCategoryClass } from "./main.js";
+import { elementsDataEn, getNormalizedCategoryClass } from "../main.js";
 
 let sessionQueries = [];
 
@@ -221,7 +221,7 @@ async function handleSend() {
   const viewAi = document.getElementById("view-ai");
   if (viewAi) {
     viewAi.classList.add("chat-active");
-  };
+  }
 
   // Append user bubble
   appendMessage("User", query, true);
@@ -390,7 +390,6 @@ function generateLocalComparisonReport(el1, el2) {
 *Generated dynamically using the local elements database.*`;
 }
 
-// Card lists rendering helpers
 function renderRecentElements() {
   const container = document.getElementById("recent-elements-list");
   if (!container) return;

@@ -1,4 +1,4 @@
-import { elementsDataEn, magneticProperties } from "./main.js";
+import { elementsDataEn, magneticProperties } from "../main.js";
 
 let playInterval = null;
 let currentSim = "thermo"; // "thermo" or "magnetism"
@@ -106,11 +106,9 @@ function applySimulationState() {
 
 // Color elements dynamically based on states of matter at specific temperature
 function applyThermoStates(temp) {
-  const elementCells = document.querySelectorAll(".element");
-  
-  elementCells.forEach((cell, idx) => {
-    const el = elementsDataEn[idx];
-    if (!el) return;
+  elementsDataEn.forEach((el) => {
+    const cell = el.cellElement;
+    if (!cell) return;
 
     cell.className = "element"; // Clear defaults
 
@@ -165,16 +163,13 @@ function getElementStateAtTemp(el, temp) {
 
 // Color elements dynamically based on magnetic classifications
 function applyMagnetismStates() {
-  const elementCells = document.querySelectorAll(".element");
-  
-  // Specific magnetic categories mappings by atomic numbers
   const ferromagnetic = magneticProperties.ferromagnetic || [];
   const antiferromagnetic = magneticProperties.antiferromagnetic || [];
   const diamagnetic = magneticProperties.diamagnetic || [];
 
-  elementCells.forEach((cell, idx) => {
-    const el = elementsDataEn[idx];
-    if (!el) return;
+  elementsDataEn.forEach((el) => {
+    const cell = el.cellElement;
+    if (!cell) return;
 
     cell.className = "element"; // Clear defaults
 
@@ -193,7 +188,7 @@ function applyMagnetismStates() {
       cell.style.color = "#cbd5e1";
     } else {
       // Treat alkali/alkaline earth/rare earths as paramagnetic
-      cell.style.backgroundColor = "#7e22ce"; // violet/purple
+      cell.style.backgroundColor = "#7e22ce"; // paramagnetic (violet/purple)
       cell.style.borderColor = "#c084fc";
       cell.style.color = "#fff";
     }

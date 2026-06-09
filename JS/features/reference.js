@@ -1,4 +1,4 @@
-import { elementsDataEn, isotopesDatabase } from "./main.js";
+import { elementsDataEn, isotopesDatabase } from "../main.js";
 
 let activeSortCol = "number";
 let isSortAsc = true;
@@ -100,22 +100,30 @@ function renderElementsTable() {
     return 0;
   });
 
-  // Render rows
+  // Render rows using a DocumentFragment to minimize browser reflows
+  const fragment = document.createDocumentFragment();
+
   filtered.forEach((el) => {
     const tr = document.createElement("tr");
+
+    const formattedMass = (typeof el.atomic_mass === "number") 
+      ? el.atomic_mass.toFixed(4) 
+      : (el.atomic_mass || "Unknown");
 
     tr.innerHTML = `
       <td>${el.number}</td>
       <td><strong>${el.symbol}</strong></td>
       <td>${el.name}</td>
-      <td>${el.atomic_mass.toFixed(4)}</td>
+      <td>${formattedMass}</td>
       <td>${el.category}</td>
-      <td>${el.density !== null ? el.density.toFixed(4) : "Unknown"}</td>
+      <td>${(el.density !== null && el.density !== undefined && typeof el.density === 'number') ? el.density.toFixed(4) : "Unknown"}</td>
       <td>${el.melt !== null ? el.melt : "Unknown"}</td>
       <td>${el.boil !== null ? el.boil : "Unknown"}</td>
     `;
-    tbody.appendChild(tr);
+    fragment.appendChild(tr);
   });
+
+  tbody.appendChild(fragment);
 }
 
 function initIsotopeSelectors() {
@@ -139,11 +147,11 @@ function renderIsotopesForElement(atomicNo) {
   let isotopes = isotopesDatabase[atomicNo] || isotopesDatabase[String(atomicNo)];
   if (!isotopes) {
     // Generate placeholder isotopes based on elements atomic mass
-    const nominalMass = Math.round(element.atomic_mass);
+    const nominalMass = Math.round(element.atomic_mass || 1);
     isotopes = [
       {
         name: `${element.name}-${nominalMass - 1}`,
-        mass: (element.atomic_mass - 0.998).toFixed(4),
+        mass: (typeof element.atomic_mass === 'number') ? (element.atomic_mass - 0.998).toFixed(4) : "Unknown",
         abundance: "Trace",
         halflife: "Unstable (minutes)",
         decay: "Beta / Gamma",
@@ -151,7 +159,7 @@ function renderIsotopesForElement(atomicNo) {
       },
       {
         name: `${element.name}-${nominalMass} (Stable)`,
-        mass: element.atomic_mass.toFixed(4),
+        mass: (typeof element.atomic_mass === 'number') ? element.atomic_mass.toFixed(4) : "Unknown",
         abundance: "99.8%",
         halflife: "Stable",
         decay: "None",
@@ -159,7 +167,7 @@ function renderIsotopesForElement(atomicNo) {
       },
       {
         name: `${element.name}-${nominalMass + 1}`,
-        mass: (element.atomic_mass + 1.002).toFixed(4),
+        mass: (typeof element.atomic_mass === 'number') ? (element.atomic_mass + 1.002).toFixed(4) : "Unknown",
         abundance: "0.2%",
         halflife: "Stable",
         decay: "None",
@@ -168,7 +176,9 @@ function renderIsotopesForElement(atomicNo) {
     ];
   }
 
-  // Draw isotope cards
+  // Draw isotope cards using a DocumentFragment
+  const fragment = document.createDocumentFragment();
+
   isotopes.forEach((iso) => {
     const card = document.createElement("div");
     card.classList.add("isotope-card");
@@ -196,6 +206,8 @@ function renderIsotopesForElement(atomicNo) {
       </div>
     `;
 
-    container.appendChild(card);
+    fragment.appendChild(card);
   });
+
+  container.appendChild(fragment);
 }

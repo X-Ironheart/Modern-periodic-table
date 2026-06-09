@@ -1,22 +1,28 @@
-import { elementsDataEn } from "./main.js";
+import { elementsDataEn } from "../main.js";
 
 export function initCompare() {
   const select1 = document.getElementById("compare-el-1");
   const select2 = document.getElementById("compare-el-2");
 
   if (select1.children.length === 0) {
-    // Populate dropdowns if empty
+    // Populate dropdowns if empty using DocumentFragment
+    const fragment1 = document.createDocumentFragment();
+    const fragment2 = document.createDocumentFragment();
+
     elementsDataEn.forEach((el) => {
       const option1 = document.createElement("option");
       option1.value = el.number;
       option1.textContent = `${el.number} - ${el.name} (${el.symbol})`;
-      select1.appendChild(option1);
+      fragment1.appendChild(option1);
 
       const option2 = document.createElement("option");
       option2.value = el.number;
       option2.textContent = `${el.number} - ${el.name} (${el.symbol})`;
-      select2.appendChild(option2);
+      fragment2.appendChild(option2);
     });
+
+    select1.appendChild(fragment1);
+    select2.appendChild(fragment2);
 
     // Set defaults (Hydrogen vs Carbon)
     select1.value = 1;
@@ -85,6 +91,8 @@ function renderStatsList(containerId, el) {
     { label: "Discoverer", val: el.discovered_by || "Unknown" }
   ];
 
+  const fragment = document.createDocumentFragment();
+
   stats.forEach((s) => {
     const row = document.createElement("div");
     row.classList.add("comp-stat-row");
@@ -99,8 +107,10 @@ function renderStatsList(containerId, el) {
 
     row.appendChild(labelSpan);
     row.appendChild(valSpan);
-    container.appendChild(row);
+    fragment.appendChild(row);
   });
+
+  container.appendChild(fragment);
 }
 
 function updateGaugeWidth(id, value, maxBound) {

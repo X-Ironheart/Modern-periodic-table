@@ -1,0 +1,271 @@
+/* Dynamic Interactive Dashboard Header */
+.dashboard-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 1.5rem 0 1.5rem;
+  box-sizing: border-box;
+  z-index: 40;
+}
+
+.dashboard-header {
+  background: var(--slate-navy);
+  border-radius: 40px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px rgba(30, 41, 59, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-header {
+    flex-direction: row;
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+}
+
+.bg-blur-accent {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--slate-hover);
+  opacity: 0.15;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Compact Active Element Visualization Card */
+.active-element-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.active-element-card {
+  background: var(--card-bg);
+  color: var(--slate-navy);
+  border-radius: 30px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 215px;
+  height: 270px;
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active-element-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.stat-val {
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.orbital-viz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 110px;
+  width: 100%;
+}
+
+.orbital-svg {
+  position: absolute;
+  width: 115px;
+  height: 115px;
+  color: var(--orbital-line);
+  pointer-events: none;
+  animation: spinOrbit 8s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spinOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.symbol-display {
+  font-family: var(--font-montserrat);
+  font-size: 3.75rem;
+  font-weight: 800;
+  color: var(--slate-navy);
+  letter-spacing: -4px;
+  margin: 0;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-footer {
+  text-align: center;
+  width: 100%;
+}
+
+.name-en {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--slate-navy);
+  line-height: 1.1;
+}
+
+/* Right Side: Properties Console & Controls */
+.control-panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.category-pills-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.section-title-line {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--slate-border);
+  opacity: 0.5;
+}
+
+.category-pills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Vital Data Grid */
+.vital-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .vital-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.vital-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.vital-label {
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.vital-val {
+  color: #fff;
+  font-size: var(--electron-config);
+  font-weight: 700;
+  height: calc(2 * var(--electron-config));
+}
+
+.vital-val.text-yellow {
+  color: var(--yellow-highlight);
+  text-shadow: 0 0 8px rgba(253, 224, 71, 0.2);
+}
+
+/* Scientific Description Box */
+.summary-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-box {
+  background: inherit;
+  color: #cbd5e1;
+  padding: 0.75rem 1.15rem;
+  border-radius: 16px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  max-height: 60px;
+  box-sizing: border-box;
+}
+
+.summary-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.summary-box::-webkit-scrollbar-thumb {
+  background: var(--slate-border);
+  border-radius: 5px;
+}

@@ -1,0 +1,159 @@
+/* Scrollable Wrapper for Periodic Table */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 2rem 2.5rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  .table-wrapper {
+    justify-content: center;
+  }
+}
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(20px, 1fr));
+  gap: clamp(2px, 0.5vw, 5px);
+  width: 100vw;
+  padding: 5px;
+}
+
+.element {
+  font-family: var(--font-mono);
+  font-size: clamp(10px, 1.2vw, 13px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  font-weight: 800;
+  color: var(--cream-text);
+  background-color: rgba(30, 41, 59, 0.03);
+  padding: 4px;
+  border-radius: clamp(4px, 0.8vw, 10px);
+  box-sizing: border-box;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s, border-color 0.25s, opacity 0.25s, box-shadow 0.25s;
+  border: 1px solid rgba(30, 41, 59, 0.1);
+  cursor: pointer;
+}
+
+.element:hover {
+  transform: scale(1.22);
+  z-index: 30;
+  box-shadow: 0 12px 25px rgba(30, 41, 59, 0.25);
+}
+
+.atom-name {
+  font-size: var(--atomic-name);
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.atom-symbol {
+  font-family: var(--font-montserrat);
+  font-weight: 800;
+  font-size: var(--atomic-sym);
+  letter-spacing: -0.5px;
+}
+
+.atomic-number {
+  font-size: var(--atomic-number);
+  align-self: flex-start;
+}
+
+/* Chemical Block Group Border colors with CSS variables */
+.s-group {
+  border: 2px var(--s-block-border) solid;
+  background-color: rgba(255, 74, 74, 0.05);
+}
+
+.p-group {
+  border: 2px var(--p-block-border) solid;
+  background-color: rgba(48, 195, 158, 0.05);
+}
+
+.d-group {
+  border: 2px var(--d-block-border) solid;
+  background-color: rgba(75, 159, 227, 0.05);
+}
+
+.f-group {
+  border: 2px var(--f-block-border) solid;
+  background-color: rgba(255, 159, 243, 0.05);
+}
+
+/* Color schemes for Category Highlighting using CSS variables */
+.element.alkali-metal {
+  background-color: var(--alkali-metals);
+  border-color: var(--alkali-metals);
+}
+.element.alkaline-earth-metal {
+  background-color: var(--alkaline-earth);
+  border-color: var(--alkaline-earth);
+}
+.element.transition-metal {
+  background-color: var(--transition-metals);
+  border-color: var(--transition-metals);
+}
+.element.post-transition-metal {
+  background-color: var(--post-transition-metals);
+  border-color: var(--post-transition-metals);
+}
+.element.metalloid {
+  background-color: var(--metalloid);
+  border-color: var(--metalloid);
+}
+.element.polyatomic-nonmetal {
+  background-color: var(--polyatomic-nonmetal);
+  border-color: var(--polyatomic-nonmetal);
+}
+.element.diatomic-nonmetal {
+  background-color: var(--diatomic-nonmetal);
+  border-color: var(--diatomic-nonmetal);
+}
+.element.noble-gas {
+  background-color: var(--noble-gas);
+  border-color: var(--noble-gas);
+}
+.element.lanthanide-metal {
+  background-color: var(--lanthanide);
+  border-color: var(--lanthanide);
+}
+.element.actinide-metal {
+  background-color: var(--actinide);
+  border-color: var(--actinide);
+}
+
+/* Elements Dynamic Dimming on Category Spotlight */
+#main.dim-elements .element:not(.highlighted-element) {
+  opacity: 0.15;
+  filter: grayscale(0.7) blur(0.3px);
+  transform: scale(0.92);
+}
+
+#main.dim-elements .element.highlighted-element {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+#main.update-category .element.highlighted-element {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  transform: scale(1.02);
+}
+
+#main.update-category .element:not(.highlighted-element) {
+  opacity: 0.15;
+  filter: grayscale(0.7) blur(0.3px);
+  transform: scale(0.92);
+}

@@ -1,0 +1,7 @@
+@import "./base/variables.css";
+@import "./base/reset.css";
+@import "./components/nav.css";
+@import "./components/dashboard.css";
+@import "./components/table.css";
+@import "./components/explain.css";
+@import "./components/tabs.css";

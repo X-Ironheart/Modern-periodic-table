@@ -1,0 +1,44 @@
+:root {
+  /* Dynamic Custom Color Variables - easy to customize! */
+  --bg-color: #faf9f6;
+  --slate-navy: #1e293b;
+  --yellow-highlight: #fde047;
+  --cream-text: #eee;
+  --card-bg: #faf9f6;
+  --orbital-line: rgba(226, 232, 240, 0.25);
+  --electron-color: #fde047;
+
+  /* Category Colors */
+  --alkali-metals: #ff4a4a;
+  --alkaline-earth: #ffa03a;
+  --transition-metals: #4b9fe3;
+  --post-transition-metals: #30c39e;
+  --metalloid: #f4d03f;
+  --polyatomic-nonmetal: #2ecc71;
+  --diatomic-nonmetal: #1abc9c;
+  --noble-gas: #9b59b6;
+  --lanthanide: #ff9ff3;
+  --actinide: #f368e0;
+
+  /* Block Border Colors */
+  --s-block-border: #ff4a4a;
+  --p-block-border: #30c39e;
+  --d-block-border: #4b9fe3;
+  --f-block-border: #ff9ff3;
+
+  /* Sizing Variables */
+  --atomic-name: 0.7em;
+  --atomic-sym: 1.4em;
+  --atomic-number: 0.7em;
+  --electron-config: 1.1rem;
+
+  /*Colors In AI Tabs*/
+  --ai-color: #adb6c5f7;
+  --active-tab-color: #faf9f6;
+  --inactive-ai-color: #1e293bf7;
+
+  /* Fonts */
+  --font-space: "Space Grotesk", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}

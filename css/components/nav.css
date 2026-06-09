@@ -1,0 +1,113 @@
+/* Header & Logo Section */
+.flex-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.logo-area {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-family: var(--font-space);
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  color: var(--slate-navy);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--yellow-highlight);
+  margin-bottom: 5px;
+  margin-left: 5px;
+  box-shadow: 0 0 10px var(--yellow-highlight);
+}
+
+/* Curved Capsule Navigation Bar */
+.nav-bar-container {
+  position: relative;
+}
+
+.premium-nav {
+  background: var(--slate-navy);
+  border-radius: 50px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 15px 35px rgba(30, 41, 59, 0.2);
+  position: relative;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .premium-nav {
+    border-radius: 0 20px 20px 0;
+    border-bottom-left-radius: 45px;
+    padding-left: 28px;
+  }
+}
+
+.concave-curve {
+  position: absolute;
+  top: 0;
+  left: -28px;
+  width: 28px;
+  height: 28px;
+  color: var(--slate-navy);
+  transform: rotate(0deg);
+}
+
+.hidden-md {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hidden-md {
+    display: block;
+  }
+}
+
+.nav-pill {
+  color: #fff;
+  background: var(--slate-hover);
+  border: none;
+  padding: 11px 22px;
+  border-radius: 30px;
+  font-family: var(--font-space);
+  font-size: 0.96rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.nav-pill:hover {
+  background: var(--slate-border);
+}
+
+.nav-pill.active-pill {
+  background: #fff;
+  color: var(--slate-navy);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+}

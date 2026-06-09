@@ -1,19 +1,16 @@
-import { initTabs } from "./tabs.js";
-import { initTrends } from "./trends.js";
-import { initAI } from "./ai.js";
-import { initCompare } from "./compare.js";
-import { initShowcase } from "./showcase3d.js";
-import { initSimulators } from "./simulators.js";
-import { initReference } from "./reference.js";
+import { initTabs } from "./core/tabs.js";
+import { initTrends } from "./features/trends.js";
+import { initAI } from "./features/ai.js";
+import { initCompare } from "./features/compare.js";
+import { initShowcase } from "./features/showcase3d.js";
+import { initSimulators } from "./features/simulators.js";
+import { initReference } from "./features/reference.js";
 
 export let lockedElement = null;
 export let elementsDataEn = [];
-export let atomicRadii = {};
 export let magneticProperties = {};
 export let isotopesDatabase = {};
 let activeCategoryFilter = null; // Tracks active category spotlight filter
-
-// Dynamic Categories to generate Pills (extracted dynamically from JSON)
 let categoriesList = [];
 
 // Helper to normalize category name into a CSS class
@@ -39,58 +36,38 @@ export function getNormalizedCategoryClass(category) {
 async function getDataFromJsonEn() {
   let fetchedData = null;
   try {
-    const [engData, radiiData, magnetismData, isotopesData] = await Promise.all([
-      fetch("./data/JSON/elements_en.json").then((res) => res.json()),
-      fetch("./data/JSON/elements_en.json").then((res) => res.json()),
-      fetch("./data/JSON/magnetic_properties.json").then((res) => res.json()),
-      fetch("./data/JSON/isotopes.json").then((res) => res.json())
+    const [engData, magnetismData, isotopesData] = await Promise.all([
+      fetch("./data/JSON/elements_en.json").then((res) => {
+        if (!res.ok) throw new Error("Failed to load elements catalog");
+        return res.json();
+      }),
+      fetch("./data/JSON/magnetic_properties.json").then((res) => {
+        if (!res.ok) throw new Error("Failed to load magnetic properties");
+        return res.json();
+      }),
+      fetch("./data/JSON/isotopes.json").then((res) => {
+        if (!res.ok) throw new Error("Failed to load isotopes guide");
+        return res.json();
+      })
     ]);
-    fetchedData = { engData, radiiData, magnetismData, isotopesData };
+    fetchedData = { engData, magnetismData, isotopesData };
   } catch (err) {
-    console.log(err);
-    const main = document.getElementById("main");
-    if (main) main.style.display = "none";
-    document.body.style.display = "flex";
-    document.body.style.alignItems = "center";
-    document.body.style.justifyContent = "center";
-    document.body.style.width = `100vw`;
-    document.body.style.height = `100vh`;
-    const errCollection = document.createElement(`div`);
-    errCollection.style.display = "flex";
-    errCollection.style.flexDirection = "column";
-    errCollection.style.alignItems = "center";
-    errCollection.style.justifyContent = "center";
-
-    const errLog = document.createElement("div");
-    const errText = document.createTextNode(new Error(`No API Found`));
-    errLog.appendChild(errText);
-    errLog.style.color = "#eee";
-    errLog.style.fontSize = "30px";
-
-    const megToDev = document.createElement("div");
-    const tellToDev = document.createTextNode(
-      `Hi There, You Are Trying To Find Nothing In This Shit Website So Please Get Out From Here :)`,
-    );
-    megToDev.appendChild(tellToDev);
-    megToDev.style.color = "#eee";
-    megToDev.style.textAlign = errLog.style.textAlign = "center";
-
-    errCollection.appendChild(errLog);
-    errCollection.appendChild(megToDev);
-    document.body.appendChild(errCollection);
+    console.error("API connection failure:", err);
+    showErrorOverlay(err.message || "Failed to load database. Please check your internet connection.");
+    return;
   }
 
   if (!fetchedData) return;
   elementsDataEn.push(...fetchedData.engData.elements);
-  Object.assign(atomicRadii, fetchedData.radiiData);
   Object.assign(magneticProperties, fetchedData.magnetismData);
   Object.assign(isotopesDatabase, fetchedData.isotopesData);
 
   const main = document.getElementById("main");
+  if (!main) return;
   
   lockedElement = elementsDataEn[0]; // Set default active element
   
-  // Extract unique categories dynamically from loaded elements database (excluding unknown categories for a cleaner UI)
+  // Extract unique categories dynamically from loaded elements database
   const uniqueCategories = [...new Set(elementsDataEn.map(el => el.category))]
     .filter(cat => cat && !cat.toLowerCase().includes("unknown"));
   categoriesList = uniqueCategories.map(cat => ({
@@ -99,6 +76,9 @@ async function getDataFromJsonEn() {
   }));
 
   renderCategoriesGuide(); // Generate categories pills dynamically
+
+  // Optimize DOM updates using a DocumentFragment (avoids 119 consecutive reflows)
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < elementsDataEn.length; i++) {
     const element = elementsDataEn[i];
@@ -130,8 +110,8 @@ async function getDataFromJsonEn() {
     atomNameDiv.textContent = elementsName;
     atomSymbolsDiv.textContent = elementsSymbol;
 
-    elementDiv.style.gridColumn = elementsDataEn[i].xpos;
-    elementDiv.style.gridRow = elementsDataEn[i].ypos;
+    elementDiv.style.gridColumn = element.xpos;
+    elementDiv.style.gridRow = element.ypos;
 
     elementDiv.appendChild(atomicNumberDiv);
     elementDiv.appendChild(atomSymbolsDiv);
@@ -151,13 +131,8 @@ async function getDataFromJsonEn() {
       elementDiv.classList.add("f-group");
     }
 
-    
-    // Dynamic Hover / Click State Management for pixel-perfect low latency DOM interaction
-    // elementDiv.addEventListener("mouseenter", () => {
-    //   updateActiveDashboard(element);
-    // });
-
-    //I make it as a comment for testing 
+    // Cache DOM reference for O(1) runtime operations
+    element.cellElement = elementDiv;
 
     elementDiv.addEventListener("mouseleave", () => {
       // Revert dashboard back to currently locked element
@@ -184,8 +159,10 @@ async function getDataFromJsonEn() {
       }
     });
 
-    main.appendChild(elementDiv);
+    fragment.appendChild(elementDiv);
   }
+
+  main.appendChild(fragment);
 
   // Pre-load default active element dashboard state
   updateActiveDashboard(lockedElement);
@@ -222,9 +199,9 @@ function updateActiveDashboard(element) {
 
   // Left Panel card properties
   document.getElementById("activeNumber").textContent = element.number;
-  document.getElementById("activeMass").textContent = parseFloat(
-    element.atomic_mass,
-  ).toFixed(3);
+  document.getElementById("activeMass").textContent = (typeof element.atomic_mass === "number")
+    ? element.atomic_mass.toFixed(3)
+    : (element.atomic_mass || "Unknown");
   document.getElementById("activeSymbol").textContent = element.symbol;
   document.getElementById("activeNameEn").textContent = element.name;
 
@@ -252,7 +229,10 @@ function updateActiveDashboard(element) {
 // Renders the Categories Guide Pill list inside the slate dashboard
 function renderCategoriesGuide() {
   const container = document.getElementById("categoryPillsWrapper");
+  if (!container) return;
   container.innerHTML = "";
+
+  const fragment = document.createDocumentFragment();
 
   categoriesList.forEach((cat) => {
     const pillBtn = document.createElement("button");
@@ -265,7 +245,7 @@ function renderCategoriesGuide() {
 
     // English label
     const labelSpan = document.createElement("span");
-    const formattedLabel = cat.en.charAt(0).toUpperCase() + cat.en.slice(1); // Convert To Css Code
+    const formattedLabel = cat.en.charAt(0).toUpperCase() + cat.en.slice(1);
     labelSpan.textContent = formattedLabel;
 
     pillBtn.appendChild(dot);
@@ -277,20 +257,29 @@ function renderCategoriesGuide() {
       toggleCategorySpotlight(cat.en, pillBtn);
     });
 
-    container.appendChild(pillBtn);
+    fragment.appendChild(pillBtn);
   });
+
+  container.appendChild(fragment);
 }
 
 // Reset filter triggers when clicking on the page body
 document.body.addEventListener("click", () => {
   if (activeCategoryFilter) {
     const main = document.getElementById("main");
-    const allElements = document.querySelectorAll(".element");
     const allPills = document.querySelectorAll(".category-pill");
 
     activeCategoryFilter = null;
+    main.classList.remove("update-category");
     main.classList.remove("dim-elements");
-    allElements.forEach((el) => el.classList.remove("highlighted-element"));
+    
+    // Spotlight clean up using pre-cached DOM cells
+    elementsDataEn.forEach((el) => {
+      if (el.cellElement) {
+        el.cellElement.classList.remove("highlighted-element");
+      }
+    });
+
     allPills.forEach((p) => {
       p.classList.remove("active-category");
     });
@@ -300,14 +289,18 @@ document.body.addEventListener("click", () => {
 // Toggles element grid spotlights: Dims all elements in the periodic table except matching category
 function toggleCategorySpotlight(category, clickedPill) {
   const main = document.getElementById("main");
-  const allElements = document.querySelectorAll(".element");
   const allPills = document.querySelectorAll(".category-pill");
 
   // If clicked pill was already active, turn off spotlight filtering completely
   if (activeCategoryFilter === category) {
     activeCategoryFilter = null;
     main.classList.remove("update-category");
-    allElements.forEach((el) => el.classList.remove("highlighted-element"));
+    main.classList.remove("dim-elements");
+    elementsDataEn.forEach((el) => {
+      if (el.cellElement) {
+        el.cellElement.classList.remove("highlighted-element");
+      }
+    });
     allPills.forEach((p) => {
       p.classList.remove("active-category");
     });
@@ -325,13 +318,15 @@ function toggleCategorySpotlight(category, clickedPill) {
 
   clickedPill.classList.add("active-category");
 
-  // Spotlight matching grid elements
+  // Spotlight matching grid elements using pre-cached DOM cells
   const cssClass = getNormalizedCategoryClass(category);
-  allElements.forEach((el) => {
-    if (el.classList.contains(cssClass)) {
-      el.classList.add("highlighted-element");
+  elementsDataEn.forEach((el) => {
+    const cell = el.cellElement;
+    if (!cell) return;
+    if (cell.classList.contains(cssClass)) {
+      cell.classList.add("highlighted-element");
     } else {
-      el.classList.remove("highlighted-element");
+      cell.classList.remove("highlighted-element");
     }
   });
 }
@@ -344,10 +339,9 @@ function highlightElementCell(elementDiv) {
 }
 
 export function resetGridColoring() {
-  const elements = document.querySelectorAll(".element");
-  elements.forEach((el, idx) => {
-    const data = elementsDataEn[idx];
-    if (!data) return;
+  elementsDataEn.forEach((data) => {
+    const el = data.cellElement;
+    if (!el) return;
     
     el.style.backgroundColor = "";
     el.style.borderColor = "";
@@ -364,7 +358,30 @@ export function resetGridColoring() {
   });
   
   const main = document.getElementById("main");
-  main.classList.remove("dim-elements");
+  if (main) {
+    main.classList.remove("dim-elements");
+    main.classList.remove("update-category");
+  }
+}
+
+// Premium floating connection error overlay
+function showErrorOverlay(errorMessage) {
+  if (document.getElementById("db-error-overlay")) return;
+
+  const overlay = document.createElement("div");
+  overlay.id = "db-error-overlay";
+  overlay.className = "error-overlay";
+
+  overlay.innerHTML = `
+    <div class="error-card">
+      <div class="error-icon">⚠️</div>
+      <h2 class="error-title">Database Connection Error</h2>
+      <p class="error-text">There was a problem loading the elements database details: <strong>${errorMessage}</strong></p>
+      <button class="error-retry-btn" onclick="window.location.reload()">Retry Connection</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
 }
 
 // Trigger dynamic initialization on script load
