@@ -32,6 +32,11 @@
   --atomic-number: 0.7em;
   --electron-config: 1.1rem;
 
+  /*Colors In AI Tabs*/
+  --ai-color: #adb6c5f7;
+  --active-tab-color: #faf9f6;
+  --inactive-ai-color :#1e293bf7;
+
   /* Fonts */
   --font-space: "Space Grotesk", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
@@ -134,8 +139,8 @@ body {
 }
 
 .nav-pill {
-  background: var(--slate-hover);
   color: #fff;
+  background: var(--slate-hover);
   border: none;
   padding: 11px 22px;
   border-radius: 30px;

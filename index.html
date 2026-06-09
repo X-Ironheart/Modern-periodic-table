@@ -1,591 +1,897 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Periodic Table</title>
+    <link
+      rel="shortcut icon"
+      href="./data/Modern Periodic Table LOGO.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;600;800&family=Roboto+Mono:wght@500;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/table.css" />
+    <link rel="stylesheet" href="./css/explain.css" />
+    <link rel="stylesheet" href="./css/tabs.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern Periodic Table</title>
-  <link rel="shortcut icon" href="./data/Modern Periodic Table LOGO.png" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;600;800&family=Roboto+Mono:wght@500;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/table.css">
-  <link rel="stylesheet" href="./css/explain.css">
-  <link rel="stylesheet" href="./css/tabs.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-</head>
-
-<body>
-  <!-- Brand Header & Nav Bar Section -->
-  <div class="flex-header-container">
-    <div class="logo-area" id="logoArea">
-      <span class="logo-text">Hydrogen</span>
-      <div class="logo-dot"></div>
-    </div>
-    <div class="nav-bar-container">
-      <nav class="premium-nav">
-        <!-- SVG Concave Curve for fluid integration -->
-        <svg class="concave-curve hidden-md" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M24 0H0C13.25 0 24 10.75 24 24V0Z" />
-        </svg>
-        <button class="nav-pill active-pill" data-tab="table">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
-          Table
-        </button>
-        <button class="nav-pill" data-tab="trends">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-          Trends
-        </button>
-        <button class="nav-pill" data-tab="ai">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
-          Ask Hydrogen
-        </button>
-        <button class="nav-pill" data-tab="compare">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
-          Compare
-        </button>
-        <button class="nav-pill" data-tab="showcase">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-          3D Showcase
-        </button>
-        <button class="nav-pill" data-tab="simulators">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" /></svg>
-          Simulators
-        </button>
-        <button class="nav-pill" data-tab="reference">
-          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-          Reference
-        </button>
-      </nav>
-    </div>
-  </div>
-
-  <!-- Premium Interactive Dashboard Header Panel -->
-  <main>
-    <div class="dashboard-container">
-      
-      <!-- TAB 1: Default Table Dashboard -->
-      <header class="dashboard-header active-dashboard" id="dashboard-table">
-        <!-- Background glow blur -->
-        <div class="bg-blur-accent"></div>
-
-        <!-- Left side: Compact Active Element Card -->
-        <div class="active-element-card-wrapper">
-          <div class="active-element-card" id="activeElementCard">
-            <div class="card-header">
-              <div class="stat-group">
-                <span class="stat-label">Atomic No.</span>
-                <span class="stat-val" id="activeNumber">1</span>
-              </div>
-              <div class="stat-group text-right">
-                <span class="stat-label">Mass</span>
-                <span class="stat-val" id="activeMass">1.008</span>
-              </div>
-            </div>
-            
-            <div class="orbital-viz-container">
-              <h1 class="symbol-display" id="activeSymbol">H</h1>
-            </div>
-
-            <div class="card-footer">
-              <h2 class="name-en" id="activeNameEn">Hydrogen</h2>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right side: Real-time Properties Console -->
-        <div class="control-panel">
-          
-          <!-- Interactive Categories Guide Pills -->
-          <div class="category-pills-section">
-            <div class="section-title-container">
-              <h4 class="section-title">Categories Guide</h4>
-              <div class="section-title-line"></div>
-            </div>
-            <div class="category-pills-wrapper" id="categoryPillsWrapper">
-              <!-- Categorization Pills generated dynamically by main.js -->
-            </div>
-          </div>
-
-          <!-- Vital Data Grid -->
-          <div class="vital-grid">
-            <div class="vital-item">
-              <span class="vital-label">Category</span>
-              <span class="vital-val text-yellow" id="activeCategory">Diatomic Nonmetal</span>
-            </div>
-            <div class="vital-item">
-              <span class="vital-label">Electron Config</span>
-              <span class="vital-val" id="activeConfig">1s¹</span>
-            </div>
-            <div class="vital-item">
-              <span class="vital-label">Electronegativity</span>
-              <span class="vital-val" id="activeElectronegativity">2.20 Pauling</span>
-            </div>
-            <div class="vital-item">
-              <span class="vital-label">Phase</span>
-              <span class="vital-val text-white" id="activePhase">Gas</span>
-            </div>
-          </div>
-
-          <!-- Scientific Description Summary Console -->
-          <div class="summary-container">
-            <span class="summary-title">Summary & Properties</span>
-            <div class="summary-box" id="activeSummary">
-              Hydrogen is a chemical element with chemical symbol H and atomic number 1. With an atomic weight of 1.008 u, hydrogen is the lightest element on the periodic table.
-            </div>
-          </div>
-
-        </div>
-      </header>
-
-      <!-- TAB 2: Trends Dashboard -->
-      <header class="dashboard-header" id="dashboard-trends">
-        <div class="bg-blur-accent"></div>
-        <div class="trends-control-panel">
-          <div class="trends-intro">
-            <h3>Periodic Trends Heatmap</h3>
-            <p>Select a chemical property below to visualize its distribution across the periodic table using a dynamic heatmap.</p>
-          </div>
-          <div class="trends-buttons">
-            <button class="trend-btn active-trend" data-trend="electronegativity">Electronegativity</button>
-            <button class="trend-btn" data-trend="radius">Atomic Radius</button>
-            <button class="trend-btn" data-trend="ionization">Ionization Energy</button>
-            <button class="trend-btn" data-trend="mass">Atomic Mass</button>
-          </div>
-          <div class="trends-legend-container">
-            <span class="legend-label">Low</span>
-            <div class="trends-legend-bar"></div>
-            <span class="legend-label">High</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- TAB 6: Simulators Dashboard -->
-      <header class="dashboard-header" id="dashboard-simulators">
-        <div class="bg-blur-accent"></div>
-        <div class="sim-control-panel">
-          <div class="sim-selector-tabs">
-            <button class="sim-tab-btn active-sim-tab" data-sim="thermo">Thermodynamics (States)</button>
-            <button class="sim-tab-btn" data-sim="magnetism">Electromagnetism (Magnetic Properties)</button>
-          </div>
-
-          <!-- Sub-panel 1: Thermodynamics Slider -->
-          <div class="sim-sub-panel active-sub-panel" id="sim-panel-thermo">
-            <div class="thermo-slider-row">
-              <div class="thermo-info">
-                <span class="thermo-temp-display" id="temp-val-k">298 K</span>
-                <span class="thermo-temp-display-c" id="temp-val-c">25 °C</span>
-              </div>
-              <input type="range" class="thermo-slider" id="thermo-temp-slider" min="0" max="6000" value="298" />
-              <button class="thermo-play-btn" id="thermo-play-btn">
-                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>Auto-Heat</span>
-              </button>
-            </div>
-            <div class="thermo-legend">
-              <div class="legend-item"><span class="legend-color solid-color"></span>Solid</div>
-              <div class="legend-item"><span class="legend-color liquid-color"></span>Liquid</div>
-              <div class="legend-item"><span class="legend-color gas-color"></span>Gas</div>
-              <div class="legend-item"><span class="legend-color unknown-color"></span>Unknown</div>
-            </div>
-          </div>
-
-          <!-- Sub-panel 2: Magnetism Legend -->
-          <div class="sim-sub-panel" id="sim-panel-magnetism">
-            <div class="magnetism-legend">
-              <div class="legend-item"><span class="legend-color ferro-color"></span>Ferromagnetic</div>
-              <div class="legend-item"><span class="legend-color antiferro-color"></span>Antiferromagnetic</div>
-              <div class="legend-item"><span class="legend-color para-color"></span>Paramagnetic</div>
-              <div class="legend-item"><span class="legend-color dia-color"></span>Diamagnetic</div>
-            </div>
-            <p class="sim-info-text">Elements are color-coded based on their room-temperature magnetic behavior. Ferromagnetic elements are highlighted in bright crimson red.</p>
-          </div>
-        </div>
-      </header>
-
-    </div>
-  </main>
-
-  <!-- FULL-WIDTH TAB PAGES (Shown/Hidden dynamically) -->
-
-  <!-- TAB 3: AI Assistant Page -->
-  <section class="tab-content-page" id="view-ai">
-    <!-- Ambient blurred background elements to mirror the visual mockup -->
-    <div class="ai-glow-bg-left"></div>
-    <div class="ai-glow-bg-right"></div>
-
-    <div class="ai-page-container">
-      
-      <!-- Landing View: Dynamic Greeting & Title Headers -->
-      <div class="ai-landing-view" id="ai-landing-view">
-        <h1 class="ai-greeting-title" id="ai-greeting-title">Good afternoon</h1>
-        <h2 class="ai-greeting-subtitle">What can I help you with today?</h2>
+  <body>
+    <!-- Brand Header & Nav Bar Section -->
+    <div class="flex-header-container">
+      <div class="logo-area" id="logoArea">
+        <span class="logo-text">Hydrogen</span>
+        <div class="logo-dot"></div>
       </div>
-
-      <!-- Chat History Box: Hidden initially, shown during conversation view -->
-      <div class="ai-chat-messages-wrapper" id="ai-chat-messages-wrapper">
-        <div class="chat-messages" id="chat-messages-box">
-          <div class="chat-bubble assistant-bubble">
-            <strong>Hydrogen:</strong> Welcome! I am Hydrogen, your chemistry assistant. Feel free to ask me questions like: <em>"What is the melting point of Iron?"</em> or <em>"Tell me about Helium."</em>
-          </div>
-        </div>
+      <div class="nav-bar-container">
+        <nav class="premium-nav">
+          <!-- SVG Concave Curve for fluid integration -->
+          <svg
+            class="concave-curve hidden-md"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M24 0H0C13.25 0 24 10.75 24 24V0Z" />
+          </svg>
+          <button class="nav-pill active-pill" data-tab="table">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+              />
+            </svg>
+            Table
+          </button>
+          <button class="nav-pill" data-tab="trends">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              />
+            </svg>
+            Trends
+          </button>
+          <button class="nav-pill" data-tab="ai">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+              />
+            </svg>
+            Ask Hydrogen
+          </button>
+          <button class="nav-pill" data-tab="compare">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+              />
+            </svg>
+            Compare
+          </button>
+          <button class="nav-pill" data-tab="showcase">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+              />
+            </svg>
+            3D Showcase
+          </button>
+          <button class="nav-pill" data-tab="simulators">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"
+              />
+            </svg>
+            Simulators
+          </button>
+          <button class="nav-pill" data-tab="reference">
+            <svg
+              class="nav-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+            Reference
+          </button>
+        </nav>
       </div>
+    </div>
 
-      <!-- Central Input Control Panel: Capsule Input Bar & Model Selector Dropdown -->
-      <div class="ai-input-wrapper">
-        <div class="ai-input-capsule">
-          <div class="ai-input-row">
-            <input type="text" id="chat-user-input" placeholder="Ask anything about elements, compounds, or reactions..." autocomplete="off" />
-          </div>
-          
-          <div class="ai-controls-row">
-            <!-- Left Side: Custom Dropdown for Model Engine Selection & Gemini Keys -->
-            <div class="ai-model-selector-container">
-              <button class="ai-model-btn" id="model-select-btn">
-                <span class="ai-model-icon">🤖</span>
-                <span class="ai-model-name" id="model-name-display">Smart (Hydrogen)</span>
-                <span class="ai-dropdown-arrow">▼</span>
-              </button>
-              
-              <!-- Hidden Engine Selector Dropdown Overlay -->
-              <div class="ai-model-dropdown" id="model-dropdown-menu">
-                <div class="ai-dropdown-item active-engine" id="engine-local-btn">
-                  <span class="engine-check">✓</span>
-                  <div class="engine-details">
-                    <strong>Hydrogen Local DB</strong>
-                    <span>Offline indexing for elements and comparisons</span>
-                  </div>
+    <!-- Premium Interactive Dashboard Header Panel -->
+    <main>
+      <div class="dashboard-container">
+        <!-- TAB 1: Default Table Dashboard -->
+        <header class="dashboard-header active-dashboard" id="dashboard-table">
+          <!-- Background glow blur -->
+          <div class="bg-blur-accent"></div>
+
+          <!-- Left side: Compact Active Element Card -->
+          <div class="active-element-card-wrapper">
+            <div class="active-element-card" id="activeElementCard">
+              <div class="card-header">
+                <div class="stat-group">
+                  <span class="stat-label">Atomic No.</span>
+                  <span class="stat-val" id="activeNumber">1</span>
                 </div>
-                <div class="ai-dropdown-item" id="engine-gemini-btn">
-                  <span class="engine-check"></span>
-                  <div class="engine-details">
-                    <strong>Gemini Generative Brain</strong>
-                    <span>Advanced general chemistry queries (needs Key)</span>
-                  </div>
-                </div>
-                <div class="ai-key-config-divider"></div>
-                <div class="ai-key-config-section">
-                  <label for="gemini-api-key">Gemini API Key</label>
-                  <div class="key-input-row">
-                    <input type="password" id="gemini-api-key" placeholder="Paste Gemini Key..." />
-                    <button id="save-api-key" class="save-key-btn">Save</button>
-                  </div>
-                  <span id="key-status-msg" class="key-status-text">Using local database engine</span>
+                <div class="stat-group text-right">
+                  <span class="stat-label">Mass</span>
+                  <span class="stat-val" id="activeMass">1.008</span>
                 </div>
               </div>
+
+              <div class="orbital-viz-container">
+                <h1 class="symbol-display" id="activeSymbol">H</h1>
+              </div>
+
+              <div class="card-footer">
+                <h2 class="name-en" id="activeNameEn">Hydrogen</h2>
+              </div>
             </div>
-            
-            <!-- Right Side: Action Shortcuts (New Chat, Speech recognition Mic, Send button) -->
-            <div class="ai-action-shortcuts">
-              <button id="chat-reset-btn" class="ai-action-btn" title="New Topic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </div>
+
+          <!-- Right side: Real-time Properties Console -->
+          <div class="control-panel">
+            <!-- Interactive Categories Guide Pills -->
+            <div class="category-pills-section">
+              <div class="section-title-container">
+                <h4 class="section-title">Categories Guide</h4>
+                <div class="section-title-line"></div>
+              </div>
+              <div class="category-pills-wrapper" id="categoryPillsWrapper">
+                <!-- Categorization Pills generated dynamically by main.js -->
+              </div>
+            </div>
+
+            <!-- Vital Data Grid -->
+            <div class="vital-grid">
+              <div class="vital-item">
+                <span class="vital-label">Category</span>
+                <span class="vital-val text-yellow" id="activeCategory"
+                  >Diatomic Nonmetal</span
+                >
+              </div>
+              <div class="vital-item">
+                <span class="vital-label">Electron Config</span>
+                <span class="vital-val" id="activeConfig">1s¹</span>
+              </div>
+              <div class="vital-item">
+                <span class="vital-label">Electronegativity</span>
+                <span class="vital-val" id="activeElectronegativity"
+                  >2.20 Pauling</span
+                >
+              </div>
+              <div class="vital-item">
+                <span class="vital-label">Phase</span>
+                <span class="vital-val text-white" id="activePhase">Gas</span>
+              </div>
+            </div>
+
+            <!-- Scientific Description Summary Console -->
+            <div class="summary-container">
+              <span class="summary-title">Summary & Properties</span>
+              <div class="summary-box" id="activeSummary">
+                Hydrogen is a chemical element with chemical symbol H and atomic
+                number 1. With an atomic weight of 1.008 u, hydrogen is the
+                lightest element on the periodic table.
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- TAB 2: Trends Dashboard -->
+        <header class="dashboard-header" id="dashboard-trends">
+          <div class="bg-blur-accent"></div>
+          <div class="trends-control-panel">
+            <div class="trends-intro">
+              <h3>Periodic Trends Heatmap</h3>
+              <p>
+                Select a chemical property below to visualize its distribution
+                across the periodic table using a dynamic heatmap.
+              </p>
+            </div>
+            <div class="trends-buttons">
+              <button
+                class="trend-btn active-trend"
+                data-trend="electronegativity"
+              >
+                Electronegativity
               </button>
-              <button id="chat-mic-btn" class="ai-action-btn" title="Voice Search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+              <button class="trend-btn" data-trend="radius">
+                Atomic Radius
               </button>
-              <button id="chat-send-btn" class="ai-action-btn send-btn-active" title="Send Question">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <button class="trend-btn" data-trend="ionization">
+                Ionization Energy
+              </button>
+              <button class="trend-btn" data-trend="mass">Atomic Mass</button>
+            </div>
+            <div class="trends-legend-container">
+              <span class="legend-label">Low</span>
+              <div class="trends-legend-bar"></div>
+              <span class="legend-label">High</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- TAB 6: Simulators Dashboard -->
+        <header class="dashboard-header" id="dashboard-simulators">
+          <div class="bg-blur-accent"></div>
+          <div class="sim-control-panel">
+            <div class="sim-selector-tabs">
+              <button class="sim-tab-btn active-sim-tab" data-sim="thermo">
+                Thermodynamics (States)
+              </button>
+              <button class="sim-tab-btn" data-sim="magnetism">
+                Electromagnetism (Magnetic Properties)
+              </button>
+            </div>
+
+            <!-- Sub-panel 1: Thermodynamics Slider -->
+            <div class="sim-sub-panel active-sub-panel" id="sim-panel-thermo">
+              <div class="thermo-slider-row">
+                <div class="thermo-info">
+                  <span class="thermo-temp-display" id="temp-val-k">298 K</span>
+                  <span class="thermo-temp-display-c" id="temp-val-c"
+                    >25 °C</span
+                  >
+                </div>
+                <input
+                  type="range"
+                  class="thermo-slider"
+                  id="thermo-temp-slider"
+                  min="0"
+                  max="6000"
+                  value="298"
+                />
+                <button class="thermo-play-btn" id="thermo-play-btn">
+                  <svg
+                    class="play-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Auto-Heat</span>
+                </button>
+              </div>
+              <div class="thermo-legend">
+                <div class="legend-item">
+                  <span class="legend-color solid-color"></span>Solid
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color liquid-color"></span>Liquid
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color gas-color"></span>Gas
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color unknown-color"></span>Unknown
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-panel 2: Magnetism Legend -->
+            <div class="sim-sub-panel" id="sim-panel-magnetism">
+              <div class="magnetism-legend">
+                <div class="legend-item">
+                  <span class="legend-color ferro-color"></span>Ferromagnetic
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color antiferro-color"></span
+                  >Antiferromagnetic
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color para-color"></span>Paramagnetic
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color dia-color"></span>Diamagnetic
+                </div>
+              </div>
+              <p class="sim-info-text">
+                Elements are color-coded based on their room-temperature
+                magnetic behavior. Ferromagnetic elements are highlighted in
+                bright crimson red.
+              </p>
+            </div>
+          </div>
+        </header>
+      </div>
+    </main>
+
+    <!-- FULL-WIDTH TAB PAGES (Shown/Hidden dynamically) -->
+
+    <!-- TAB 3: AI Assistant Page -->
+    <section class="tab-content-page" id="view-ai">
+      <!-- Ambient blurred background elements to mirror the visual mockup -->
+      <div class="ai-glow-bg-left"></div>
+      <div class="ai-glow-bg-right"></div>
+
+      <div class="ai-page-container">
+        <!-- Landing View: Dynamic Greeting & Title Headers -->
+        <div class="ai-landing-view" id="ai-landing-view">
+          <h1 class="ai-greeting-title" id="ai-greeting-title">
+            Good afternoon
+          </h1>
+          <h2 class="ai-greeting-subtitle">What can I help you with today?</h2>
+        </div>
+
+        <!-- Chat History Box: Hidden initially, shown during conversation view -->
+        <div class="ai-chat-messages-wrapper" id="ai-chat-messages-wrapper">
+          <div class="chat-messages" id="chat-messages-box">
+            <div class="chat-bubble assistant-bubble">
+              <strong>Hydrogen:</strong> Welcome! I am Hydrogen, your chemistry
+              assistant. Feel free to ask me questions like:
+              <em>"What is the melting point of Iron?"</em> or
+              <em>"Tell me about Helium."</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Central Input Control Panel: Capsule Input Bar & Model Selector Dropdown -->
+        <div class="ai-input-wrapper">
+          <div class="ai-input-capsule">
+            <div class="ai-input-row">
+              <input
+                type="text"
+                id="chat-user-input"
+                placeholder="Ask anything about elements, compounds, or reactions..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="ai-controls-row">
+              <!-- Left Side: Custom Dropdown for Model Engine Selection & Gemini Keys -->
+              <div class="ai-model-selector-container">
+                <button class="ai-model-btn" id="model-select-btn">
+                  <span class="ai-model-icon">🤖</span>
+                  <span class="ai-model-name" id="model-name-display"
+                    >Smart (Hydrogen)</span
+                  >
+                  <span class="ai-dropdown-arrow">▼</span>
+                </button>
+
+                <!-- Hidden Engine Selector Dropdown Overlay -->
+                <div class="ai-model-dropdown" id="model-dropdown-menu">
+                  <div
+                    class="ai-dropdown-item active-engine"
+                    id="engine-local-btn"
+                  >
+                    <span class="engine-check">✓</span>
+                    <div class="engine-details">
+                      <strong>Hydrogen Local DB</strong>
+                      <span>Offline indexing for elements and comparisons</span>
+                    </div>
+                  </div>
+                  <div class="ai-dropdown-item" id="engine-gemini-btn">
+                    <span class="engine-check"></span>
+                    <div class="engine-details">
+                      <strong>Gemini Generative Brain</strong>
+                      <span
+                        >Advanced general chemistry queries (needs Key)</span
+                      >
+                    </div>
+                  </div>
+                  <div class="ai-key-config-divider"></div>
+                  <div class="ai-key-config-section">
+                    <label for="gemini-api-key">Gemini API Key</label>
+                    <div class="key-input-row">
+                      <input
+                        type="password"
+                        id="gemini-api-key"
+                        placeholder="Paste Gemini Key..."
+                      />
+                      <button id="save-api-key" class="save-key-btn">
+                        Save
+                      </button>
+                    </div>
+                    <span id="key-status-msg" class="key-status-text"
+                      >Using local database engine</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Side: Action Shortcuts (New Chat, Speech recognition Mic, Send button) -->
+              <div class="ai-action-shortcuts">
+                <button
+                  id="chat-reset-btn"
+                  class="ai-action-btn"
+                  title="New Topic"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="action-icon"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <button
+                  id="chat-mic-btn"
+                  class="ai-action-btn"
+                  title="Voice Search"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="action-icon"
+                  >
+                    <path
+                      d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                    ></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                  </svg>
+                </button>
+                <button
+                  id="chat-send-btn"
+                  class="ai-action-btn send-btn-active"
+                  title="Send Question"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="action-icon"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggestion Action Pills directly below input capsule -->
+          <div class="ai-suggestions-container" id="ai-suggestions-container">
+            <button
+              class="ai-suggest-pill"
+              data-query="Compare Gold and Copper"
+            >
+              Compare Gold & Copper
+            </button>
+            <button class="ai-suggest-pill" data-query="List Uranium Isotopes">
+              List Uranium Isotopes
+            </button>
+            <button
+              class="ai-suggest-pill"
+              data-query="Give me a summary of Oxygen"
+            >
+              Oxygen Summary
+            </button>
+            <button class="ai-suggest-pill" data-query="Tell me about Helium">
+              Tell me about Helium
+            </button>
+            <button
+              class="ai-suggest-pill"
+              data-query="Show me transition metals"
+            >
+              Transition Metals
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Dashboard Grid Deck (3-Column Layout) -->
+        <div class="ai-cards-deck" id="ai-cards-deck">
+          <!-- Card 1: Recent elements interacted with -->
+          <div class="ai-deck-card" id="card-recent-elements">
+            <div class="ai-card-title-row">
+              <span class="ai-card-icon">📎</span>
+              <span class="ai-card-title">Jump back in to your files</span>
+              <span
+                class="ai-card-info"
+                title="Elements recently clicked on the periodic table"
+                >ⓘ</span
+              >
+            </div>
+            <div class="ai-card-content" id="recent-elements-list">
+              <!-- Populated dynamically by ai.js -->
+              <div class="recent-el-item" data-symbol="Au">
+                <span class="recent-el-badge transition-metal">Au</span>
+                <div class="recent-el-details">
+                  <strong>Gold</strong>
+                  <span>Recently Viewed</span>
+                </div>
+                <span class="recent-el-more">...</span>
+              </div>
+              <div class="recent-el-item" data-symbol="He">
+                <span class="recent-el-badge noble-gas">He</span>
+                <div class="recent-el-details">
+                  <strong>Helium</strong>
+                  <span>Recently Viewed</span>
+                </div>
+                <span class="recent-el-more">...</span>
+              </div>
+              <div class="recent-el-item" data-symbol="U">
+                <span class="recent-el-badge actinide-metal">U</span>
+                <div class="recent-el-details">
+                  <strong>Uranium</strong>
+                  <span>Recently Viewed</span>
+                </div>
+                <span class="recent-el-more">...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Interactive Chemistry Shortcuts -->
+          <div class="ai-deck-card" id="card-shortcuts">
+            <div class="ai-card-title-row">
+              <span class="ai-card-icon">👓</span>
+              <span class="ai-card-title">Get guided help with your apps</span>
+              <span
+                class="ai-card-info"
+                title="Quick navigation shortcuts to simulators and maps"
+                >ⓘ</span
+              >
+            </div>
+            <div class="ai-card-content ai-shortcuts-grid">
+              <div
+                class="shortcut-item"
+                data-target-tab="simulators"
+                data-sim-sub="thermo"
+              >
+                <span class="shortcut-icon">🌡️</span>
+                <span class="shortcut-name">States Sim</span>
+              </div>
+              <div
+                class="shortcut-item"
+                data-target-tab="simulators"
+                data-sim-sub="magnetism"
+              >
+                <span class="shortcut-icon">🧲</span>
+                <span class="shortcut-name">Magnetic Sim</span>
+              </div>
+              <div class="shortcut-item" data-target-tab="trends">
+                <span class="shortcut-icon">📊</span>
+                <span class="shortcut-name">Heatmaps</span>
+              </div>
+              <div class="shortcut-item" data-target-tab="showcase">
+                <span class="shortcut-icon">⚛️</span>
+                <span class="shortcut-name">3D Orbitals</span>
+              </div>
+              <div class="shortcut-item" data-target-tab="compare">
+                <span class="shortcut-icon">⚖️</span>
+                <span class="shortcut-name">Compare</span>
+              </div>
+              <div
+                class="shortcut-item"
+                data-target-tab="reference"
+                data-ref-sub="isotopes"
+              >
+                <span class="shortcut-icon">🧬</span>
+                <span class="shortcut-name">Isotopes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Keep learning logs -->
+          <div class="ai-deck-card" id="card-logs">
+            <div class="ai-card-title-row">
+              <span class="ai-card-icon">💬</span>
+              <span class="ai-card-title">Keep talking to Copilot</span>
+              <span
+                class="ai-card-info"
+                title="Recent questions asked during this session"
+                >ⓘ</span
+              >
+            </div>
+            <div class="ai-card-content" id="session-logs-list">
+              <!-- Dynamically populated session conversation logs -->
+              <div class="log-el-item placeholder-log">
+                <span class="log-bubble-icon">💬</span>
+                <div class="log-details">
+                  <strong>How can Hydrogen help me?</strong>
+                  <span>Explore elements instantly</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Compare Elements Page -->
+    <section class="tab-content-page" id="view-compare">
+      <div class="compare-page-container">
+        <div class="compare-selectors">
+          <div class="selector-box">
+            <label for="compare-el-1">Select First Element</label>
+            <select id="compare-el-1" class="compare-dropdown">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="compare-vs-badge">VS</div>
+          <div class="selector-box">
+            <label for="compare-el-2">Select Second Element</label>
+            <select id="compare-el-2" class="compare-dropdown">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <div class="compare-cards-wrapper">
+          <!-- Element 1 Card -->
+          <div class="compare-element-card" id="comp-card-1">
+            <div class="comp-card-header">
+              <span class="comp-number" id="comp-num-1">1</span>
+              <span class="comp-symbol" id="comp-sym-1">H</span>
+            </div>
+            <h2 class="comp-name" id="comp-name-1">Hydrogen</h2>
+            <div class="comp-stats-list" id="comp-stats-1">
+              <!-- Filled dynamically -->
+            </div>
+          </div>
+
+          <!-- Element 2 Card -->
+          <div class="compare-element-card" id="comp-card-2">
+            <div class="comp-card-header">
+              <span class="comp-number" id="comp-num-2">6</span>
+              <span class="comp-symbol" id="comp-sym-2">C</span>
+            </div>
+            <h2 class="comp-name" id="comp-name-2">Carbon</h2>
+            <div class="comp-stats-list" id="comp-stats-2">
+              <!-- Filled dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-charts-section">
+          <h3>Property Indicators Comparison</h3>
+          <div class="compare-progress-gauge">
+            <div class="gauge-header"><span>Atomic Mass</span></div>
+            <div class="dual-progress-bar">
+              <div class="bar-left">
+                <div class="bar-fill" id="mass-bar-1"></div>
+              </div>
+              <div class="bar-right">
+                <div class="bar-fill" id="mass-bar-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-progress-gauge">
+            <div class="gauge-header"><span>Electronegativity</span></div>
+            <div class="dual-progress-bar">
+              <div class="bar-left">
+                <div class="bar-fill" id="neg-bar-1"></div>
+              </div>
+              <div class="bar-right">
+                <div class="bar-fill" id="neg-bar-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-progress-gauge">
+            <div class="gauge-header"><span>Melting Point (K)</span></div>
+            <div class="dual-progress-bar">
+              <div class="bar-left">
+                <div class="bar-fill" id="melt-bar-1"></div>
+              </div>
+              <div class="bar-right">
+                <div class="bar-fill" id="melt-bar-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-progress-gauge">
+            <div class="gauge-header"><span>Density (g/cm³)</span></div>
+            <div class="dual-progress-bar">
+              <div class="bar-left">
+                <div class="bar-fill" id="dens-bar-1"></div>
+              </div>
+              <div class="bar-right">
+                <div class="bar-fill" id="dens-bar-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: 3D Showcase Page -->
+    <section class="tab-content-page" id="view-showcase">
+      <div class="showcase-page-container">
+        <div class="showcase-sidebar">
+          <div class="showcase-selector-group">
+            <h3>Showcase Model</h3>
+            <div class="showcase-tabs">
+              <button
+                class="showcase-tab-btn active-showcase-tab"
+                id="btn-show-orbitals"
+              >
+                3D Orbitals
+              </button>
+              <button class="showcase-tab-btn" id="btn-show-compounds">
+                3D Compounds
               </button>
             </div>
           </div>
-        </div>
 
-        <!-- Suggestion Action Pills directly below input capsule -->
-        <div class="ai-suggestions-container" id="ai-suggestions-container">
-          <button class="ai-suggest-pill" data-query="Compare Gold and Copper">Compare Gold & Copper</button>
-          <button class="ai-suggest-pill" data-query="List Uranium Isotopes">List Uranium Isotopes</button>
-          <button class="ai-suggest-pill" data-query="Give me a summary of Oxygen">Oxygen Summary</button>
-          <button class="ai-suggest-pill" data-query="Tell me about Helium">Tell me about Helium</button>
-          <button class="ai-suggest-pill" data-query="Show me transition metals">Transition Metals</button>
-        </div>
-      </div>
-
-      <!-- Bottom Dashboard Grid Deck (3-Column Layout) -->
-      <div class="ai-cards-deck" id="ai-cards-deck">
-        <!-- Card 1: Recent elements interacted with -->
-        <div class="ai-deck-card" id="card-recent-elements">
-          <div class="ai-card-title-row">
-            <span class="ai-card-icon">📎</span>
-            <span class="ai-card-title">Jump back in to your files</span>
-            <span class="ai-card-info" title="Elements recently clicked on the periodic table">ⓘ</span>
-          </div>
-          <div class="ai-card-content" id="recent-elements-list">
-            <!-- Populated dynamically by ai.js -->
-            <div class="recent-el-item" data-symbol="Au">
-              <span class="recent-el-badge transition-metal">Au</span>
-              <div class="recent-el-details">
-                <strong>Gold</strong>
-                <span>Recently Viewed</span>
-              </div>
-              <span class="recent-el-more">...</span>
-            </div>
-            <div class="recent-el-item" data-symbol="He">
-              <span class="recent-el-badge noble-gas">He</span>
-              <div class="recent-el-details">
-                <strong>Helium</strong>
-                <span>Recently Viewed</span>
-              </div>
-              <span class="recent-el-more">...</span>
-            </div>
-            <div class="recent-el-item" data-symbol="U">
-              <span class="recent-el-badge actinide-metal">U</span>
-              <div class="recent-el-details">
-                <strong>Uranium</strong>
-                <span>Recently Viewed</span>
-              </div>
-              <span class="recent-el-more">...</span>
+          <!-- Section 1: Orbitals Controls -->
+          <div
+            class="showcase-control-panel active-showcase-panel"
+            id="panel-show-orbitals"
+          >
+            <label for="select-orbital">Orbital Shape</label>
+            <select id="select-orbital" class="showcase-dropdown">
+              <option value="s">s Orbital (Spherical)</option>
+              <option value="p">p Orbital (Dumbbell)</option>
+              <option value="d">d Orbital (Cloverleaf)</option>
+              <option value="f">f Orbital (Complex)</option>
+            </select>
+            <div class="showcase-details">
+              <h4 id="orbital-title">s Orbital</h4>
+              <p id="orbital-desc">
+                Spherical symmetry with the nucleus at the center. Holds up to 2
+                electrons. Exists in all principal energy levels.
+              </p>
             </div>
           </div>
-        </div>
 
-        <!-- Card 2: Interactive Chemistry Shortcuts -->
-        <div class="ai-deck-card" id="card-shortcuts">
-          <div class="ai-card-title-row">
-            <span class="ai-card-icon">👓</span>
-            <span class="ai-card-title">Get guided help with your apps</span>
-            <span class="ai-card-info" title="Quick navigation shortcuts to simulators and maps">ⓘ</span>
+          <!-- Section 2: Compounds Controls -->
+          <div class="showcase-control-panel" id="panel-show-compounds">
+            <label for="select-compound">Molecular Compound</label>
+            <select id="select-compound" class="showcase-dropdown">
+              <option value="h2o">Water (H₂O)</option>
+              <option value="co2">Carbon Dioxide (CO₂)</option>
+              <option value="ch4">Methane (CH₄)</option>
+              <option value="nacl">Sodium Chloride (NaCl Grid)</option>
+              <option value="caffeine">Caffeine (C₈H₁₀N₄O₂)</option>
+            </select>
+            <div class="showcase-details">
+              <h4 id="compound-title">Water (H₂O)</h4>
+              <p id="compound-desc">
+                A polar molecule consisting of two Hydrogen atoms covalently
+                bonded to a single Oxygen atom. Renders as a bent molecule.
+              </p>
+            </div>
           </div>
-          <div class="ai-card-content ai-shortcuts-grid">
-            <div class="shortcut-item" data-target-tab="simulators" data-sim-sub="thermo">
-              <span class="shortcut-icon">🌡️</span>
-              <span class="shortcut-name">States Sim</span>
-            </div>
-            <div class="shortcut-item" data-target-tab="simulators" data-sim-sub="magnetism">
-              <span class="shortcut-icon">🧲</span>
-              <span class="shortcut-name">Magnetic Sim</span>
-            </div>
-            <div class="shortcut-item" data-target-tab="trends">
-              <span class="shortcut-icon">📊</span>
-              <span class="shortcut-name">Heatmaps</span>
-            </div>
-            <div class="shortcut-item" data-target-tab="showcase">
-              <span class="shortcut-icon">⚛️</span>
-              <span class="shortcut-name">3D Orbitals</span>
-            </div>
-            <div class="shortcut-item" data-target-tab="compare">
-              <span class="shortcut-icon">⚖️</span>
-              <span class="shortcut-name">Compare</span>
-            </div>
-            <div class="shortcut-item" data-target-tab="reference" data-ref-sub="isotopes">
-              <span class="shortcut-icon">🧬</span>
-              <span class="shortcut-name">Isotopes</span>
-            </div>
+
+          <div class="showcase-controls-info">
+            <p>
+              Drag with left click to <strong>Rotate</strong>.<br />Drag with
+              right click to <strong>Pan</strong>.<br />Scroll to
+              <strong>Zoom</strong>.
+            </p>
           </div>
         </div>
 
-        <!-- Card 3: Keep learning logs -->
-        <div class="ai-deck-card" id="card-logs">
-          <div class="ai-card-title-row">
-            <span class="ai-card-icon">💬</span>
-            <span class="ai-card-title">Keep talking to Copilot</span>
-            <span class="ai-card-info" title="Recent questions asked during this session">ⓘ</span>
-          </div>
-          <div class="ai-card-content" id="session-logs-list">
-            <!-- Dynamically populated session conversation logs -->
-            <div class="log-el-item placeholder-log">
-              <span class="log-bubble-icon">💬</span>
-              <div class="log-details">
-                <strong>How can Hydrogen help me?</strong>
-                <span>Explore elements instantly</span>
-              </div>
-            </div>
-          </div>
+        <div class="showcase-canvas-container" id="showcase-canvas-container">
+          <!-- Three.js Canvas will be appended here -->
         </div>
       </div>
+    </section>
 
+    <!-- TAB 7: Reference Page -->
+    <section class="tab-content-page" id="view-reference">
+      <div class="reference-page-container">
+        <div class="reference-selector-tabs">
+          <button class="ref-tab-btn active-ref-tab" data-ref="list">
+            Elements List View
+          </button>
+          <button class="ref-tab-btn" data-ref="isotopes">
+            Isotopes Catalog
+          </button>
+        </div>
+
+        <!-- Reference Section 1: sortable elements list -->
+        <div class="ref-sub-panel active-ref-panel" id="ref-panel-list">
+          <div class="list-search-bar-row">
+            <input
+              type="text"
+              id="ref-list-search"
+              placeholder="Search elements by name, symbol, category..."
+            />
+          </div>
+          <div class="ref-table-wrapper">
+            <table class="ref-elements-table" id="ref-elements-table">
+              <thead>
+                <tr>
+                  <th data-sort="number">No. ⇅</th>
+                  <th data-sort="symbol">Symbol ⇅</th>
+                  <th data-sort="name">Name ⇅</th>
+                  <th data-sort="mass">Atomic Mass ⇅</th>
+                  <th data-sort="category">Category ⇅</th>
+                  <th data-sort="density">Density ⇅</th>
+                  <th data-sort="melt">Melt (K) ⇅</th>
+                  <th data-sort="boil">Boil (K) ⇅</th>
+                </tr>
+              </thead>
+              <tbody id="ref-table-body">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Reference Section 2: Isotopes guide -->
+        <div class="ref-sub-panel" id="ref-panel-isotopes">
+          <div class="isotopes-selection-row">
+            <label for="isotope-el-select">Select Element:</label>
+            <select id="isotope-el-select" class="ref-dropdown">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+          <div class="isotopes-results-wrapper">
+            <h3 id="isotopes-el-title">Hydrogen Isotopes</h3>
+            <div class="isotopes-cards-grid" id="isotopes-cards-container">
+              <!-- Dynamically populated cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Responsive Wrapper for Periodic Table Grid -->
+    <div class="table-wrapper" id="periodic-table-wrapper">
+      <div id="main"></div>
     </div>
-  </section>
 
-  <!-- TAB 4: Compare Elements Page -->
-  <section class="tab-content-page" id="view-compare">
-    <div class="compare-page-container">
-      <div class="compare-selectors">
-        <div class="selector-box">
-          <label for="compare-el-1">Select First Element</label>
-          <select id="compare-el-1" class="compare-dropdown">
-            <!-- Populated dynamically -->
-          </select>
-        </div>
-        <div class="compare-vs-badge">VS</div>
-        <div class="selector-box">
-          <label for="compare-el-2">Select Second Element</label>
-          <select id="compare-el-2" class="compare-dropdown">
-            <!-- Populated dynamically -->
-          </select>
-        </div>
-      </div>
-
-      <div class="compare-cards-wrapper">
-        <!-- Element 1 Card -->
-        <div class="compare-element-card" id="comp-card-1">
-          <div class="comp-card-header">
-            <span class="comp-number" id="comp-num-1">1</span>
-            <span class="comp-symbol" id="comp-sym-1">H</span>
-          </div>
-          <h2 class="comp-name" id="comp-name-1">Hydrogen</h2>
-          <div class="comp-stats-list" id="comp-stats-1">
-            <!-- Filled dynamically -->
-          </div>
-        </div>
-
-        <!-- Element 2 Card -->
-        <div class="compare-element-card" id="comp-card-2">
-          <div class="comp-card-header">
-            <span class="comp-number" id="comp-num-2">6</span>
-            <span class="comp-symbol" id="comp-sym-2">C</span>
-          </div>
-          <h2 class="comp-name" id="comp-name-2">Carbon</h2>
-          <div class="comp-stats-list" id="comp-stats-2">
-            <!-- Filled dynamically -->
-          </div>
-        </div>
-      </div>
-
-      <div class="compare-charts-section">
-        <h3>Property Indicators Comparison</h3>
-        <div class="compare-progress-gauge">
-          <div class="gauge-header"><span>Atomic Mass</span></div>
-          <div class="dual-progress-bar">
-            <div class="bar-left"><div class="bar-fill" id="mass-bar-1"></div></div>
-            <div class="bar-right"><div class="bar-fill" id="mass-bar-2"></div></div>
-          </div>
-        </div>
-        <div class="compare-progress-gauge">
-          <div class="gauge-header"><span>Electronegativity</span></div>
-          <div class="dual-progress-bar">
-            <div class="bar-left"><div class="bar-fill" id="neg-bar-1"></div></div>
-            <div class="bar-right"><div class="bar-fill" id="neg-bar-2"></div></div>
-          </div>
-        </div>
-        <div class="compare-progress-gauge">
-          <div class="gauge-header"><span>Melting Point (K)</span></div>
-          <div class="dual-progress-bar">
-            <div class="bar-left"><div class="bar-fill" id="melt-bar-1"></div></div>
-            <div class="bar-right"><div class="bar-fill" id="melt-bar-2"></div></div>
-          </div>
-        </div>
-        <div class="compare-progress-gauge">
-          <div class="gauge-header"><span>Density (g/cm³)</span></div>
-          <div class="dual-progress-bar">
-            <div class="bar-left"><div class="bar-fill" id="dens-bar-1"></div></div>
-            <div class="bar-right"><div class="bar-fill" id="dens-bar-2"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAB 5: 3D Showcase Page -->
-  <section class="tab-content-page" id="view-showcase">
-    <div class="showcase-page-container">
-      <div class="showcase-sidebar">
-        <div class="showcase-selector-group">
-          <h3>Showcase Model</h3>
-          <div class="showcase-tabs">
-            <button class="showcase-tab-btn active-showcase-tab" id="btn-show-orbitals">3D Orbitals</button>
-            <button class="showcase-tab-btn" id="btn-show-compounds">3D Compounds</button>
-          </div>
-        </div>
-
-        <!-- Section 1: Orbitals Controls -->
-        <div class="showcase-control-panel active-showcase-panel" id="panel-show-orbitals">
-          <label for="select-orbital">Orbital Shape</label>
-          <select id="select-orbital" class="showcase-dropdown">
-            <option value="s">s Orbital (Spherical)</option>
-            <option value="p">p Orbital (Dumbbell)</option>
-            <option value="d">d Orbital (Cloverleaf)</option>
-            <option value="f">f Orbital (Complex)</option>
-          </select>
-          <div class="showcase-details">
-            <h4 id="orbital-title">s Orbital</h4>
-            <p id="orbital-desc">Spherical symmetry with the nucleus at the center. Holds up to 2 electrons. Exists in all principal energy levels.</p>
-          </div>
-        </div>
-
-        <!-- Section 2: Compounds Controls -->
-        <div class="showcase-control-panel" id="panel-show-compounds">
-          <label for="select-compound">Molecular Compound</label>
-          <select id="select-compound" class="showcase-dropdown">
-            <option value="h2o">Water (H₂O)</option>
-            <option value="co2">Carbon Dioxide (CO₂)</option>
-            <option value="ch4">Methane (CH₄)</option>
-            <option value="nacl">Sodium Chloride (NaCl Grid)</option>
-            <option value="caffeine">Caffeine (C₈H₁₀N₄O₂)</option>
-          </select>
-          <div class="showcase-details">
-            <h4 id="compound-title">Water (H₂O)</h4>
-            <p id="compound-desc">A polar molecule consisting of two Hydrogen atoms covalently bonded to a single Oxygen atom. Renders as a bent molecule.</p>
-          </div>
-        </div>
-
-        <div class="showcase-controls-info">
-          <p>Drag with left click to <strong>Rotate</strong>.<br>Drag with right click to <strong>Pan</strong>.<br>Scroll to <strong>Zoom</strong>.</p>
-        </div>
-      </div>
-
-      <div class="showcase-canvas-container" id="showcase-canvas-container">
-        <!-- Three.js Canvas will be appended here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- TAB 7: Reference Page -->
-  <section class="tab-content-page" id="view-reference">
-    <div class="reference-page-container">
-      <div class="reference-selector-tabs">
-        <button class="ref-tab-btn active-ref-tab" data-ref="list">Elements List View</button>
-        <button class="ref-tab-btn" data-ref="isotopes">Isotopes Catalog</button>
-      </div>
-
-      <!-- Reference Section 1: sortable elements list -->
-      <div class="ref-sub-panel active-ref-panel" id="ref-panel-list">
-        <div class="list-search-bar-row">
-          <input type="text" id="ref-list-search" placeholder="Search elements by name, symbol, category..." />
-        </div>
-        <div class="ref-table-wrapper">
-          <table class="ref-elements-table" id="ref-elements-table">
-            <thead>
-              <tr>
-                <th data-sort="number">No. ⇅</th>
-                <th data-sort="symbol">Symbol ⇅</th>
-                <th data-sort="name">Name ⇅</th>
-                <th data-sort="mass">Atomic Mass ⇅</th>
-                <th data-sort="category">Category ⇅</th>
-                <th data-sort="density">Density ⇅</th>
-                <th data-sort="melt">Melt (K) ⇅</th>
-                <th data-sort="boil">Boil (K) ⇅</th>
-              </tr>
-            </thead>
-            <tbody id="ref-table-body">
-              <!-- Dynamically populated rows -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Reference Section 2: Isotopes guide -->
-      <div class="ref-sub-panel" id="ref-panel-isotopes">
-        <div class="isotopes-selection-row">
-          <label for="isotope-el-select">Select Element:</label>
-          <select id="isotope-el-select" class="ref-dropdown">
-            <!-- Populated dynamically -->
-          </select>
-        </div>
-        <div class="isotopes-results-wrapper">
-          <h3 id="isotopes-el-title">Hydrogen Isotopes</h3>
-          <div class="isotopes-cards-grid" id="isotopes-cards-container">
-            <!-- Dynamically populated cards -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Responsive Wrapper for Periodic Table Grid -->
-  <div class="table-wrapper" id="periodic-table-wrapper">
-    <div id="main"></div>
-  </div>
-
-  <script src="./JS/main.js" type="module"></script>
-</body>
-
+    <script src="./JS/main.js" type="module"></script>
+  </body>
 </html>
